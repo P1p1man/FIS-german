@@ -1391,6 +1391,8 @@ function _doSpeak(text, resolve) {
     finish();
   };
 
+  // Chrome: resume TTS (may be paused without user gesture)
+  window.speechSynthesis.resume();
   window.speechSynthesis.speak(utterance);
   console.log('[TTS] speak() called, speaking:', window.speechSynthesis.speaking);
 }
@@ -1638,6 +1640,13 @@ function renderSentences(sentences) {
 }
 
 function startPracticeFromSentence(sentence) {
+  // Warm up TTS engine (Chrome requires user gesture for speak())
+  if (window.speechSynthesis) {
+    window.speechSynthesis.resume();
+    const warmup = new SpeechSynthesisUtterance('');
+    warmup.volume = 0;
+    window.speechSynthesis.speak(warmup);
+  }
   startPractice([sentence.id]);
 }
 
