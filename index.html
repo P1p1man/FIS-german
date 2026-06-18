@@ -1361,7 +1361,7 @@ function loadVoiceOptions() {
   // Add Google TTS as fallback option (natural neural voice)
   const gtOpt = document.createElement('option');
   gtOpt.value = 'google';
-  gtOpt.textContent = '🔊 Google (natürlich)';
+  gtOpt.textContent = '🔊 Neural (natürlich)';
   sel.appendChild(gtOpt);
 }
 window.speechSynthesis?.addEventListener('voiceschanged', loadVoiceOptions);
@@ -1460,36 +1460,26 @@ function _doSpeak(text, resolve) {
 }
 
 function speakGoogleTTS(text, resolve) {
-  // Google Translate TTS: returns natural-sounding MP3
-  const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=de&client=tw-ob&q=' + encodeURIComponent(text);
-  console.log('[TTS-Google] Loading:', text.substring(0, 50));
+  // Microsoft Edge Read Aloud (free neural voices, no API key)
+  const ssml = '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="de-DE">' +
+    '<voice name="de-DE-KillianNeural">' + text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</voice></speak>';
   
-  const audio = new Audio();
-  let finished = false;
-  const finish = () => {
-    if (finished) return;
-    finished = true;
-    clearTimeout(timeout);
-    audio.remove();
-    console.log('[TTS-Google] Done');
+  console.log('[TTS-Neural] Loading:', text.substring(0, 50));
+  
+  fetch('https://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/ssml+xml' },
+    body: ssml
+  }).then(res => res.blob()).then(blob => {
+    const audio = new Audio(URL.createObjectURL(blob));
+    let finished = false;
+    const timeout = setTimeout(() => { if (!finished) { finished = true; audio.remove(); resolve(); } }, 15000);
+    audio.onended = () => { finished = true; clearTimeout(timeout); audio.remove(); resolve(); };
+    audio.onerror = () => { finished = true; clearTimeout(timeout); audio.remove(); resolve(); };
+    audio.play().catch(() => { finished = true; clearTimeout(timeout); audio.remove(); resolve(); });
+  }).catch(e => {
+    console.warn('[TTS-Neural] Failed:', e);
     resolve();
-  };
-  
-  const timeout = setTimeout(() => {
-    console.warn('[TTS-Google] Timeout');
-    finish();
-  }, Math.max(10000, text.length * 120));
-  
-  audio.onended = finish;
-  audio.onerror = (e) => {
-    console.warn('[TTS-Google] Error:', e);
-    finish();
-  };
-  
-  audio.src = url;
-  audio.play().catch(e => {
-    console.warn('[TTS-Google] Play failed:', e);
-    finish();
   });
 }
 
