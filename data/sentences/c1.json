@@ -1,0 +1,930 @@
+[
+  {
+    "id": "c1_001",
+    "level": "c1",
+    "tags": ["konjunktiv1", "indirekte_rede", "akademisch"],
+    "pattern": "Der Professor betonte, dass die Forschung {slot1} habe, aber es {slot2} noch viele offene Fragen.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "verb", "person": "er", "tense": "konjunktiv1_present"}
+    },
+    "replacement_pool": {
+      "slot1": [["finden"], ["sehen"], ["lesen"]],
+      "slot2": [["geben"], ["sein"], ["haben"]]
+    },
+    "grammar_note": "间接引语：dass从句 + Konjunktiv I表示转述距离。注意：er gebe（不是gibt）"
+  },
+  {
+    "id": "c1_002",
+    "level": "c1",
+    "tags": ["konjunktiv1", "indirekte_rede", "medien"],
+    "pattern": "Laut dem Bericht {slot1} die Regierung die Maßnahmen {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "sie", "tense": "konjunktiv1_present"},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["haben"], ["finden"], ["sprechen"]],
+      "slot2": [["finden"], ["sehen"], ["geben"]]
+    },
+    "grammar_note": "间接引语：laut + Konjunktiv I（新闻报道）。sie haben → sie hätten"
+  },
+  {
+    "id": "c1_003",
+    "level": "c1",
+    "tags": ["nominalisierung", "genitiv", "akademisch"],
+    "pattern": "Die {slot1} {slot2} ist von großer Bedeutung.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Entwicklung", "Untersuchung", "Verbesserung", "Diskussion"]},
+      "slot2": {"type": "noun", "case": "gen", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot2": [["die_stadt"], ["die_schule"], ["das_haus"]]
+    },
+    "grammar_note": "Nominalstil：动词名词化（entwickeln→Entwicklung）+ Genitivattribut"
+  },
+  {
+    "id": "c1_004",
+    "level": "c1",
+    "tags": ["nominalisierung", "praeposition", "schriftlich"],
+    "pattern": "Bei der {slot1} {slot2} stieß man auf unerwartete {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Analyse", "Untersuchung", "Prüfung", "Diskussion"]},
+      "slot2": {"type": "noun", "case": "gen", "num": "sg"},
+      "slot3": {"type": "fixed_phrase", "values": ["Probleme", "Ergebnisse", "Schwierigkeiten", "Fragen"]}
+    },
+    "replacement_pool": {
+      "slot2": [["der_lehrer"], ["die_mutter"], ["der_arzt"]]
+    },
+    "grammar_note": "Nominalstil：bei + Nominalisierung + Genitiv。书面语典型结构"
+  },
+  {
+    "id": "c1_005",
+    "level": "c1",
+    "tags": ["partizipialkonstruktion", "erweitertes_attribut", "catti"],
+    "pattern": "Die {slot1} {slot2} Maßnahmen wurden in der Sitzung {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["von der Regierung", "vom Ausschuss", "vom Parlament", "von der Kommission"]},
+      "slot2": {"type": "fixed_phrase", "values": ["beschlossenen", "vorgeschlagenen", "diskutierten", "geplanten"]},
+      "slot3": {"type": "fixed_phrase", "values": ["vorgestellt", "besprochen", "kritisiert", "angenommen"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "扩展分词定语（erweitertes Attribut）：von...beschlossenen。CATTI政经翻译必备"
+  },
+  {
+    "id": "c1_006",
+    "level": "c1",
+    "tags": ["partizipialkonstruktion", "temporalsatz", "literatur"],
+    "pattern": "In {slot1} angekommen, {slot2} er sofort {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"},
+      "slot2": {"type": "verb", "person": "er", "tense": "past"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_stadt"], ["die_schule"], ["das_haus"]],
+      "slot2": [["sehen"], ["finden"], ["geben"]],
+      "slot3": [["das_buch"], ["die_zeitung"], ["der_freund"]]
+    },
+    "grammar_note": "分词结构代替时间从句：In Berlin angekommen = Nachdem er in Berlin angekommen war"
+  },
+  {
+    "id": "c1_007",
+    "level": "c1",
+    "tags": ["konjunktiv2", "vergangenheit", "irreal"],
+    "pattern": "Wenn die Regierung früher {slot1} hätte, {slot2} die Krise {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "verb", "person": "sie", "tense": "konjunktiv1_present"},
+      "slot3": {"type": "fixed_phrase", "values": ["verhindert worden", "gelöst worden", "vermieden worden"]}
+    },
+    "replacement_pool": {
+      "slot1": [["finden"], ["geben"], ["sehen"]]
+    },
+    "grammar_note": "非现实过去条件句：Konjunktiv II Plusquamperfekt + 被动。政经评论常用"
+  },
+  {
+    "id": "c1_008",
+    "level": "c1",
+    "tags": ["modalpartikel", "nuance", "umgangssprache"],
+    "pattern": "Das ist {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "modalpartikel", "values": ["doch", "ja", "wohl", "eigentlich", "halt", "eben", "schon"]},
+      "slot2": {"type": "fixed_phrase", "values": ["eine schwierige", "eine wichtige", "eine interessante"]},
+      "slot3": {"type": "fixed_phrase", "values": ["Frage", "Entscheidung", "Situation", "Angelegenheit"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "语气小品词（Modalpartikel）：doch强调共识，ja强调已知信息，wohl表推测"
+  },
+  {
+    "id": "c1_009",
+    "level": "c1",
+    "tags": ["modalverben", "subjektiv", "vermutung"],
+    "pattern": "Der Minister {slot1} von den Plänen {slot2} haben, aber das ist nicht bestätigt.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["soll", "will", "dürfte"]},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot2": [["finden"], ["geben"], ["sehen"]]
+    },
+    "grammar_note": "情态动词主观用法：soll=据说（转述），will=声称（质疑），dürfte=推测（大概率）"
+  },
+  {
+    "id": "c1_010",
+    "level": "c1",
+    "tags": ["nomen_verb_verbindung", "funktionsverb", "catti"],
+    "pattern": "Die Regierung hat die {slot1} {slot2}, dass das Gesetz geändert wird.",
+    "slots": {
+      "slot1": {"type": "nomen_verb_phrase", "values": ["Entscheidung", "Vereinbarung", "Zusage", "Feststellung"]},
+      "slot2": {"type": "fixed_phrase", "values": ["getroffen", "erzielt", "gemacht", "bekräftigt"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "功能动词结构（Nomen-Verb-Verbindung）：eine Entscheidung treffen = entscheiden"
+  },
+  {
+    "id": "c1_011",
+    "level": "c1",
+    "tags": ["funktionsverb", "passiversatz", "akademisch"],
+    "pattern": "Die Ergebnisse {slot1} zur {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["gelangen", "kommen", "stehen"]},
+      "slot2": {"type": "fixed_phrase", "values": ["Diskussion", "Verfügung", "Anwendung", "Abstimmung"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "功能动词结构：zur Diskussion stehen/gelangen = diskutiert werden。书面语常用被动替代"
+  },
+  {
+    "id": "c1_012",
+    "level": "c1",
+    "tags": ["praepositionaladverb", "infinitivsatz", "komplex"],
+    "pattern": "Die Regierung setzt sich {slot1} ein, {slot2} zu {slot3}.",
+    "slots": {
+      "slot1": {"type": "praepositionaladverb", "values": ["dafür", "daran", "darüber"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["lesen"], ["finden"], ["geben"]]
+    },
+    "grammar_note": "Präpositionaladverb (dafür/daran) 指代后续Infinitivsatz。高级书面语连贯手段"
+  },
+  {
+    "id": "c1_013",
+    "level": "c1",
+    "tags": ["subjektive_bedeutung", "sollen", "medien"],
+    "pattern": "Es {slot1} sich um einen {slot2} handeln.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["soll", "dürfte", "könnte", "muss"]},
+      "slot2": {"type": "adjective", "form": "attributive", "case": "akk", "gender": "m", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot2": [["groß"], ["klein"], ["wichtig"], ["schwierig"]]
+    },
+    "grammar_note": "情态动词主观推测：soll=据说，dürfte=很可能，könnte=可能，muss=肯定"
+  },
+  {
+    "id": "c1_014",
+    "level": "c1",
+    "tags": ["konzessiv", "trotz", "genitiv", "formell"],
+    "pattern": "Trotz {slot1} {slot2} wurde das Projekt fortgesetzt.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "sg"},
+      "slot2": {"type": "fixed_phrase", "values": ["aller Bedenken", "der Kritik", "der Schwierigkeiten", "des Widerstands"]}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"], ["der_arzt"]]
+    },
+    "grammar_note": "Trotz + Genitiv（正式书面语）。非正式可用trotz + Dativ"
+  },
+  {
+    "id": "c1_015",
+    "level": "c1",
+    "tags": ["alternativ", "ohne_zu", "infinitiv"],
+    "pattern": "Der Minister reiste ab, ohne {slot1} zu {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"]],
+      "slot2": [["geben"], ["finden"], ["nehmen"]]
+    },
+    "grammar_note": "ohne...zu + Infinitiv：否定伴随动作。高级替代 ohne dass 从句"
+  },
+  {
+    "id": "c1_016",
+    "level": "c1",
+    "tags": ["alternativ", "anstatt_zu", "infinitiv"],
+    "pattern": "Anstatt {slot1} zu {slot2}, sollte man {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot4": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"]],
+      "slot2": [["lesen"], ["finden"]],
+      "slot3": [["das_buch"], ["die_zeitung"]],
+      "slot4": [["geben"], ["nehmen"]]
+    },
+    "grammar_note": "anstatt...zu + Infinitiv：替换动作。高级替代 anstatt dass 从句"
+  },
+  {
+    "id": "c1_017",
+    "level": "c1",
+    "tags": ["komplexer_satz", "mehrfach_ns", "akademisch"],
+    "pattern": "Obwohl {slot1}, dass {slot2} {slot3} ist, wurde das Projekt fortgesetzt.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["man wusste", "bekannt war", "klar wurde"]},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot2": [["die_schule"], ["das_buch"], ["das_haus"]],
+      "slot3": [["wichtig"], ["schön"], ["schwierig"]]
+    },
+    "grammar_note": "多层从句嵌套：obwohl + dass从句。C1阅读理解核心能力"
+  },
+  {
+    "id": "c1_018",
+    "level": "c1",
+    "tags": ["textkohaerenz", "konnektor_gehoben", "schriftlich"],
+    "pattern": "Einerseits {slot1} die Maßnahme {slot2}, andererseits {slot3} sie {slot4}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["ist", "scheint", "wirkt"]},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["ist", "bleibt", "erscheint"]},
+      "slot4": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot2": [["wichtig"], ["gut"], ["interessant"]],
+      "slot4": [["schwierig"], ["teuer"], ["schön"]]
+    },
+    "grammar_note": "einerseits...andererseits：正反论证。TestDaF和C1写作必备"
+  },
+  {
+    "id": "c1_019",
+    "level": "c1",
+    "tags": ["satzanschluss", "folgerung", "catti"],
+    "pattern": "Die Ergebnisse sind eindeutig. {slot1} muss die Politik nun {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Infolgedessen", "Demzufolge", "Demnach", "Folglich", "Somit"]},
+      "slot2": {"type": "fixed_phrase", "values": ["handeln", "reagieren", "Maßnahmen ergreifen", "Konsequenzen ziehen"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "推论连接词：infolgedessen/demzufolge/folglich。CATTI笔译句间连接"
+  },
+  {
+    "id": "c1_020",
+    "level": "c1",
+    "tags": ["satzanschluss", "einschraenkung", "akademisch"],
+    "pattern": "Die Theorie scheint plausibel. {slot1} gibt es {slot2} Gegenargumente.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Allerdings", "Jedoch", "Indessen", "Hingegen"]},
+      "slot2": {"type": "fixed_phrase", "values": ["gewichtige", "bedeutende", "ernsthafte", "zahlreiche"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "让步/限制连接词：allerdings/jedoch/hingegen。学术论证必备"
+  },
+  {
+    "id": "c1_021",
+    "level": "c1",
+    "tags": ["passiv", "unpersoenlich", "akademisch"],
+    "pattern": "Es wird {slot1}, dass {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "konjunktiv1_present"},
+      "slot4": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["finden"], ["geben"], ["sehen"]],
+      "slot2": [["der_lehrer"], ["die_mutter"]],
+      "slot3": [["haben"], ["finden"]],
+      "slot4": [["das_buch"], ["die_zeitung"]]
+    },
+    "grammar_note": "无人称被动（unpersönliches Passiv）+ dass从句 + Konjunktiv I。学术写作"
+  },
+  {
+    "id": "c1_022",
+    "level": "c1",
+    "tags": ["je_desto", "komparation", "wissenschaft"],
+    "pattern": "Je {slot1} die Maßnahmen sind, desto {slot2} ist das Ergebnis.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative", "comparative": true},
+      "slot2": {"type": "adjective", "form": "predicative", "comparative": true}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["schön"], ["wichtig"]],
+      "slot2": [["gut"], ["schön"], ["groß"], ["klein"]]
+    },
+    "grammar_note": "je...desto/umso 比例关系：越...越...。TestDaF图表描述常用"
+  },
+  {
+    "id": "c1_023",
+    "level": "c1",
+    "tags": ["voraussetzung", "sofern", "bedingung", "verhandlung"],
+    "pattern": "Die Genehmigung wird erteilt, sofern alle {slot1} {slot2} sind.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Unterlagen", "Dokumente", "Anträge", "Formulare"]},
+      "slot2": {"type": "fixed_phrase", "values": ["vollständig", "eingereicht", "geprüft", "genehmigt"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "条件从句 sofern（= wenn, falls 正式版）。CATTI商务/法律翻译"
+  },
+  {
+    "id": "c1_024",
+    "level": "c1",
+    "tags": ["referenz", "bezugnahme", "verweis", "catti"],
+    "pattern": "Was {slot1} betrifft, so {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot3": {"type": "fixed_phrase", "values": ["Ihnen mitteilen", "darauf hinweisen", "feststellen", "bemerken"]},
+      "slot4": {"type": "fixed_phrase", "values": ["möchten", "dürfen", "müssen", "können"]}
+    },
+    "replacement_pool": {
+      "slot1": [["die_schule"], ["das_buch"]]
+    },
+    "grammar_note": "Was...betrifft 引出主题 + so 主句。CATTI正式文本引用结构"
+  },
+  {
+    "id": "c1_025",
+    "level": "c1",
+    "tags": ["es_gilt", "notwendigkeit", "formell"],
+    "pattern": "Es gilt, {slot1} zu {slot2} und {slot3} zu {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot4": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"]],
+      "slot2": [["finden"], ["geben"], ["lesen"]],
+      "slot3": [["das_buch"], ["die_zeitung"]],
+      "slot4": [["nehmen"], ["geben"], ["sehen"]]
+    },
+    "grammar_note": "es gilt...zu + Infinitiv：必须/需要做。正式公告、政令文体"
+  },
+  {
+    "id": "c1_026",
+    "level": "c1",
+    "tags": ["diskurs", "argumentation", "testdaf"],
+    "pattern": "Befürworter argumentieren, dass {slot1} {slot2} {slot3}, während Kritiker {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "er", "tense": "present"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot4": {"type": "fixed_phrase", "values": ["dies bestreiten", "das Gegenteil behaupten", "vor Risiken warnen", "auf Nebenwirkungen hinweisen"]}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["haben"], ["finden"]],
+      "slot3": [["das_buch"], ["die_zeitung"]]
+    },
+    "grammar_note": "论证结构：Befürworter vs Kritiker。während对比从句。TestDaF写作"
+  },
+  {
+    "id": "c1_027",
+    "level": "c1",
+    "tags": ["konsekutiv", "sodass", "folge", "komplex"],
+    "pattern": "Die Nachfrage stieg so stark, dass {slot1} {slot2} {slot3} musste.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["finden"], ["geben"], ["nehmen"]]
+    },
+    "grammar_note": "so...dass 结果从句 + 情态动词。表示强烈因果关系"
+  },
+  {
+    "id": "c1_028",
+    "level": "c1",
+    "tags": ["hypothese", "vermutung", "futur2", "wissenschaft"],
+    "pattern": "Bis zum Jahr 2030 {slot1} sich die Situation {slot2} haben.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["dürfte", "wird", "sollte", "könnte"]},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot2": [["finden"], ["geben"], ["sehen"]]
+    },
+    "grammar_note": "Futur II 推测用法：werden + Partizip II + haben（到某时将已完成）。学术预测"
+  },
+  {
+    "id": "c1_029",
+    "level": "c1",
+    "tags": ["restriktion", "insofern", "einschraenkung", "juristisch"],
+    "pattern": "Die Regelung gilt, insofern sie {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["mit dem Gesetz", "mit den Vorschriften", "mit der Verfassung"]},
+      "slot2": {"type": "fixed_phrase", "values": ["vereinbar ist", "in Einklang steht", "übereinstimmt"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "insofern 限制条件从句。CATTI法律/正式文本高频"
+  },
+  {
+    "id": "c1_030",
+    "level": "c1",
+    "tags": ["idiomatisch", "redewendung", "c2_niveau"],
+    "pattern": "Man sollte {slot1} nicht aus {slot2} verlieren.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "aus"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_freund"], ["die_freundin"], ["die_schule"]],
+      "slot2": [["das_haus"], ["die_stadt"]]
+    },
+    "grammar_note": "习惯用语：etwas nicht aus den Augen verlieren = 不忽视某事。C1/C2固定搭配"
+  },
+  {
+    "id": "c1_031",
+    "level": "c1",
+    "tags": ["konjunktiv1", "indirekte_rede", "presse"],
+    "pattern": "Der Sprecher erklärte, die Maßnahmen {slot1} bereits {slot2} worden.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "sie", "tense": "konjunktiv1_present"},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["sein"], ["haben"]],
+      "slot2": [["finden"], ["geben"], ["nehmen"]]
+    },
+    "grammar_note": "Konjunktiv I 在新闻报道中（无 dass）：erklärte, die Maßnahmen seien... 注意 sie seien (不是 sind)"
+  },
+  {
+    "id": "c1_032",
+    "level": "c1",
+    "tags": ["konjunktiv1", "wissenschaft", "zitat"],
+    "pattern": "Der Autor {slot1}, die These {slot2} sich nicht {slot3} lassen.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["behauptet", "betont", "stellt fest", "räumt ein"]},
+      "slot2": {"type": "verb", "person": "sie", "tense": "konjunktiv1_present"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot3": [["finden"], ["geben"], ["nehmen"]]
+    },
+    "grammar_note": "Konjunktiv I 学术引用：behauptet, die These lasse sich nicht beweisen"
+  },
+  {
+    "id": "c1_033",
+    "level": "c1",
+    "tags": ["nominalstil", "genitivkette", "behoerdensprache"],
+    "pattern": "Die {slot1} {slot2} erfolgt unter Berücksichtigung {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Genehmigung", "Prüfung", "Bewertung", "Verteilung"]},
+      "slot2": {"type": "noun", "case": "gen", "num": "sg"},
+      "slot3": {"type": "noun", "case": "gen", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot2": [["der_lehrer"], ["die_mutter"], ["der_arzt"]],
+      "slot3": [["der_lehrer"], ["die_mutter"], ["der_arzt"]]
+    },
+    "grammar_note": "公文语言（Behördendeutsch）：双重Genitiv链。CATTI笔译必考"
+  },
+  {
+    "id": "c1_034",
+    "level": "c1",
+    "tags": ["funktionsverbgefuege", "verwaltung", "catti"],
+    "pattern": "Die Unterlagen {slot1} Ihnen zur {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["stehen", "gelangen", "werden gestellt"]},
+      "slot2": {"type": "fixed_phrase", "values": ["Verfügung", "Einsicht", "Kenntnisnahme", "Prüfung"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "功能动词结构：zur Verfügung stehen/stellen、zur Kenntnisnahme。公文&商务信函高频"
+  },
+  {
+    "id": "c1_035",
+    "level": "c1",
+    "tags": ["funktionsverbgefuege", "akademisch", "testdaf"],
+    "pattern": "Diese Frage {slot1} in der Forschung schon lange zur {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["steht", "gelangt", "kommt"]},
+      "slot2": {"type": "fixed_phrase", "values": ["Diskussion", "Debatte", "Untersuchung"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "功能动词：zur Diskussion stehen = diskutiert werden（被动替代形式）"
+  },
+  {
+    "id": "c1_036",
+    "level": "c1",
+    "tags": ["es_konstruktion", "verweis", "komplex"],
+    "pattern": "Es kommt darauf an, ob {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["finden"], ["haben"], ["geben"]]
+    },
+    "grammar_note": "es kommt darauf an, ob... = 关键在于是否...。es 作关联词引出让步/条件"
+  },
+  {
+    "id": "c1_037",
+    "level": "c1",
+    "tags": ["es_konstruktion", "frage", "akademisch"],
+    "pattern": "Es stellt sich die Frage, inwieweit {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["finden"], ["haben"]]
+    },
+    "grammar_note": "学术写作开场白：Es stellt sich die Frage, inwieweit... = 问题在于在多大程度上..."
+  },
+  {
+    "id": "c1_038",
+    "level": "c1",
+    "tags": ["konzessiv", "gehoben", "wie_auch"],
+    "pattern": "So {slot1} die Aufgabe auch {slot2} mag, sie muss {slot3} werden.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["schwierig"], ["wichtig"], ["gross"], ["klein"]],
+      "slot2": [["sein"], ["finden"]],
+      "slot3": [["finden"], ["geben"]]
+    },
+    "grammar_note": "让步句：so + Adj + auch...mag = 无论多么...。高级书面语"
+  },
+  {
+    "id": "c1_039",
+    "level": "c1",
+    "tags": ["konzessiv", "gehoben", "auch_wenn"],
+    "pattern": "Auch wenn {slot1} {slot2} {slot3} mag, bleibt das Problem bestehen.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["haben"], ["finden"], ["geben"]]
+    },
+    "grammar_note": "auch wenn + mag... = 即使...可能...。让步 + 推测双层结构"
+  },
+  {
+    "id": "c1_040",
+    "level": "c1",
+    "tags": ["zusammenfassung", "testdaf", "akademisch"],
+    "pattern": "Zusammenfassend lässt sich {slot1}, dass {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["sagen", "feststellen", "festhalten", "konstatieren"]},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot2": [["die_schule"], ["das_buch"], ["die_stadt"]],
+      "slot3": [["wichtig"], ["interessant"], ["notwendig"]]
+    },
+    "grammar_note": "学术总结标准句：Zusammenfassend lässt sich sagen/feststellen, dass..."
+  },
+  {
+    "id": "c1_041",
+    "level": "c1",
+    "tags": ["hervorhebung", "testdaf", "argumentation"],
+    "pattern": "Hervorzuheben ist, dass {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["haben"], ["finden"]]
+    },
+    "grammar_note": "强调句型：Hervorzuheben ist, dass... 或 Besonders zu betonen ist, dass..."
+  },
+  {
+    "id": "c1_042",
+    "level": "c1",
+    "tags": ["vermutung", "wissenschaft", "duerfte"],
+    "pattern": "Es {slot1} {slot2}, dass {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["dürfte", "könnte", "mag", "sollte"]},
+      "slot2": {"type": "fixed_phrase", "values": ["zutreffen", "stimmen", "richtig sein"]},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot4": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot3": [["die_schule"], ["das_buch"], ["die_stadt"]],
+      "slot4": [["wichtig"], ["interessant"], ["notwendig"]]
+    },
+    "grammar_note": "推测表达梯度：dürfte(很可能)>könnte(可能)>mag(也许)。学术写作必备"
+  },
+  {
+    "id": "c1_043",
+    "level": "c1",
+    "tags": ["problemstellung", "fraglich", "testdaf"],
+    "pattern": "Fraglich ist, ob {slot1} {slot2} {slot3} kann.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["finden"], ["geben"], ["nehmen"]]
+    },
+    "grammar_note": "问题化表达：Fraglich ist, ob... = 值得质疑的是...。学术论证"
+  },
+  {
+    "id": "c1_044",
+    "level": "c1",
+    "tags": ["moeglichkeit", "es_besteht", "schriftlich"],
+    "pattern": "Es besteht die {slot1}, dass {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Möglichkeit", "Gefahr", "Notwendigkeit", "Wahrscheinlichkeit"]},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot4": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot2": [["der_lehrer"], ["die_mutter"]],
+      "slot3": [["das_buch"], ["die_zeitung"]],
+      "slot4": [["haben"], ["finden"]]
+    },
+    "grammar_note": "名词化表达：Es besteht die Möglichkeit/Gefahr, dass... = 存在...的可能/风险"
+  },
+  {
+    "id": "c1_045",
+    "level": "c1",
+    "tags": ["praepositionalgefuege", "bezug", "catti"],
+    "pattern": "Im Hinblick auf {slot1} ist zu {slot2}, dass {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "fixed_phrase", "values": ["bemerken", "sagen", "betonen", "feststellen"]},
+      "slot3": {"type": "fixed_phrase", "values": ["Fortschritte erzielt wurden", "noch Handlungsbedarf besteht", "weitere Untersuchungen nötig sind"]}
+    },
+    "replacement_pool": {
+      "slot1": [["die_schule"], ["die_stadt"]]
+    },
+    "grammar_note": "复杂介词结构：im Hinblick auf + Akk = 关于/就...而言。CATTI最高频"
+  },
+  {
+    "id": "c1_046",
+    "level": "c1",
+    "tags": ["praepositionalgefuege", "bezugnahme", "behoerde"],
+    "pattern": "In Bezug auf {slot1} teilen wir Ihnen mit, dass {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "fixed_phrase", "values": ["Ihr Antrag bewilligt wurde", "weitere Unterlagen erforderlich sind", "die Frist verlängert wurde"]}
+    },
+    "replacement_pool": {
+      "slot1": [["die_schule"], ["die_stadt"]]
+    },
+    "grammar_note": "公文开头：in Bezug auf + Akk = 关于/提及...。比 bezüglich 更正式"
+  },
+  {
+    "id": "c1_047",
+    "level": "c1",
+    "tags": ["steigerung", "nicht_nur", "hervorhebung"],
+    "pattern": "Nicht nur {slot1} {slot2}, vielmehr {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["ist die Maßnahme", "scheint der Vorschlag", "wirkt die Lösung"]},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["ist sie", "erscheint sie", "erweist sie sich als"]},
+      "slot4": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot2": [["wichtig"], ["interessant"]],
+      "slot4": [["notwendig"], ["erforderlich"], ["unverzichtbar"]]
+    },
+    "grammar_note": "递进强调：nicht nur...vielmehr... 不仅...更...。比 sondern auch 更正式"
+  },
+  {
+    "id": "c1_048",
+    "level": "c1",
+    "tags": ["einschraenkung", "insofern_als", "juristisch"],
+    "pattern": "Die Regelung ist {slot1}, insofern als sie {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["wichtig"], ["notwendig"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["finden"], ["haben"]]
+    },
+    "grammar_note": "限制条件：insofern als... = 在...的范围内。法律/正式文本精确限定"
+  },
+  {
+    "id": "c1_049",
+    "level": "c1",
+    "tags": ["vergleich", "als_ob", "literarisch"],
+    "pattern": "Es schien, als ob {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "konjunktiv1_present"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["haben"], ["finden"]]
+    },
+    "grammar_note": "虚拟比较：als ob + Konjunktiv II = 好像...似的。文学/叙事常用"
+  },
+  {
+    "id": "c1_050",
+    "level": "c1",
+    "tags": ["passiversatz", "reflexiv", "technisch"],
+    "pattern": "Das Problem {slot1} sich durch {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["lässt", "lässt sich", "dürfte"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["finden"], ["geben"]]
+    },
+    "grammar_note": "被动替代形式：sich lassen + Infinitiv = kann...werden。技术/学术常用"
+  },
+  {
+    "id": "c1_051",
+    "level": "c1",
+    "tags": ["gehoebte_konnektoren", "kausal", "catti"],
+    "pattern": "Die Maßnahmen waren erfolgreich. {slot1} wurde das Projekt verlängert.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Infolgedessen", "Demzufolge", "Demnach", "Mithin"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "因果连接词梯度：infolgedessen(因此)>demzufolge(据此)>demnach(由此)>mithin(故而)"
+  },
+  {
+    "id": "c1_052",
+    "level": "c1",
+    "tags": ["gehobene_konnektoren", "adversativ", "catti"],
+    "pattern": "Die Theorie überzeugt. {slot1} gibt es empirische Lücken.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Indessen", "Hingegen", "Dagegen", "Demgegenüber"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "对立连接词升级版：indessen(然而)>hingegen(反之)>dagegen(对此)。替代 aber"
+  },
+  {
+    "id": "c1_053",
+    "level": "c1",
+    "tags": ["diplomatie", "abschwaechung", "catti"],
+    "pattern": "Es wäre {slot1}, wenn {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot4": {"type": "verb", "person": "er", "tense": "konjunktiv1_present"}
+    },
+    "replacement_pool": {
+      "slot1": [["wichtig"], ["interessant"], ["sinnvoll"]],
+      "slot2": [["der_lehrer"], ["die_mutter"]],
+      "slot3": [["das_buch"], ["die_zeitung"]],
+      "slot4": [["haben"], ["finden"]]
+    },
+    "grammar_note": "外交辞令：Es wäre + Adj, wenn + KII = 如果...将会...。CATTI外交翻译"
+  },
+  {
+    "id": "c1_054",
+    "level": "c1",
+    "tags": ["idiomatisch", "festewendung", "c2"],
+    "pattern": "{slot1} spielt bei {slot2} eine {slot3} Rolle.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "bei"},
+      "slot3": {"type": "adjective", "form": "attributive", "case": "akk", "gender": "f", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["die_schule"], ["die_stadt"]],
+      "slot3": [["gross"], ["wichtig"], ["klein"]]
+    },
+    "grammar_note": "固定搭配：eine Rolle spielen = 扮演角色/起作用。eine entscheidende/wichtige/große Rolle"
+  },
+  {
+    "id": "c1_055",
+    "level": "c1",
+    "tags": ["idiomatisch", "in_frage", "diskussion"],
+    "pattern": "Es {slot1} {slot2}, ob {slot3} {slot4} {slot5}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["steht", "kommt", "ist"]},
+      "slot2": {"type": "fixed_phrase", "values": ["in Frage", "außer Frage", "infrage"]},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot4": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot5": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot3": [["der_lehrer"], ["die_mutter"]],
+      "slot4": [["das_buch"], ["die_zeitung"]],
+      "slot5": [["haben"], ["finden"]]
+    },
+    "grammar_note": "in Frage kommen(考虑)/in Frage stehen(存疑)/außer Frage sein(毫无疑问)。三合一辨析"
+  },
+  {
+    "id": "c1_056",
+    "level": "c1",
+    "tags": ["modalpartikel_advanced", "nuance", "nuance"],
+    "pattern": "Das {slot1} man {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "modalpartikel", "values": ["kann", "sollte", "dürfte", "muss"]},
+      "slot2": {"type": "modalpartikel", "values": ["doch", "ja", "wohl", "eigentlich"]},
+      "slot3": {"type": "adverb", "values": ["schon", "noch", "erst"]},
+      "slot4": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot4": [["finden"], ["geben"], ["sehen"]]
+    },
+    "grammar_note": "情态动词+小品词+副词三重叠加：Das kann man doch schon wissen. = 这个你总该知道了吧"
+  },
+  {
+    "id": "c1_057",
+    "level": "c1",
+    "tags": ["voraussetzung", "es_sei_denn", "juristisch"],
+    "pattern": "Der Vertrag tritt in Kraft, es sei denn, {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["haben"], ["finden"]]
+    },
+    "grammar_note": "法律条件：es sei denn, ... = 除非...。CATTI法律翻译必考"
+  },
+  {
+    "id": "c1_058",
+    "level": "c1",
+    "tags": ["voraussetzung", "vorausgesetzt", "formell"],
+    "pattern": "Die Genehmigung wird erteilt, vorausgesetzt, dass {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["haben"], ["finden"]]
+    },
+    "grammar_note": "条件从句：vorausgesetzt, dass... = 前提是...。公文/法律高频"
+  },
+  {
+    "id": "c1_059",
+    "level": "c1",
+    "tags": ["relativsatz_advanced", "was", "zusammenfassung"],
+    "pattern": "{slot1} {slot2} {slot3}, was {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "er", "tense": "past"},
+      "slot4": {"type": "fixed_phrase", "values": ["alle überraschte", "niemand erwartet hatte", "zu begrüßen ist", "bedauerlich erscheint"]}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_mutter"]],
+      "slot2": [["das_buch"], ["die_zeitung"]],
+      "slot3": [["finden"], ["geben"]]
+    },
+    "grammar_note": "was-关系从句（指代整句）：was alle überraschte = 这让所有人惊讶"
+  },
+  {
+    "id": "c1_060",
+    "level": "c1",
+    "tags": ["abschlusssatz", "resuemee", "testdaf"],
+    "pattern": "Abschließend {slot1} sich {slot2}, dass {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["lässt", "bleibt", "ist"]},
+      "slot2": {"type": "fixed_phrase", "values": ["festhalten", "festzustellen", "zu betonen", "anzumerken"]},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot4": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot3": [["die_schule"], ["das_buch"], ["die_stadt"]],
+      "slot4": [["wichtig"], ["notwendig"], ["erforderlich"]]
+    },
+    "grammar_note": "结语模板：Abschließend lässt sich festhalten, dass... TestDaF写作结尾标准句型"
+  }
+]

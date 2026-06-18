@@ -1,0 +1,714 @@
+[
+  {
+    "id": "a2_001",
+    "level": "a2",
+    "tags": ["perfekt", "haben", "past", "shopping", "daily"],
+    "pattern": "Gestern habe ich {slot1} gekauft.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["das_buch", "die_zeitung", "die_tasche", "das_brot", "der_apfel", "der_koffer"],
+    "grammar_note": "Perfekt 完成时由 haben/sein + Partizip II 构成，haben 作助动词时 Partizip II 在句末"
+  },
+  {
+    "id": "a2_002",
+    "level": "a2",
+    "tags": ["perfekt", "sein", "past", "travel", "movement"],
+    "pattern": "Ich bin nach {slot1} gefahren.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Berlin", "München", "Hamburg", "Frankfurt", "Köln", "Dresden"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "表示位置移动的不及物动词 Perfekt 用 sein 作助动词，fahren 的 Partizip II 为 gefahren"
+  },
+  {
+    "id": "a2_003",
+    "level": "a2",
+    "tags": ["praeteritum", "sein", "past", "location"],
+    "pattern": "Ich war gestern in {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": ["die_schule", "die_stadt", "das_krankenhaus", "der_garten", "das_zimmer", "der_bahnhof"],
+    "grammar_note": "sein 的过去时 Präteritum 形式：ich war, du warst, er war"
+  },
+  {
+    "id": "a2_004",
+    "level": "a2",
+    "tags": ["praeteritum", "haben", "past", "possess"],
+    "pattern": "Früher hatte ich {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_auto", "das_haus", "der_garten", "die_wohnung"],
+    "grammar_note": "haben 的过去时 Präteritum 形式：ich hatte, du hattest, er hatte"
+  },
+  {
+    "id": "a2_005",
+    "level": "a2",
+    "tags": ["praeteritum", "modal", "können", "past", "ability"],
+    "pattern": "Ich konnte {slot1} nicht.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["arbeiten", "gehen", "kommen", "lernen", "spielen", "machen"],
+    "grammar_note": "情态动词 können 过去时为 konnte，主动词原形在句末，nicht 否定放在句末"
+  },
+  {
+    "id": "a2_006",
+    "level": "a2",
+    "tags": ["dativ", "seit", "praeposition", "time", "daily"],
+    "pattern": "Seit einem Jahr wohne ich in {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": ["die_stadt", "die_wohnung", "das_haus", "das_zimmer"],
+    "grammar_note": "seit + Dativ 表示从过去持续至今的时间段，句子用现在时"
+  },
+  {
+    "id": "a2_007",
+    "level": "a2",
+    "tags": ["akkusativ", "durch", "praeposition", "movement", "location"],
+    "pattern": "Ich gehe durch {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "durch"}
+    },
+    "replacement_pool": ["der_garten", "die_stadt", "das_zimmer", "der_bahnhof"],
+    "grammar_note": "durch 永远支配第四格 Akkusativ，表示‘穿过/通过’"
+  },
+  {
+    "id": "a2_008",
+    "level": "a2",
+    "tags": ["wechselpräposition", "auf", "akkusativ", "movement"],
+    "pattern": "Ich gehe auf {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "auf"}
+    },
+    "replacement_pool": ["die_stadt", "das_haus", "die_schule", "der_garten"],
+    "grammar_note": "Wechselpräposition auf 表示运动方向（Wohin?）时支配 Akkusativ。同类的还有 an, über, unter, vor, hinter, neben, zwischen"
+  },
+  {
+    "id": "a2_009",
+    "level": "a2",
+    "tags": ["wechselpräposition", "neben", "dativ", "location"],
+    "pattern": "Ich bin neben {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "neben"}
+    },
+    "replacement_pool": ["der_tisch", "der_stuhl", "das_fenster", "die_tür", "das_haus", "die_schule"],
+    "grammar_note": "Wechselpräposition neben 表示静态位置（Wo?）时支配 Dativ，与运动方向的 Akkusativ 形成对比"
+  },
+  {
+    "id": "a2_010",
+    "level": "a2",
+    "tags": ["reflexiv", "sich-freuen", "social", "emotion"],
+    "pattern": "Ich freue mich auf {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "auf"}
+    },
+    "replacement_pool": ["der_bahnhof", "die_schule", "das_haus", "der_garten", "die_stadt"],
+    "grammar_note": "反身动词 sich freuen auf + Akk 表示期待某事，反身代词 mich 与人称一致"
+  },
+  {
+    "id": "a2_011",
+    "level": "a2",
+    "tags": ["komparativ", "vergleich", "adjective", "als"],
+    "pattern": "{slot1} ist größer als {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_hund"], ["die_katze"], ["das_haus"], ["die_stadt"], ["das_auto"]],
+      "slot2": [["der_hund"], ["die_katze"], ["das_haus"], ["die_stadt"], ["das_auto"]]
+    },
+    "grammar_note": "比较级 Komparativ：形容词加 -er，后接 als + 比较对象（同格同数），als 后为 Nominativ"
+  },
+  {
+    "id": "a2_012",
+    "level": "a2",
+    "tags": ["superlativ", "adjective", "vergleich"],
+    "pattern": "{slot1} ist am größten.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_haus", "die_stadt", "das_auto"],
+    "grammar_note": "最高级 Superlativ 作表语用 am + 形容词词干 + (e)sten。不规则形式：groß → am größten, gut → am besten"
+  },
+  {
+    "id": "a2_013",
+    "level": "a2",
+    "tags": ["nebensatz", "weil", "causal", "sentence-structure"],
+    "pattern": "Ich bleibe zu Hause, weil ich {slot1} bin.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["krank", "müde", "alt", "klein", "groß"],
+    "grammar_note": "weil 引导原因从句，变位动词必须置于从句末尾，主从句之间用逗号分隔"
+  },
+  {
+    "id": "a2_014",
+    "level": "a2",
+    "tags": ["nebensatz", "dass", "opinion", "sentence-structure"],
+    "pattern": "Ich glaube, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_kaffee"], ["der_tee"], ["das_buch"], ["die_stadt"], ["das_auto"]],
+      "slot2": [["gut"], ["teuer"], ["schön"], ["billig"], ["interessant"]]
+    },
+    "grammar_note": "dass 引导宾语从句，从句中变位动词 ist 置于末尾"
+  },
+  {
+    "id": "a2_015",
+    "level": "a2",
+    "tags": ["nebensatz", "wenn", "conditional", "temporal", "sentence-structure"],
+    "pattern": "Wenn ich Zeit habe, {slot1} ich {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["essen"], ["trinken"], ["spielen"], ["machen"]],
+      "slot2": [["das_buch"], ["der_apfel"], ["der_kaffee"], ["der_tee"], ["das_brot"]]
+    },
+    "grammar_note": "wenn 从句前置时主句以变位动词开头。从句动词在末尾，主句动词在第一位"
+  },
+  {
+    "id": "a2_016",
+    "level": "a2",
+    "tags": ["nebensatz", "ob", "indirekte-frage", "question"],
+    "pattern": "Ich weiß nicht, ob er {slot1} hat.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_auto", "die_tasche", "das_buch", "der_koffer"],
+    "grammar_note": "ob 引导间接疑问句，相当于中文‘是否’，从句动词 hat 置于末尾"
+  },
+  {
+    "id": "a2_017",
+    "level": "a2",
+    "tags": ["infinitiv-mit-zu", "desire", "hobby"],
+    "pattern": "Ich habe Lust, {slot1} zu {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["der_kaffee"], ["der_tee"]],
+      "slot2": [["lesen"], ["trinken"], ["kaufen"], ["finden"]]
+    },
+    "grammar_note": "不定式 mit zu：Lust haben, etwas zu tun。zu + 动词原形在句末，名词在 zu 之前"
+  },
+  {
+    "id": "a2_018",
+    "level": "a2",
+    "tags": ["genitiv", "possessiv", "zuordnung"],
+    "pattern": "Das ist das Auto {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "sg"}
+    },
+    "replacement_pool": ["der_mann", "die_frau", "das_kind", "der_lehrer", "der_arzt", "der_vater", "die_mutter"],
+    "grammar_note": "第二格 Genitiv 表示所属：阳中性名词加 -(e)s（des Mannes），阴性不加词尾（der Frau）"
+  },
+  {
+    "id": "a2_019",
+    "level": "a2",
+    "tags": ["hin-her", "direction", "imperativ", "social"],
+    "pattern": "Komm her und {slot1} {slot2}!",
+    "slots": {
+      "slot1": {"type": "verb", "person": "imp"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["essen"], ["trinken"], ["lesen"], ["nehmen"]],
+      "slot2": [["der_apfel"], ["der_kaffee"], ["das_buch"], ["der_tee"], ["das_brot"]]
+    },
+    "grammar_note": "her 表示朝说话者方向（来），hin 表示离开说话者方向（去）。Komm her = 过来"
+  },
+  {
+    "id": "a2_020",
+    "level": "a2",
+    "tags": ["adjektivdeklination", "attributive", "indefinite-article", "nominativ"],
+    "pattern": "Das ist ein {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "attributive", "case": "nom", "gender_ref": "slot2"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["schön"], ["alt"], ["neu"], ["gut"]],
+      "slot2": [["der_tisch"], ["der_hund"], ["die_katze"], ["die_tasche"], ["das_buch"], ["das_auto"]]
+    },
+    "grammar_note": "形容词定语变格：不定冠词后形容词需加词尾，阳性 -er、阴性 -e、中性 -es。词尾体现名词的性数格"
+  },
+  {
+    "id": "a2_021",
+    "level": "a2",
+    "tags": ["man", "indefinite-pronoun", "general", "ability"],
+    "pattern": "Hier kann man gut {slot1}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["essen", "trinken", "lernen", "spielen", "arbeiten"],
+    "grammar_note": "不定代词 man 泛指‘人们/有人’，动词变位与 er/sie/es 相同，常用于泛指陈述"
+  },
+  {
+    "id": "a2_022",
+    "level": "a2",
+    "tags": ["relativsatz", "relativpronomen", "person", "social"],
+    "pattern": "Ich kenne einen Mann, der {slot1} ist.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["groß", "klein", "alt", "jung", "gut", "schön"],
+    "grammar_note": "关系从句中关系代词 der 指代主句阳性名词 Mann，从句变位动词 ist 在末尾"
+  },
+  {
+    "id": "a2_023",
+    "level": "a2",
+    "tags": ["dativ", "akkusativ", "double-object", "daily", "social"],
+    "pattern": "Ich gebe {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_freund"], ["die_freundin"], ["der_vater"], ["die_mutter"], ["das_kind"]],
+      "slot2": [["das_buch"], ["der_apfel"], ["das_brot"], ["der_kaffee"], ["der_tee"]]
+    },
+    "grammar_note": "双宾语：人三物四，Dativ 宾语（人）在前，Akkusativ 宾语（物）在后"
+  },
+  {
+    "id": "a2_024",
+    "level": "a2",
+    "tags": ["werden", "future", "career", "plan"],
+    "pattern": "Nächstes Jahr werde ich {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_lehrer", "die_lehrerin", "der_arzt", "der_schüler"],
+    "grammar_note": "werden + Nom 表示‘将成为’，名词用第一格。werden 变位：ich werde, du wirst, er wird"
+  },
+  {
+    "id": "a2_025",
+    "level": "a2",
+    "tags": ["denn", "causal", "health", "social"],
+    "pattern": "Ich gehe zu {slot1}, denn ich bin {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_arzt"], ["der_lehrer"], ["der_freund"], ["die_freundin"]],
+      "slot2": [["krank"], ["müde"], ["alt"], ["klein"], ["jung"]]
+    },
+    "grammar_note": "denn 连接原因主句，不改变语序，动词仍在第二位。与 weil 从句（动词在末尾）不同"
+  },
+  {
+    "id": "a2_026",
+    "level": "a2",
+    "tags": ["als", "temporal", "past", "nebensatz", "biography"],
+    "pattern": "Als ich {slot1} war, wohnte ich in {slot2}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": {
+      "slot1": [["klein"], ["jung"], ["alt"], ["groß"]],
+      "slot2": [["die_stadt"], ["das_haus"], ["die_wohnung"], ["das_zimmer"]]
+    },
+    "grammar_note": "als 引导过去一次性时间从句，主句用过去时。wenn 用于现在/将来或重复事件"
+  },
+  {
+    "id": "a2_027",
+    "level": "a2",
+    "tags": ["falls", "conditional", "weather", "nebensatz"],
+    "pattern": "Falls es {slot1} ist, gehe ich nicht.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["kalt", "warm", "groß", "klein", "schön", "neu"],
+    "grammar_note": "falls 引导条件从句，与 wenn 类似但更强调不确定性，从句动词 ist 在末尾"
+  },
+  {
+    "id": "a2_028",
+    "level": "a2",
+    "tags": ["adverb", "schon", "perfekt", "zeit", "daily"],
+    "pattern": "Ich habe schon {slot1} gegessen.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_apfel", "das_brot", "der_kaffee"],
+    "grammar_note": "schon 表示‘已经’，在 Perfekt 中放在助动词后 Partizip II 前。对比：noch nicht（还没）、erst（刚刚才）"
+  },
+  {
+    "id": "a2_029",
+    "level": "a2",
+    "tags": ["reflexiv", "sich-treffen", "social", "daily"],
+    "pattern": "Ich treffe mich mit {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "mit"}
+    },
+    "replacement_pool": ["der_freund", "die_freundin", "der_lehrer", "die_lehrerin", "der_bruder", "die_schwester"],
+    "grammar_note": "反身动词 sich treffen mit + Dativ 表示与某人见面，反身代词与主语人称一致"
+  },
+  {
+    "id": "a2_030",
+    "level": "a2",
+    "tags": ["wechselpräposition", "zwischen", "dativ", "location"],
+    "pattern": "Die Katze ist hinter {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "hinter"}
+    },
+    "replacement_pool": ["der_tisch", "der_stuhl", "das_fenster", "die_tür", "das_haus"],
+    "grammar_note": "Wechselpräposition hinter 表示位置（Wo?）时支配 Dativ。同类的 Wechselpräpositionen 全部遵循动静分格规则"
+  },
+  {
+    "id": "a2_031",
+    "level": "a2",
+    "tags": ["health", "doctor", "haben", "akkusativ", "medical", "schmerzen"],
+    "pattern": "Ich habe {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Kopfschmerzen", "Bauchschmerzen", "Halsschmerzen"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "Schmerzen = 疼痛，复数形式。Ich habe Kopfschmerzen = 我头疼。看医生时最先用到的基础句型"
+  },
+  {
+    "id": "a2_032",
+    "level": "a2",
+    "tags": ["health", "dativ", "doctor", "weh-tun", "medical", "trennbar"],
+    "pattern": "Mir tut {slot1} weh.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["der Kopf", "der Bauch", "der Hals", "der Rücken"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "wehtun 是可分动词：tut...weh。Mir 是 ich 的 Dativ，意为「我的...痛」。Der Kopf tut mir weh"
+  },
+  {
+    "id": "a2_033",
+    "level": "a2",
+    "tags": ["hotel", "reservieren", "modal", "möchten", "travel", "number"],
+    "pattern": "Ich möchte ein Zimmer für {slot1} Personen reservieren.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["zwei", "drei", "vier", "eine"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "房间预订：ein Zimmer für + 数字 + Personen = 一个...人间。reservieren 原形置于句末"
+  },
+  {
+    "id": "a2_034",
+    "level": "a2",
+    "tags": ["transport", "dativ", "mit", "travel", "arbeit", "daily"],
+    "pattern": "Ich fahre mit {slot1} zur Arbeit.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "mit"}
+    },
+    "replacement_pool": ["der_zug", "das_auto", "das_flugzeug"],
+    "grammar_note": "mit + Dativ 表示交通方式：mit dem Zug/Auto/Flugzeug。zur Arbeit = 去上班（zu der → zur）"
+  },
+  {
+    "id": "a2_035",
+    "level": "a2",
+    "tags": ["beruf", "als", "arbeiten", "career", "nominativ"],
+    "pattern": "Ich arbeite als {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_lehrer", "die_lehrerin", "der_arzt", "der_student"],
+    "grammar_note": "als + Nom 表示「作为...（职业）」。als 后名词用第一格且不加冠词：als Lehrer"
+  },
+  {
+    "id": "a2_036",
+    "level": "a2",
+    "tags": ["beruf", "von-beruf", "sein", "career", "nominativ"],
+    "pattern": "Ich bin {slot1} von Beruf.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_lehrer", "die_lehrerin", "der_arzt", "der_student"],
+    "grammar_note": "von Beruf sein = 职业是...。固定表达，名词用第一格。同类还有：Ich bin Arzt（不加冠词更口语化）"
+  },
+  {
+    "id": "a2_037",
+    "level": "a2",
+    "tags": ["reflexiv", "sich-interessieren", "hobby", "für", "akkusativ"],
+    "pattern": "Ich interessiere mich für {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "für"}
+    },
+    "replacement_pool": ["die_Sprache", "die_Reise", "das_buch", "die_zeitung", "das_Land"],
+    "grammar_note": "sich interessieren für + Akk = 对...感兴趣。反身代词与人称一致：ich → mich。介词 für 固定支配 Akkusativ"
+  },
+  {
+    "id": "a2_038",
+    "level": "a2",
+    "tags": ["konjunktiv-ii", "hätte", "wish", "food", "shopping", "höflichkeit"],
+    "pattern": "Ich hätte gern {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_kaffee", "der_tee", "das_buch", "die_zeitung"],
+    "grammar_note": "hätte 是 haben 的 Konjunktiv II（虚拟式），比 möchte 更进一步表示委婉愿望，点餐购物极常用"
+  },
+  {
+    "id": "a2_039",
+    "level": "a2",
+    "tags": ["konjunktiv-ii", "wollen", "past", "wish", "modal"],
+    "pattern": "Ich wollte {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["kaufen"], ["machen"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_kaffee"]]
+    },
+    "grammar_note": "wollte 是 wollen 的 Präteritum 也是 Konjunktiv II 形式，可表过去愿望或现在委婉表达"
+  },
+  {
+    "id": "a2_040",
+    "level": "a2",
+    "tags": ["perfekt", "past", "früher", "adverb", "biography", "viel"],
+    "pattern": "Früher habe ich viel {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["gelernt", "gearbeitet", "gespielt", "gelesen"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "Früher + Perfekt 描述过去习惯。viel + Partizip II = 做过很多...。habe...gelernt 构成框形结构"
+  },
+  {
+    "id": "a2_041",
+    "level": "a2",
+    "tags": ["als", "kind", "perfekt", "past", "biography", "nebensatz"],
+    "pattern": "Als Kind habe ich viel {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["gespielt", "gelernt", "gelesen"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "Als Kind = 小时候。als 引导一次性过去时间状语，主句用过去时或 Perfekt"
+  },
+  {
+    "id": "a2_042",
+    "level": "a2",
+    "tags": ["einladen", "trennbar", "social", "invitation", "zu", "dativ"],
+    "pattern": "Wir laden dich zu {slot1} ein.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": ["der_geburtstag", "die_party"],
+    "grammar_note": "可分动词 einladen zu + Dativ = 邀请参加。前缀 ein 分离至句末，dich 是 du 的 Akkusativ"
+  },
+  {
+    "id": "a2_043",
+    "level": "a2",
+    "tags": ["mitkommen", "trennbar", "question", "social", "ja-nein-frage"],
+    "pattern": "Kommst du {slot1} mit?",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["heute", "morgen", "dann"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "可分动词 mitkommen 在 Ja/Nein 疑问句中，前缀 mit 置于句末。Kommst du...mit? = 你一起来吗？"
+  },
+  {
+    "id": "a2_044",
+    "level": "a2",
+    "tags": ["es-tut-mir-leid", "dass", "nebensatz", "modal", "apology", "social"],
+    "pattern": "Es tut mir leid, dass ich nicht {slot1} kann.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["kommen", "gehen", "arbeiten", "spielen"],
+    "grammar_note": "Es tut mir leid, dass... = 很抱歉...。dass 从句变位动词 kann 置于末尾。nicht 否定主动词"
+  },
+  {
+    "id": "a2_045",
+    "level": "a2",
+    "tags": ["konjunktiv-ii", "sollen", "advice", "suggestion", "modal"],
+    "pattern": "Du solltest {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["kaufen"], ["nehmen"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_kaffee"]]
+    },
+    "grammar_note": "solltest 是 sollen 的 Konjunktiv II，给出建议时比 du musst 更温和。主动词原形在句末"
+  },
+  {
+    "id": "a2_046",
+    "level": "a2",
+    "tags": ["konjunktiv-ii", "wäre", "advice", "suggestion", "social", "dativ"],
+    "pattern": "Wie wäre es mit {slot1}?",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "mit"}
+    },
+    "replacement_pool": ["der_kaffee", "der_tee", "das_buch", "die_reise"],
+    "grammar_note": "Wie wäre es mit + Dativ? = ...怎么样？（提建议）。wäre 是 sein 的 Konjunktiv II，最自然的建议表达"
+  },
+  {
+    "id": "a2_047",
+    "level": "a2",
+    "tags": ["präteritum", "war", "weather", "past", "sein", "adjective"],
+    "pattern": "Gestern war es {slot1}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["kalt", "warm", "schön"],
+    "grammar_note": "sein 过去时 Präteritum：es war。天气过去描述：Gestern war es kalt = 昨天很冷"
+  },
+  {
+    "id": "a2_048",
+    "level": "a2",
+    "tags": ["perfekt", "weather", "past", "es", "zeit"],
+    "pattern": "Es hat {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["gestern", "heute", "den ganzen Tag"]},
+      "slot2": {"type": "fixed_phrase", "values": ["geregnet", "geschneit"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "无人称 es + hat + Partizip II。regnen → hat geregnet。den ganzen Tag = 整天（Akk 时间状语）"
+  },
+  {
+    "id": "a2_049",
+    "level": "a2",
+    "tags": ["infinitiv-mit-zu", "vorhaben", "plan", "trennbar", "travel"],
+    "pattern": "Ich habe vor, nach {slot1} zu fahren.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Berlin", "München", "Hamburg", "Frankfurt", "Köln"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "vorhaben + zu + Infinitiv = 计划做某事。可分动词 vorhaben 分离：Ich habe vor, ... zu fahren"
+  },
+  {
+    "id": "a2_050",
+    "level": "a2",
+    "tags": ["lassen", "causative", "auto", "service", "infinitiv"],
+    "pattern": "Ich lasse mein Auto {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["reparieren", "putzen", "untersuchen"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "lassen + Infinitiv = 让（别人）做某事。Ich lasse mein Auto reparieren = 我让人修车。主动词原形在句末"
+  },
+  {
+    "id": "a2_051",
+    "level": "a2",
+    "tags": ["lassen", "causative", "akkusativ", "infinitiv", "daily"],
+    "pattern": "Ich lasse {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "fixed_phrase", "values": ["reparieren", "putzen", "bringen"]}
+    },
+    "replacement_pool": {
+      "slot1": [["das_auto"], ["der_koffer"], ["das_buch"]]
+    },
+    "grammar_note": "lassen 使役结构：宾语 + 动词原形。Ich lasse das Auto reparieren = 我让人修车。与前句变体互补"
+  },
+  {
+    "id": "a2_052",
+    "level": "a2",
+    "tags": ["brauchen-zu", "negation", "nicht", "infinitiv-mit-zu", "modal"],
+    "pattern": "Du brauchst nicht zu {slot1}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["kommen", "gehen", "arbeiten", "lernen"],
+    "grammar_note": "brauchen + nicht + zu + Infinitiv = 不需要做某事。等价于 nicht müssen，是非正式替代"
+  },
+  {
+    "id": "a2_053",
+    "level": "a2",
+    "tags": ["präteritum", "modal", "müssen", "past", "daily"],
+    "pattern": "Ich musste gestern {slot1}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["arbeiten", "lernen", "gehen", "kommen"],
+    "grammar_note": "müssen 过去时 Präteritum：ich musste, du musstest。主动词原形在句末"
+  },
+  {
+    "id": "a2_054",
+    "level": "a2",
+    "tags": ["präteritum", "modal", "dürfen", "past", "permission", "negation"],
+    "pattern": "Ich durfte {slot1} nicht.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["gehen", "kommen", "spielen", "fahren"],
+    "grammar_note": "dürfen 过去时：ich durfte。表过去不被允许做某事。nicht 否定放在主动词后句末"
+  },
+  {
+    "id": "a2_055",
+    "level": "a2",
+    "tags": ["präteritum", "modal", "sollen", "past", "obligation"],
+    "pattern": "Ich sollte {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["kaufen"], ["lesen"], ["machen"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_kaffee"]]
+    },
+    "grammar_note": "sollen 过去时：ich sollte。表示过去应该做某事，常含「本应做而未必做」的意味"
+  },
+  {
+    "id": "a2_056",
+    "level": "a2",
+    "tags": ["perfekt", "sein", "gewesen", "travel", "past", "schon"],
+    "pattern": "Ich bin schon in {slot1} gewesen.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": ["die_stadt", "das_restaurant", "die_schule", "der_bahnhof"],
+    "grammar_note": "sein 的 Perfekt 用 sein + gewesen。schon = 已经。Ich bin schon in Berlin gewesen = 我去过/已在柏林"
+  },
+  {
+    "id": "a2_057",
+    "level": "a2",
+    "tags": ["modal", "müssen", "zu", "dativ", "health", "doctor"],
+    "pattern": "Ich muss zu {slot1} gehen.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": ["der_arzt", "der_lehrer", "die_lehrerin", "der_freund"],
+    "grammar_note": "zu + Dativ 表示去某人处，müssen 表示必须。Ich muss zum Arzt gehen = 我必须去看医生"
+  },
+  {
+    "id": "a2_058",
+    "level": "a2",
+    "tags": ["hotel", "reservieren", "question", "travel", "höflichkeitsform"],
+    "pattern": "Haben Sie noch ein Zimmer {slot1}?",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["frei", "für heute", "für morgen"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "酒店预订核心问句。frei = 空余的。ein Zimmer für heute = 今天的房间。Sie 是礼貌形式"
+  },
+  {
+    "id": "a2_059",
+    "level": "a2",
+    "tags": ["w-frage", "transport", "travel", "zeit", "superlativ"],
+    "pattern": "Wann fährt der nächste {slot1}?",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Bus", "Zug"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "问询交通工具班次：Wann fährt der nächste Zug? = 下一班火车什么时候开？nächste 为形容词变格"
+  },
+  {
+    "id": "a2_060",
+    "level": "a2",
+    "tags": ["perfekt", "past", "experience", "negation", "noch-nie"],
+    "pattern": "Das habe ich noch nie {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["gegessen", "getrunken", "gesehen"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "noch nie = 从未。Perfekt 表达至今为止的经历，常与 schon/noch nie 搭配。Das 是 Akkusativ 提前至句首"
+  }
+]

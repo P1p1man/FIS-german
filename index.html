@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIS Deutsch Übung</title>
+<style>
+/* ============ RESET & BASE ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  background: #0d1b3e;
+  color: #1a1a2e;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ============ COMMON ============ */
+.hidden { display: none !important; }
+.fade-in { animation: fadeIn 0.4s ease-out both; }
+.slide-up { animation: slideUp 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+.pop-in { animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes micBounce { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,109,0,0.5); } 50% { transform: scale(1.15); box-shadow: 0 0 0 18px rgba(255,109,0,0); } }
+@keyframes shrinkToCorner {
+  0% { transform: scale(1); opacity: 1; }
+  60% { opacity: 1; }
+  100% { transform: scale(0.35); opacity: 0.9; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============ LOADING OVERLAY ============ */
+#loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(160deg, #0a1030 0%, #111d4a 30%, #15265c 60%, #0d1b3e 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+#loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-spinner {
+  width: 48px; height: 48px;
+  border: 4px solid rgba(255,255,255,0.12);
+  border-top-color: #ff6d00;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+.loading-label {
+  margin-top: 20px;
+  color: rgba(255,255,255,0.7);
+  font-size: 1rem;
+}
+.loading-sub {
+  margin-top: 6px;
+  color: rgba(255,255,255,0.35);
+  font-size: 0.8rem;
+}
+
+/* ============ VIEW 1: LEVELS ============ */
+#view-levels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 30px 20px;
+  background: linear-gradient(160deg, #0a1030 0%, #111d4a 30%, #15265c 60%, #0d1b3e 100%);
+  position: relative;
+  overflow: hidden;
+}
+#view-levels::before {
+  content: '';
+  position: absolute;
+  top: -15%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,109,0,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+#view-levels::after {
+  content: '';
+  position: absolute;
+  bottom: -10%; left: -8%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(26,35,126,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.levels-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+  position: relative;
+  z-index: 1;
+}
+.levels-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.levels-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+  z-index: 1;
+}
+
+.level-card {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 22px 28px;
+  background: rgba(255,255,255,0.96);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+}
+.level-card:hover {
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+}
+.level-card:active { transform: scale(0.975); transition: transform 0.1s ease; }
+
+.level-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  border-radius: 18px 0 0 18px;
+}
+.level-a1::before { background: linear-gradient(180deg, #43a047, #66bb6a); }
+.level-a2::before { background: linear-gradient(180deg, #1e88e5, #42a5f5); }
+.level-b1::before { background: linear-gradient(180deg, #fb8c00, #ffa726); }
+.level-b2::before { background: linear-gradient(180deg, #e53935, #ef5350); }
+.level-c1::before { background: linear-gradient(180deg, #8e24aa, #ab47bc); }
+
+.level-icon {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  min-width: 70px;
+  text-align: center;
+}
+.level-a1 .level-icon { color: #43a047; }
+.level-a2 .level-icon { color: #1e88e5; }
+.level-b1 .level-icon { color: #fb8c00; }
+.level-b2 .level-icon { color: #e53935; }
+.level-c1 .level-icon { color: #8e24aa; }
+
+.level-info { flex: 1; }
+.level-name { font-size: 1.15rem; font-weight: 700; color: #1a1a2e; margin-bottom: 2px; }
+.level-desc { font-size: 0.85rem; color: #666; line-height: 1.3; }
+.level-count { font-size: 0.8rem; color: #999; margin-top: 3px; }
+
+.level-card.shrinking { pointer-events: none; }
+.level-card.shrinking .level-icon {
+  animation: shrinkIcon 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.level-card.shrinking .level-info {
+  animation: fadeOutSm 0.4s ease forwards;
+}
+
+@keyframes shrinkIcon {
+  0% { transform: scale(1); }
+  100% { transform: scale(0.38) translate(-50px, -50px); opacity: 0.85; }
+}
+@keyframes fadeOutSm { to { opacity: 0; } }
+
+/* ============ VIEW 2: TAGS & SENTENCES ============ */
+#view-tags {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #f5f5f9 0%, #e8ecf4 100%);
+  padding: 20px 24px 40px;
+  position: relative;
+}
+
+.tags-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.tags-level-badge {
+  font-size: 1.6rem;
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: 14px;
+  color: #fff;
+  animation: float 3s ease-in-out infinite;
+}
+.badge-a1 { background: linear-gradient(135deg, #43a047, #66bb6a); }
+.badge-a2 { background: linear-gradient(135deg, #1e88e5, #42a5f5); }
+.badge-b1 { background: linear-gradient(135deg, #fb8c00, #ffa726); }
+.badge-b2 { background: linear-gradient(135deg, #e53935, #ef5350); }
+.badge-c1 { background: linear-gradient(135deg, #8e24aa, #ab47bc); }
+
+.tags-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.tags-back-btn {
+  margin-left: auto;
+  padding: 10px 20px;
+  background: #1a237e;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.tags-back-btn:hover { background: #283593; transform: scale(1.03); }
+
+.tags-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tag-chip {
+  padding: 10px 20px;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.tag-chip:hover {
+  border-color: #ff6d00;
+  color: #ff6d00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255,109,0,0.15);
+}
+.tag-chip.active {
+  background: #ff6d00;
+  color: #fff;
+  border-color: #ff6d00;
+  box-shadow: 0 4px 16px rgba(255,109,0,0.3);
+}
+.tag-chip.grammar { border-left: 3px solid #1a237e; }
+.tag-chip.topic { border-left: 3px solid #43a047; }
+
+.sentence-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 700px;
+}
+
+.sentence-item {
+  padding: 16px 20px;
+  background: #fff;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border-left: 4px solid transparent;
+}
+.sentence-item:hover {
+  border-left-color: #ff6d00;
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.sentence-pattern {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a237e;
+  margin-bottom: 4px;
+}
+.sentence-grammar {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.no-sentences {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 1rem;
+}
+
+.tags-loading-wrap {
+  text-align: center;
+  padding: 60px;
+  color: #999;
+  font-size: 1rem;
+}
+.tags-loading-wrap .spinner {
+  display: inline-block;
+  width: 22px; height: 22px;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-top-color: #ff6d00;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* ============ VIEW 3: PRACTICE ============ */
+#view-practice {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #0a1030;
+  color: #fff;
+}
+
+.practice-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 24px;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.topbar-level {
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 4px 12px;
+  border-radius: 8px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.progress-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 150px;
+}
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+}
+.progress-bar-outer {
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6d00, #ff8f00);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.stop-btn {
+  padding: 10px 22px;
+  background: rgba(229,57,53,0.85);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.stop-btn:hover { background: rgba(229,57,53,1); transform: scale(1.03); }
+
+/* ---- Main Split ---- */
+.practice-main {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.practice-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+}
+
+.sentence-template {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.55;
+  max-width: 520px;
+  word-break: break-word;
+}
+.sentence-template .slot-highlight {
+  color: #ff6d00;
+  background: rgba(255,109,0,0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 800;
+}
+
+.grammar-note {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  max-width: 520px;
+}
+
+.practice-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  background: rgba(255,109,0,0.04);
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+
+.replacement-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 2px solid rgba(255,109,0,0.25);
+  border-radius: 22px;
+  padding: 30px 40px;
+  text-align: center;
+  min-width: 200px;
+  max-width: 90%;
+}
+
+.replacement-word {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ff6d00;
+  letter-spacing: 0.02em;
+  word-break: break-word;
+}
+
+.replacement-label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+
+/* Mic indicator */
+.mic-indicator {
+  position: relative;
+  margin-top: 28px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+.mic-indicator.listening {
+  background: rgba(255,109,0,0.2);
+  animation: micBounce 1.2s ease-in-out infinite;
+}
+.mic-indicator.recording {
+  background: rgba(229,57,53,0.3);
+}
+.mic-indicator.recording::after {
+  content: '';
+  position: absolute;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  border: 2px solid #e53935;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.mic-status-text {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+/* ---- Summary Overlay ---- */
+#summary-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.summary-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 40px 36px;
+  text-align: center;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.summary-icon { font-size: 3rem; margin-bottom: 8px; }
+.summary-title { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+.summary-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+}
+.summary-stat { text-align: center; }
+.summary-stat-val { font-size: 1.5rem; font-weight: 700; color: #1a237e; }
+.summary-stat-label { font-size: 0.8rem; color: #999; }
+
+.summary-btn {
+  margin-top: 10px;
+  padding: 14px 36px;
+  background: #1a237e;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.summary-btn:hover { background: #283593; transform: scale(1.03); }
+.summary-btn.primary { background: #ff6d00; }
+.summary-btn.primary:hover { background: #ff8f00; }
+
+/* ============ ERROR TOAST ============ */
+.error-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e53935;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  z-index: 200;
+  box-shadow: 0 6px 24px rgba(229,57,53,0.4);
+  animation: slideUp 0.3s ease-out;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .practice-main { flex-direction: column; }
+  .practice-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
+  .sentence-template { font-size: 1.6rem; }
+  .replacement-word { font-size: 2.2rem; }
+  .levels-title { font-size: 1.6rem; }
+  .level-card { padding: 16px 20px; gap: 14px; }
+  .level-icon { font-size: 2rem; min-width: 50px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADING OVERLAY ===== -->
+<div id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-label">Wörterbuch wird geladen…</div>
+  <div class="loading-sub" id="loading-sub">~24.000 Einträge</div>
+</div>
+
+<!-- ===== VIEW 1: LEVELS ===== -->
+<div id="view-levels" class="hidden">
+  <h1 class="levels-title">FIS Deutsch Übung</h1>
+  <p class="levels-subtitle">Wähle dein Niveau</p>
+  <div id="levels-container" class="levels-container"></div>
+</div>
+
+<!-- ===== VIEW 2: TAGS ===== -->
+<div id="view-tags" class="hidden">
+  <div class="tags-header">
+    <div id="tags-level-badge" class="tags-level-badge">A1</div>
+    <span class="tags-title">Themen & Grammatik</span>
+    <button id="tags-back-btn" class="tags-back-btn">← Zurück</button>
+  </div>
+  <div id="tags-grid" class="tags-grid"></div>
+  <div id="sentence-list" class="sentence-list"></div>
+  <div id="tags-loading" class="tags-loading-wrap hidden"><span class="spinner"></span>Lade Sätze…</div>
+</div>
+
+<!-- ===== VIEW 3: PRACTICE ===== -->
+<div id="view-practice" class="hidden">
+  <div class="practice-topbar">
+    <div id="topbar-level" class="topbar-level">A1</div>
+    <div class="progress-wrap">
+      <div class="progress-labels">
+        <span id="progress-text">Satz 1/10 · Runde 1/5</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar-outer">
+        <div id="progress-bar" class="progress-bar-inner" style="width:0%"></div>
+      </div>
+    </div>
+    <button id="stop-btn" class="stop-btn">⏹ Beenden</button>
+  </div>
+  <div class="practice-main">
+    <div class="practice-left">
+      <div id="sentence-template" class="sentence-template"></div>
+      <div id="grammar-note" class="grammar-note"></div>
+    </div>
+    <div class="practice-right">
+      <div id="replacement-card" class="replacement-card">
+        <div id="replacement-word" class="replacement-word"></div>
+        <div id="replacement-label" class="replacement-label">Ersatzwort</div>
+      </div>
+      <div id="mic-indicator" class="mic-indicator">🎤</div>
+      <div id="mic-status" class="mic-status-text">Bereit</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SUMMARY OVERLAY ===== -->
+<div id="summary-overlay" class="hidden">
+  <div class="summary-card">
+    <div class="summary-icon">🏆</div>
+    <div class="summary-title">Übung abgeschlossen!</div>
+    <div class="summary-stats">
+      <div class="summary-stat">
+        <div id="summary-sentences" class="summary-stat-val">0</div>
+        <div class="summary-stat-label">Sätze</div>
+      </div>
+      <div class="summary-stat">
+        <div id="summary-rounds" class="summary-stat-val">0</div>
+        <div class="summary-stat-label">Runden</div>
+      </div>
+    </div>
+    <button id="summary-continue" class="summary-btn primary">Weiter üben</button>
+    <button id="summary-btn" class="summary-btn">Zurück zur Auswahl</button>
+  </div>
+</div>
+
+<!-- ===== ERROR TOAST ===== -->
+<div id="error-toast" class="error-toast hidden"></div>
+
+<script>
+/* ================================================================
+   FIS GERMAN PRACTICE — SELF-CONTAINED SINGLE PAGE APP
+   ================================================================ */
+
+/* ---------- DOM refs ---------- */
+const $ = s => document.querySelector(s);
+
+const loadingOverlay = $('#loading-overlay');
+const loadingSub = $('#loading-sub');
+const viewLevels = $('#view-levels');
+const viewTags = $('#view-tags');
+const viewPractice = $('#view-practice');
+const levelsContainer = $('#levels-container');
+const tagsGrid = $('#tags-grid');
+const sentenceList = $('#sentence-list');
+const tagsLoading = $('#tags-loading');
+const tagsLevelBadge = $('#tags-level-badge');
+const topbarLevel = $('#topbar-level');
+const progressText = $('#progress-text');
+const progressPct = $('#progress-pct');
+const progressBar = $('#progress-bar');
+const sentenceTemplate = $('#sentence-template');
+const grammarNote = $('#grammar-note');
+const replacementWord = $('#replacement-word');
+const replacementLabel = $('#replacement-label');
+const replacementCard = $('#replacement-card');
+const micIndicator = $('#mic-indicator');
+const micStatus = $('#mic-status');
+const summaryOverlay = $('#summary-overlay');
+const summarySentences = $('#summary-sentences');
+const summaryRounds = $('#summary-rounds');
+const errorToast = $('#error-toast');
+
+/* ================================================================
+   1. DATA STORE
+   ================================================================ */
+const DATA = {
+  dict: null,          // raw dictionary.json
+  wordIndex: {},       // wordId → { category, entry }
+  sentencesByLevel: {}, // level → [sentenceData, ...]
+  levels: [
+    { id: 'a1', name: 'Anfänger', desc: 'Grundlegende Sätze, Präsens, einfache Artikel', count: 0 },
+    { id: 'a2', name: 'Grundkenntnisse', desc: 'Perfekt, Präteritum, Dativ, Modalverben', count: 0 },
+    { id: 'b1', name: 'Mittelstufe', desc: 'Konjunktiv II, Nebensätze, Relativsätze', count: 0 },
+    { id: 'b2', name: 'Gute Mittelstufe', desc: 'Passiv, komplexe Nebensätze, Genitiv', count: 0 },
+    { id: 'c1', name: 'Fortgeschritten', desc: 'Konjunktiv I, Nominalstil, akademisches Deutsch', count: 0 },
+  ],
+};
+
+/* ================================================================
+   2. GRAMMAR ENGINE
+   ================================================================ */
+
+const ARTICLE_MAP = {
+  nom: { m: 'der', f: 'die', n: 'das', pl: 'die' },
+  akk: { m: 'den', f: 'die', n: 'das', pl: 'die' },
+  dat: { m: 'dem', f: 'der', n: 'dem', pl: 'den' },
+  gen: { m: 'des', f: 'der', n: 'des', pl: 'der' },
+};
+
+class GrammarEngine {
+  constructor(wordIndex) {
+    this.wordIndex = wordIndex;
+  }
+
+  /**
+   * Find the dictionary entry for a word ID.
+   * Returns { category, entry } or null.
+   */
+  resolveWord(wordId) {
+    if (this.wordIndex[wordId]) return this.wordIndex[wordId];
+    // Fallback search
+    for (const [id, info] of Object.entries(this.wordIndex)) {
+      if (id === wordId) return info;
+    }
+    return null;
+  }
+
+  /**
+   * Get the correct word form for a given wordId and slot specification.
+   *
+   * @param {string} wordId - e.g. "der_hund", "haben", "groß"
+   * @param {object} slotSpec - { type, case?, num?, gender?, tense?, person?, form? }
+   * @returns {string} - the correct form
+   */
+  getWordForm(wordId, slotSpec) {
+    const resolved = this.resolveWord(wordId);
+    if (!resolved) {
+      // Unknown word: return as-is with underscores replaced
+      return wordId.replace(/_/g, ' ');
+    }
+
+    const { category, entry } = resolved;
+    const type = slotSpec.type;
+
+    switch (type) {
+      case 'noun': {
+        const kase = slotSpec.case || 'nom';
+        const num = slotSpec.num || 'sg';
+        if (entry.forms && entry.forms[kase] && entry.forms[kase][num]) {
+          return entry.forms[kase][num];
+        }
+        // Fallback: build it manually
+        return this._buildNounForm(entry, kase, num);
+      }
+
+      case 'verb': {
+        const person = slotSpec.person || 'ich';
+        const tense = slotSpec.tense || 'present';
+
+        // Infinitive
+        if (person === 'inf') return entry.base;
+
+        // Partizip II
+        if (person === 'partizip2') {
+          if (entry.conjugation && entry.conjugation.perfect) {
+            // "hat gelesen" → "gelesen"
+            const parts = entry.conjugation.perfect.split(' ');
+            return parts[parts.length - 1];
+          }
+          return entry.base;
+        }
+
+        // Konjunktiv I
+        if (tense === 'konjunktiv1_present') {
+          return this._buildKonjunktiv1(entry, person);
+        }
+
+        // Standard conjugation
+        if (entry.conjugation && entry.conjugation[tense] && entry.conjugation[tense][person]) {
+          return entry.conjugation[tense][person];
+        }
+        return entry.base;
+      }
+
+      case 'adjective': {
+        const form = slotSpec.form || 'predicative';
+        if (!entry.forms) return entry.base;
+
+        if (form === 'predicative') {
+          return entry.forms.predicative || entry.base;
+        }
+        if (form === 'attributive') {
+          const kase = slotSpec.case || 'nom';
+          const gender = slotSpec.gender || 'm';
+          const num = slotSpec.num || 'sg';
+          const attr = entry.forms.attributive;
+          if (attr && attr[kase] && attr[kase][gender] && attr[kase][gender][num]) {
+            return attr[kase][gender][num];
+          }
+        }
+        return entry.base;
+      }
+
+      case 'adverb':
+      case 'preposition':
+      case 'conjunction':
+        return entry.base;
+
+      case 'fixed_phrase':
+        // Handled at the engine level, not here
+        return wordId;
+
+      default:
+        return wordId.replace(/_/g, ' ');
+    }
+  }
+
+  /**
+   * Build the full sentence by replacing {slotX} placeholders with word forms.
+   *
+   * @param {object} sentenceData - sentence definition with pattern and slots
+   * @param {object} wordMapping - { slot1: wordId1, slot2: wordId2, ... }
+   * @param {object} phraseMapping - { slot1: phraseStr, ... } for fixed_phrase slots
+   * @returns {string} - the complete sentence
+   */
+  buildSentence(sentenceData, wordMapping, phraseMapping = {}) {
+    let result = sentenceData.pattern;
+    const slots = sentenceData.slots || {};
+
+    for (const [slotKey, wordId] of Object.entries(wordMapping)) {
+      let replacement;
+      if (phraseMapping[slotKey] !== undefined) {
+        replacement = phraseMapping[slotKey];
+      } else {
+        const slotSpec = slots[slotKey] || {};
+        replacement = this.getWordForm(wordId, slotSpec);
+      }
+      result = result.replace(new RegExp(`\\{${slotKey}\\}`, 'g'), replacement);
+    }
+
+    return result;
+  }
+
+  /**
+   * Manual noun form builder as fallback.
+   */
+  _buildNounForm(entry, kase, num) {
+    const base = entry.base;
+    const gender = entry.gender || 'm';
+    let article = (num === 'pl') ? ARTICLE_MAP[kase].pl : ARTICLE_MAP[kase][gender];
+    if (!article) article = '';
+
+    let word = base;
+    // Simple plural (very rough fallback)
+    if (num === 'pl') {
+      if (base.endsWith('e')) word = base + 'n';
+      else if (gender === 'f') word = base + 'n';
+      else word = base + 'e';
+    }
+
+    // Only add article if base starts with lowercase (stem form, no article yet)
+    if (base[0] === base[0].toLowerCase()) {
+      return article + ' ' + word;
+    }
+    return word;
+  }
+
+  /**
+   * Generate Konjunktiv I present form for a verb.
+   */
+  _buildKonjunktiv1(entry, person) {
+    // Special irregular verbs
+    if (entry.base === 'sein') {
+      const map = { ich: 'sei', du: 'seist', er: 'sei', wir: 'seien', ihr: 'seiet', sie: 'seien' };
+      return map[person] || 'sei';
+    }
+    if (entry.base === 'haben') {
+      const map = { ich: 'habe', du: 'habest', er: 'habe', wir: 'haben', ihr: 'habet', sie: 'haben' };
+      return map[person] || 'habe';
+    }
+
+    // Get the stem from the present conjugation (er form, remove -t)
+    let stem;
+    if (entry.conjugation && entry.conjugation.present && entry.conjugation.present.er) {
+      const erForm = entry.conjugation.present.er;
+      if (erForm.endsWith('t')) stem = erForm.slice(0, -1);
+      else if (erForm.endsWith('et')) stem = erForm.slice(0, -2);
+      else stem = erForm;
+    } else {
+      stem = entry.base;
+      if (stem.endsWith('en')) stem = stem.slice(0, -2);
+      else if (stem.endsWith('n')) stem = stem.slice(0, -1);
+    }
+
+    const endings = { ich: 'e', du: 'est', er: 'e', wir: 'en', ihr: 'et', sie: 'en' };
+    return stem + (endings[person] || 'e');
+  }
+}
+
+/* ================================================================
+   3. PRACTICE ENGINE
+   ================================================================ */
+
+class PracticeEngine {
+  constructor(grammarEngine, dict) {
+    this.grammar = grammarEngine;
+    this.dict = dict;
+  }
+
+  /**
+   * Get all words from dictionary matching a slot definition and level.
+   * Returns [{form, wordId, display}, ...]
+   */
+  getSlotPool(slotDef, level) {
+    const type = slotDef.type;
+    const results = [];
+
+    switch (type) {
+      case 'noun': {
+        const dictNouns = this.dict.nouns || {};
+        for (const [wordId, entry] of Object.entries(dictNouns)) {
+          if (!this._passesLevel(entry, level)) continue;
+          if (slotDef.gender && entry.gender !== slotDef.gender) continue;
+          const form = this.grammar.getWordForm(wordId, slotDef);
+          results.push({ form, wordId, display: wordId.replace(/_/g, ' ') });
+        }
+        break;
+      }
+      case 'verb': {
+        const dictVerbs = this.dict.verbs || {};
+        for (const [wordId, entry] of Object.entries(dictVerbs)) {
+          if (!this._passesLevel(entry, level)) continue;
+          const form = this.grammar.getWordForm(wordId, slotDef);
+          results.push({ form, wordId, display: wordId.replace(/_/g, ' ') });
+        }
+        break;
+      }
+      case 'adjective': {
+        const dictAdjs = this.dict.adjectives || {};
+        for (const [wordId, entry] of Object.entries(dictAdjs)) {
+          if (!this._passesLevel(entry, level)) continue;
+          const form = this.grammar.getWordForm(wordId, slotDef);
+          results.push({ form, wordId, display: wordId.replace(/_/g, ' ') });
+        }
+        break;
+      }
+      case 'adverb': {
+        const dictAdvs = this.dict.adverbs || {};
+        for (const [wordId, entry] of Object.entries(dictAdvs)) {
+          if (!this._passesLevel(entry, level)) continue;
+          results.push({ form: entry.base, wordId, display: wordId.replace(/_/g, ' ') });
+        }
+        break;
+      }
+      case 'preposition': {
+        const dictPreps = this.dict.prepositions || {};
+        for (const [wordId, entry] of Object.entries(dictPreps)) {
+          if (!this._passesLevel(entry, level)) continue;
+          results.push({ form: entry.base, wordId, display: wordId.replace(/_/g, ' ') });
+        }
+        break;
+      }
+    }
+
+    return results;
+  }
+
+  /**
+   * Check if an entry passes the level filter.
+   * Only entries with an explicit level are filtered; unlabeled ones pass through.
+   */
+  _passesLevel(entry, level) {
+    if (!entry.level) return true;
+    const levels = ['a1', 'a2', 'b1', 'b2', 'c1'];
+    const entryIdx = levels.indexOf(entry.level);
+    const targetIdx = levels.indexOf(level);
+    return entryIdx <= targetIdx;
+  }
+
+  /**
+   * Normalize replacement pool from sentence data.
+   * Handles both flat arrays and slot-keyed objects.
+   * Returns { slot1: [wordId, ...], slot2: [wordId, ...] }
+   */
+  _normalizePool(sentenceData) {
+    const slots = sentenceData.slots || {};
+    const pool = sentenceData.replacement_pool;
+    const result = {};
+
+    if (!pool || (Array.isArray(pool) && pool.length === 0)) {
+      // Empty pool: derive from dictionary
+      for (const [sk, sdef] of Object.entries(slots)) {
+        if (sdef.type === 'fixed_phrase') {
+          result[sk] = (sdef.values || []).map(v => [v]);
+        } else {
+          result[sk] = [];
+        }
+      }
+      return result;
+    }
+
+    if (Array.isArray(pool)) {
+      // Flat array: all go to the first slot
+      const firstSlot = Object.keys(slots)[0] || 'slot1';
+      result[firstSlot] = pool.map(w => Array.isArray(w) ? w : [w]);
+      return result;
+    }
+
+    if (typeof pool === 'object') {
+      // Slot-keyed object
+      for (const [sk, entries] of Object.entries(pool)) {
+        if (Array.isArray(entries)) {
+          result[sk] = entries.map(e => Array.isArray(e) ? e : [e]);
+        }
+      }
+      return result;
+    }
+
+    return result;
+  }
+
+  /**
+   * Build N practice rounds for a sentence.
+   */
+  buildPracticeRounds(sentenceData, numRounds) {
+    const slots = sentenceData.slots || {};
+    const normalizedPool = this._normalizePool(sentenceData);
+    const level = sentenceData.level || 'a1';
+    const rounds = [];
+    const usedCombos = new Set();
+
+    // Build candidate pools for each slot
+    const slotCandidates = {};
+    for (const [sk, sdef] of Object.entries(slots)) {
+      if (sdef.type === 'fixed_phrase') {
+        slotCandidates[sk] = (sdef.values || []).map(v => ({ wordId: v, display: v }));
+      } else {
+        // Use replacement_pool first, supplement with slot pool
+        const poolEntries = normalizedPool[sk] || [];
+        const poolWordIds = poolEntries.map(arr => arr[0]); // first element as primary
+
+        // Get full slot pool for fallback
+        const fullPool = this.getSlotPool(sdef, level);
+
+        // Merge: prefer pool words, then fall back to full pool
+        const seen = new Set();
+        const candidates = [];
+        for (const wid of poolWordIds) {
+          if (!seen.has(wid)) {
+            seen.add(wid);
+            const form = this.grammar.getWordForm(wid, sdef);
+            candidates.push({ wordId: wid, display: wid.replace(/_/g, ' '), form });
+          }
+        }
+        // Add from full pool that aren't in the initial pool
+        for (const item of fullPool) {
+          if (!seen.has(item.wordId)) {
+            seen.add(item.wordId);
+            candidates.push(item);
+          }
+        }
+        slotCandidates[sk] = candidates;
+      }
+    }
+
+    const slotKeys = Object.keys(slots);
+
+    for (let i = 0; i < numRounds; i++) {
+      // Pick words for each slot, avoiding duplicate combos
+      let comboKey;
+      let wordMapping = {};
+      let phraseMapping = {};
+      let attempts = 0;
+      const maxAttempts = numRounds * 10;
+
+      do {
+        wordMapping = {};
+        phraseMapping = {};
+        for (const sk of slotKeys) {
+          const candidates = slotCandidates[sk];
+          if (candidates.length === 0) {
+            wordMapping[sk] = '—';
+            continue;
+          }
+          const pick = candidates[Math.floor(Math.random() * candidates.length)];
+          if (slots[sk] && slots[sk].type === 'fixed_phrase') {
+            phraseMapping[sk] = pick.wordId;
+            wordMapping[sk] = pick.wordId;
+          } else {
+            wordMapping[sk] = pick.wordId;
+          }
+        }
+        comboKey = slotKeys.map(sk => wordMapping[sk]).join('|||');
+        attempts++;
+
+        if (attempts >= maxAttempts) break;
+      } while (usedCombos.has(comboKey));
+
+      usedCombos.add(comboKey);
+
+      // If we've exhausted unique combos, reset
+      if (usedCombos.size >= this._estimateCombos(slotCandidates)) {
+        usedCombos.clear();
+        usedCombos.add(comboKey);
+      }
+
+      const fullSentence = this.grammar.buildSentence(sentenceData, wordMapping, phraseMapping);
+
+      // Build display labels
+      const wordLabels = {};
+      for (const sk of slotKeys) {
+        if (phraseMapping[sk] !== undefined) {
+          wordLabels[sk] = phraseMapping[sk];
+        } else {
+          wordLabels[sk] = wordMapping[sk].replace(/_/g, ' ');
+        }
+      }
+
+      rounds.push({
+        wordMapping,
+        phraseMapping,
+        fullSentence,
+        wordLabels,
+        comboKey,
+      });
+    }
+
+    return rounds;
+  }
+
+  _estimateCombos(slotCandidates) {
+    let total = 1;
+    for (const candidates of Object.values(slotCandidates)) {
+      total *= Math.max(candidates.length, 1);
+    }
+    return total;
+  }
+
+  /**
+   * Initialize a practice session.
+   */
+  startPractice(level, sentenceDataList, roundsPerSentence = 10) {
+    this.session = {
+      level,
+      sentenceQueue: sentenceDataList.slice(),
+      currentSentenceIdx: 0,
+      currentRoundIdx: 0,
+      roundsPerSentence,
+      totalRoundsCompleted: 0,
+      allRounds: [],
+      sentenceData: null,
+    };
+    this._prepareCurrentSentence();
+    return this.getCurrentItem();
+  }
+
+  _prepareCurrentSentence() {
+    const s = this.session;
+    if (s.currentSentenceIdx >= s.sentenceQueue.length) {
+      // Reshuffle and continue
+      s.currentSentenceIdx = 0;
+    }
+    s.sentenceData = s.sentenceQueue[s.currentSentenceIdx];
+    s.allRounds = this.buildPracticeRounds(s.sentenceData, s.roundsPerSentence);
+    s.currentRoundIdx = 0;
+  }
+
+  /**
+   * Advance to the next round. Returns the new state or { finished: true }.
+   */
+  nextRound() {
+    const s = this.session;
+    if (!s) return { finished: true };
+
+    s.currentRoundIdx++;
+    s.totalRoundsCompleted++;
+
+    if (s.currentRoundIdx >= s.allRounds.length) {
+      // Move to next sentence
+      s.currentSentenceIdx++;
+      if (s.currentSentenceIdx >= s.sentenceQueue.length) {
+        // All sentences done for this cycle — reshuffle
+        s.currentSentenceIdx = 0;
+      }
+      this._prepareCurrentSentence();
+    }
+
+    return this.getCurrentItem();
+  }
+
+  getCurrentItem() {
+    const s = this.session;
+    if (!s || !s.sentenceData) return { finished: true };
+
+    const round = s.allRounds[s.currentRoundIdx];
+    if (!round) return { finished: true };
+
+    return {
+      sentenceData: s.sentenceData,
+      currentRound: round,
+      patternTemplate: s.sentenceData.pattern,
+      grammar_note: s.sentenceData.grammar_note || '',
+      progress: {
+        sentence_current: s.currentSentenceIdx + 1,
+        sentence_total: s.sentenceQueue.length,
+        round_current: s.currentRoundIdx + 1,
+        round_total: s.allRounds.length,
+      },
+      total: s.sentenceQueue.length,
+    };
+  }
+
+  getCurrentFullSentence() {
+    const s = this.session;
+    if (!s) return '';
+    const round = s.allRounds[s.currentRoundIdx];
+    return round ? round.fullSentence : '';
+  }
+}
+
+/* ================================================================
+   4. TTS ENGINE (Web Speech API)
+   ================================================================ */
+
+function speakTTS(text) {
+  return new Promise((resolve) => {
+    if (!window.speechSynthesis) {
+      console.warn('SpeechSynthesis not supported');
+      resolve();
+      return;
+    }
+
+    // Cancel any ongoing speech
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'de-DE';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+
+    // Try to find a German voice
+    const voices = window.speechSynthesis.getVoices();
+    const germanVoice = voices.find(v => v.lang.startsWith('de')) || null;
+    if (germanVoice) utterance.voice = germanVoice;
+
+    utterance.onend = () => resolve();
+    utterance.onerror = (e) => {
+      console.warn('TTS error:', e);
+      resolve();
+    };
+
+    // Timeout fallback
+    const timeout = setTimeout(() => {
+      console.warn('TTS timeout');
+      resolve();
+    }, 15000);
+
+    utterance.onend = () => { clearTimeout(timeout); resolve(); };
+    utterance.onerror = () => { clearTimeout(timeout); resolve(); };
+
+    window.speechSynthesis.speak(utterance);
+  });
+}
+
+/* ================================================================
+   5. UI STATE
+   ================================================================ */
+
+let state = {
+  level: null,
+  allSentences: [],
+  tags: [],
+  activeTag: null,
+  // Practice
+  isRunning: false,
+  engine: null,        // PracticeEngine instance
+  mediaStream: null,
+  mediaRecorder: null,
+  recordedChunks: [],
+  currentTTS: null,
+  roundsCompleted: 0,
+};
+
+/* ---------- Helpers ---------- */
+function showView(view) {
+  [viewLevels, viewTags, viewPractice].forEach(v => v.classList.add('hidden'));
+  view.classList.remove('hidden');
+}
+
+function showError(msg, duration = 3000) {
+  errorToast.textContent = msg;
+  errorToast.classList.remove('hidden');
+  clearTimeout(errorToast._timeout);
+  errorToast._timeout = setTimeout(() => errorToast.classList.add('hidden'), duration);
+}
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+/* ================================================================
+   6. DATA LOADING
+   ================================================================ */
+
+async function loadDictionary() {
+  loadingSub.textContent = 'Lade Wörterbuch (JSON, ~2 MB)…';
+  const resp = await fetch('data/dictionary.json');
+  if (!resp.ok) throw new Error(`HTTP ${resp.status} beim Laden des Wörterbuchs`);
+  DATA.dict = await resp.json();
+
+  // Build word index
+  loadingSub.textContent = 'Baue Wortindex auf…';
+  const cats = ['nouns', 'verbs', 'adjectives', 'adverbs', 'prepositions', 'conjunctions'];
+  for (const cat of cats) {
+    const catData = DATA.dict[cat] || {};
+    for (const [wordId, entry] of Object.entries(catData)) {
+      DATA.wordIndex[wordId] = { category: cat, entry };
+    }
+  }
+
+  console.log(`Dictionary loaded: ${Object.keys(DATA.wordIndex).length} words indexed`);
+}
+
+async function loadSentencesForLevel(level) {
+  if (DATA.sentencesByLevel[level]) return DATA.sentencesByLevel[level];
+
+  const resp = await fetch(`data/sentences/${level}.json`);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status} beim Laden der Sätze für ${level}`);
+  const sentences = await resp.json();
+
+  DATA.sentencesByLevel[level] = sentences;
+  // Update count in levels
+  const lv = DATA.levels.find(l => l.id === level);
+  if (lv) lv.count = sentences.length;
+
+  return sentences;
+}
+
+/* ================================================================
+   7. VIEW 1: LEVELS
+   ================================================================ */
+
+function renderLevels() {
+  levelsContainer.innerHTML = '';
+  DATA.levels.forEach((lv, i) => {
+    const card = document.createElement('div');
+    card.className = `level-card level-${lv.id} slide-up`;
+    card.style.animationDelay = `${i * 0.08}s`;
+    card.innerHTML = `
+      <div class="level-icon">${lv.id.toUpperCase()}</div>
+      <div class="level-info">
+        <div class="level-name">${lv.name}</div>
+        <div class="level-desc">${lv.desc}</div>
+        <div class="level-count">${lv.count > 0 ? lv.count + ' Sätze' : ''}</div>
+      </div>
+    `;
+    card.addEventListener('click', () => selectLevel(lv, card));
+    levelsContainer.appendChild(card);
+  });
+}
+
+async function selectLevel(lv, cardEl) {
+  cardEl.classList.add('shrinking');
+  state.level = lv.id;
+
+  // Load sentences in background during animation
+  const loadPromise = loadSentencesForLevel(lv.id);
+
+  setTimeout(async () => {
+    showView(viewTags);
+    tagsLevelBadge.textContent = lv.id.toUpperCase();
+    tagsLevelBadge.className = 'tags-level-badge badge-' + lv.id;
+
+    tagsGrid.innerHTML = '';
+    sentenceList.innerHTML = '';
+    tagsLoading.classList.remove('hidden');
+
+    try {
+      await loadPromise;
+      loadSentencesAndTags();
+    } catch (e) {
+      showError('Fehler beim Laden der Sätze: ' + e.message);
+    } finally {
+      tagsLoading.classList.add('hidden');
+    }
+  }, 550);
+}
+
+/* ================================================================
+   8. VIEW 2: TAGS & SENTENCES
+   ================================================================ */
+
+function loadSentencesAndTags() {
+  state.allSentences = DATA.sentencesByLevel[state.level] || [];
+  state.activeTag = null;
+
+  // Aggregate tags
+  const tagMap = new Map();
+  state.allSentences.forEach(s => {
+    if (s.tags && Array.isArray(s.tags)) {
+      s.tags.forEach(t => {
+        if (!tagMap.has(t)) tagMap.set(t, { name: t, count: 0, type: classifyTag(t) });
+        tagMap.get(t).count++;
+      });
+    }
+  });
+
+  const grammarTags = [];
+  const topicTags = [];
+  tagMap.forEach(v => {
+    if (v.type === 'grammar') grammarTags.push(v);
+    else topicTags.push(v);
+  });
+  grammarTags.sort((a, b) => a.name.localeCompare(b.name));
+  topicTags.sort((a, b) => a.name.localeCompare(b.name));
+  state.tags = [...grammarTags, ...topicTags];
+
+  renderTags();
+}
+
+function classifyTag(name) {
+  const grammarKeywords = [
+    'akkusativ', 'dativ', 'nominativ', 'genitiv', 'artikel', 'pronomen',
+    'nebensatz', 'hauptsatz', 'konjunktiv', 'perfekt', 'präteritum',
+    'präsens', 'futur', 'imperativ', 'passiv', 'reflexiv', 'trennbar',
+    'modalverb', 'präposition', 'adjektiv', 'deklination', 'komparativ',
+    'superlativ', 'negation', 'konjunktion', 'relativsatz', 'infinitiv',
+    'partizip', 'plural', 'frage', 'wortstellung', 'satzbau', 'grammatik',
+    'nominalisierung', 'indirekte_rede', 'würde', 'hätte', 'wäre',
+    'vorgangspassiv', 'zustandspassiv', 'wurde', 'worden',
+  ];
+  const lower = name.toLowerCase();
+  return grammarKeywords.some(k => lower.includes(k)) ? 'grammar' : 'topic';
+}
+
+function renderTags() {
+  tagsGrid.innerHTML = '';
+  state.tags.forEach(tag => {
+    const chip = document.createElement('span');
+    chip.className = 'tag-chip ' + tag.type;
+    chip.textContent = tag.name + ' (' + tag.count + ')';
+    chip.addEventListener('click', () => selectTag(tag, chip));
+    tagsGrid.appendChild(chip);
+  });
+}
+
+function selectTag(tag, chipEl) {
+  if (state.activeTag === tag.name) {
+    state.activeTag = null;
+    tagsGrid.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('active'));
+    sentenceList.innerHTML = '';
+    return;
+  }
+
+  state.activeTag = tag.name;
+  tagsGrid.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('active'));
+  chipEl.classList.add('active');
+
+  const filtered = state.allSentences.filter(s =>
+    s.tags && Array.isArray(s.tags) && s.tags.includes(tag.name)
+  );
+  renderSentences(filtered);
+}
+
+function renderSentences(sentences) {
+  sentenceList.innerHTML = '';
+  if (sentences.length === 0) {
+    sentenceList.innerHTML = '<div class="no-sentences">Keine Sätze in dieser Kategorie.</div>';
+    return;
+  }
+  sentences.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'sentence-item slide-up';
+    item.style.animationDelay = `${i * 0.04}s`;
+    // Show pattern with {slot} replaced by "..."
+    const displayPattern = s.pattern.replace(/\{(\w+)\}/g, '…');
+    item.innerHTML = `
+      <div class="sentence-pattern">${escHtml(displayPattern)}</div>
+      ${s.grammar_note ? `<div class="sentence-grammar">${escHtml(s.grammar_note)}</div>` : ''}
+    `;
+    item.addEventListener('click', () => startPracticeFromSentence(s));
+    sentenceList.appendChild(item);
+  });
+}
+
+function startPracticeFromSentence(sentence) {
+  startPractice([sentence.id]);
+}
+
+/* ================================================================
+   9. VIEW 3: PRACTICE
+   ================================================================ */
+
+async function startPractice(sentenceIds = null) {
+  // Ensure engine is initialized
+  if (!state.engine) {
+    state.engine = new PracticeEngine(
+      new GrammarEngine(DATA.wordIndex),
+      DATA.dict
+    );
+  }
+
+  showView(viewPractice);
+  topbarLevel.textContent = state.level.toUpperCase();
+  topbarLevel.className = 'topbar-level badge-' + state.level;
+  state.isRunning = true;
+  state.roundsCompleted = 0;
+  updateProgress(0, 0, 0, 0);
+
+  // Get sentences to practice
+  let sentences;
+  if (sentenceIds && sentenceIds.length > 0) {
+    sentences = state.allSentences.filter(s => sentenceIds.includes(s.id));
+    if (sentences.length === 0) {
+      sentences = state.allSentences.slice(0, 1);
+    }
+  } else {
+    // All sentences for the active tag, or all sentences
+    if (state.activeTag) {
+      sentences = state.allSentences.filter(s =>
+        s.tags && Array.isArray(s.tags) && s.tags.includes(state.activeTag)
+      );
+    } else {
+      sentences = state.allSentences;
+    }
+  }
+
+  if (sentences.length === 0) {
+    showError('Keine Sätze zum Üben gefunden.');
+    stopPractice();
+    return;
+  }
+
+  // Unlock AudioContext for browsers
+  if (!state._audioUnlocked) {
+    try {
+      const tmpCtx = new (window.AudioContext || window.webkitAudioContext)();
+      await tmpCtx.resume();
+      tmpCtx.close();
+    } catch (e) { /* ignore */ }
+    state._audioUnlocked = true;
+  }
+
+  try {
+    const firstItem = state.engine.startPractice(state.level, sentences, 10);
+    renderCurrentRound(firstItem);
+    runAutoFlow();
+  } catch (e) {
+    console.error('Practice init error:', e);
+    showError('Fehler beim Starten der Übung.');
+    stopPractice();
+  }
+}
+
+function renderCurrentRound(data) {
+  if (!data || data.finished) return;
+
+  // Sentence template with highlighted slots
+  let template = escHtml(data.patternTemplate || '');
+  template = template.replace(/\{(\w+)\}/g, '<span class="slot-highlight">...</span>');
+  sentenceTemplate.innerHTML = template;
+  sentenceTemplate.classList.remove('fade-in');
+  void sentenceTemplate.offsetWidth;
+  sentenceTemplate.classList.add('fade-in');
+
+  // Grammar note
+  grammarNote.textContent = data.grammar_note || '';
+
+  // Replacement words
+  const round = data.currentRound;
+  if (round && round.wordLabels) {
+    const vals = Object.values(round.wordLabels).filter(Boolean);
+    replacementWord.textContent = vals.length > 0 ? vals.join(' · ') : '—';
+    replacementLabel.textContent = vals.length > 1 ? 'Ersatzwörter' : 'Ersatzwort';
+  } else if (round && round.fullSentence) {
+    replacementWord.textContent = round.fullSentence;
+    replacementLabel.textContent = 'Vollständiger Satz';
+  } else {
+    replacementWord.textContent = '—';
+    replacementLabel.textContent = 'Ersatzwort';
+  }
+  replacementCard.classList.remove('pop-in');
+  void replacementCard.offsetWidth;
+  replacementCard.classList.add('pop-in');
+
+  // Progress
+  const prog = data.progress || {};
+  updateProgress(
+    prog.sentence_current || 1,
+    prog.sentence_total || 1,
+    prog.round_current || 1,
+    prog.round_total || 1,
+    data.total
+  );
+}
+
+function updateProgress(sCur, sTotal, rCur, rTotal, totalOverride) {
+  const total = totalOverride || sTotal;
+  const doneSentences = sCur - 1;
+  const fractionInSentence = rCur / rTotal;
+  const overallPct = total > 0 ? ((doneSentences + fractionInSentence) / total) * 100 : 0;
+
+  progressText.textContent = `Satz ${sCur}/${total || sTotal} · Runde ${rCur}/${rTotal}`;
+  progressPct.textContent = Math.round(overallPct) + '%';
+  progressBar.style.width = overallPct + '%';
+}
+
+/* ============ AUTO FLOW ============ */
+async function runAutoFlow() {
+  if (!state.isRunning) return;
+
+  // TTS plays the full sentence
+  micIndicator.className = 'mic-indicator';
+  micStatus.textContent = '🔊 Höre zu...';
+
+  const fullSentence = state.engine.getCurrentFullSentence();
+  if (fullSentence) {
+    state.currentTTS = fullSentence;
+    await speakTTS(fullSentence).catch(e => console.warn('TTS failed:', e));
+    state.currentTTS = null;
+  }
+
+  if (!state.isRunning) return;
+
+  // Start recording
+  micStatus.textContent = '🎤 Sprich jetzt!';
+  micIndicator.className = 'mic-indicator listening';
+
+  try {
+    const audioBlob = await recordWithCountdown();
+    if (!state.isRunning) return;
+
+    // Recording complete, go to next round immediately
+    state.roundsCompleted++;
+    micStatus.textContent = '⏭ Nächste Runde...';
+    micIndicator.className = 'mic-indicator';
+
+    await nextRound();
+  } catch (e) {
+    if (state.isRunning) {
+      console.warn('Recording error:', e);
+      await new Promise(r => setTimeout(r, 600));
+      if (state.isRunning) await nextRound();
+    }
+  }
+}
+
+async function recordWithCountdown() {
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch (e) {
+    showError('Mikrofon nicht verfügbar.');
+    throw e;
+  }
+  state.mediaStream = stream;
+
+  const mimeType = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+    ? 'audio/webm;codecs=opus'
+    : MediaRecorder.isTypeSupported('audio/webm')
+      ? 'audio/webm'
+      : 'audio/ogg;codecs=opus';
+  const recorder = new MediaRecorder(stream, { mimeType });
+  state.mediaRecorder = recorder;
+  state.recordedChunks = [];
+
+  recorder.ondataavailable = e => {
+    if (e.data.size > 0) state.recordedChunks.push(e.data);
+  };
+
+  const RECORD_SEC = 3;
+
+  const cleanupLocal = () => {
+    if (state.mediaStream) {
+      state.mediaStream.getTracks().forEach(t => t.stop());
+      state.mediaStream = null;
+    }
+    state.mediaRecorder = null;
+    state.recordedChunks = [];
+  };
+
+  return new Promise((resolve, reject) => {
+    let sec = 0;
+    let resolved = false;
+
+    const finish = () => {
+      if (resolved) return;
+      resolved = true;
+      clearInterval(timer);
+      setTimeout(() => {
+        const blob = new Blob(state.recordedChunks, { type: mimeType });
+        cleanupLocal();
+        resolve(blob);
+      }, 300);
+    };
+
+    const timer = setInterval(() => {
+      if (!state.isRunning) {
+        clearInterval(timer);
+        recorder.stop();
+        cleanupLocal();
+        reject(new Error('Stopped'));
+        return;
+      }
+      sec++;
+      const remain = RECORD_SEC - sec;
+      micStatus.textContent = `🔴 Aufnahme... ${remain}s`;
+      micIndicator.className = 'mic-indicator recording';
+      if (sec >= RECORD_SEC) {
+        clearInterval(timer);
+        recorder.stop();
+        setTimeout(() => finish(), 1000);
+      }
+    }, 1000);
+
+    recorder.onstop = () => finish();
+
+    recorder.onerror = (e) => {
+      clearInterval(timer);
+      cleanupLocal();
+      reject(e);
+    };
+
+    recorder.start(100);
+    micIndicator.className = 'mic-indicator recording';
+    micStatus.textContent = `🔴 Aufnahme... ${RECORD_SEC}s`;
+  });
+}
+
+function cleanupAudio() {
+  if (state.mediaRecorder && state.mediaRecorder.state !== 'inactive') {
+    state.mediaRecorder.stop();
+  }
+  if (state.mediaStream) {
+    state.mediaStream.getTracks().forEach(t => t.stop());
+    state.mediaStream = null;
+  }
+  state.mediaRecorder = null;
+  state.recordedChunks = [];
+  // Cancel any ongoing TTS
+  if (window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+  state.currentTTS = null;
+}
+
+async function nextRound() {
+  if (!state.engine) return;
+
+  const data = state.engine.nextRound();
+
+  if (data.finished) {
+    showSummary();
+    return;
+  }
+
+  renderCurrentRound(data);
+  runAutoFlow();
+}
+
+function showSummary() {
+  cleanupAudio();
+  state.isRunning = false;
+
+  summarySentences.textContent = state.engine.session.sentenceQueue.length;
+  summaryRounds.textContent = state.roundsCompleted;
+
+  summaryOverlay.classList.remove('hidden');
+}
+
+function stopPractice() {
+  state.isRunning = false;
+  cleanupAudio();
+  state.roundsCompleted = 0;
+  summaryOverlay.classList.add('hidden');
+  showView(viewTags);
+}
+
+/* ================================================================
+   10. EVENT LISTENERS
+   ================================================================ */
+
+$('#tags-back-btn').addEventListener('click', () => {
+  state.level = null;
+  state.activeTag = null;
+  state.allSentences = [];
+  showView(viewLevels);
+  renderLevels();
+});
+
+$('#stop-btn').addEventListener('click', stopPractice);
+
+$('#summary-continue').addEventListener('click', () => {
+  summaryOverlay.classList.add('hidden');
+  state.roundsCompleted = 0;
+  startPractice();
+});
+
+$('#summary-btn').addEventListener('click', () => {
+  summaryOverlay.classList.add('hidden');
+  state.roundsCompleted = 0;
+  stopPractice();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && state.isRunning) {
+    stopPractice();
+  }
+});
+
+/* ================================================================
+   11. FEATURE DETECTION
+   ================================================================ */
+(function checkFeatures() {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    // Will show warning after levels load; store for later
+    window._micUnavailable = true;
+  }
+})();
+
+/* ================================================================
+   12. BOOT
+   ================================================================ */
+
+async function boot() {
+  try {
+    await loadDictionary();
+  } catch (e) {
+    console.error('Failed to load dictionary:', e);
+    loadingOverlay.innerHTML = `
+      <div style="color:#ff8a80;text-align:center;max-width:500px;padding:20px;">
+        <p style="font-size:1.2rem;margin-bottom:10px;">⚠️ Wörterbuch konnte nicht geladen werden</p>
+        <p style="font-size:0.9rem;">${escHtml(e.message)}</p>
+        <p style="font-size:0.85rem;margin-top:10px;color:rgba(255,255,255,0.5);">Stelle sicher, dass "../data/dictionary.json" relativ zu dieser Datei erreichbar ist.</p>
+      </div>`;
+    return;
+  }
+
+  // Hide loading, show levels
+  loadingOverlay.classList.add('hidden');
+  showView(viewLevels);
+  renderLevels();
+
+  // Preload A1 sentences (the most commonly used level)
+  loadSentencesForLevel('a1').then(() => {
+    renderLevels(); // update counts
+  }).catch(() => {});
+
+  // Show mic warning if needed
+  if (window._micUnavailable) {
+    setTimeout(() => {
+      showError('⚠️ Mikrofon nicht verfügbar. Die Aufnahme-Funktion ist deaktiviert.', 6000);
+    }, 1000);
+  }
+}
+
+boot();
+</script>
+
+</body>
+</html>

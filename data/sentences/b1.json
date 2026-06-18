@@ -1,0 +1,885 @@
+[
+  {
+    "id": "b1_001",
+    "level": "b1",
+    "tags": ["konjunktiv_ii", "würde", "höflich", "wunsch"],
+    "pattern": "Ich würde gern {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["kaufen"], ["lesen"], ["sehen"], ["besuchen"], ["trinken"]],
+      "slot2": [["das_auto"], ["das_buch"], ["das_haus"], ["die_stadt"], ["der_kaffee"]]
+    },
+    "grammar_note": "Konjunktiv II: würde + Infinitiv 表达礼貌愿望。würde 为 werden 的 KII 形式，不定式动词位于句尾，gern 增强愿望语气。"
+  },
+  {
+    "id": "b1_002",
+    "level": "b1",
+    "tags": ["konjunktiv_ii", "hätte", "wäre", "irreal", "bedingung"],
+    "pattern": "Wenn ich {slot1} hätte, wäre ich {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_zeitung"], ["das_buch"], ["das_auto"], ["das_haus"]],
+      "slot2": [["groß"], ["klein"], ["schön"], ["gut"]]
+    },
+    "grammar_note": "Konjunktiv II 非现实条件：hätte (haben的KII) + wäre (sein的KII) 表达虚拟假设。wenn从句中变位动词位于句尾。"
+  },
+  {
+    "id": "b1_003",
+    "level": "b1",
+    "tags": ["konjunktiv_ii", "könnte", "modalverb", "irreal"],
+    "pattern": "Ohne {slot1} könnte ich {slot2} nicht {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_kaffee"], ["der_tee"], ["das_buch"], ["der_freund"]],
+      "slot2": [["lesen"], ["schreiben"], ["verstehen"], ["finden"]],
+      "slot3": [["die_zeitung"], ["das_buch"], ["die_schule"], ["der_bahnhof"]]
+    },
+    "grammar_note": "Konjunktiv II: könnte (können的KII) + Infinitiv 表达非现实可能。ohne + Akkusativ 表示'没有…'。"
+  },
+  {
+    "id": "b1_004",
+    "level": "b1",
+    "tags": ["passiv", "vorgangspassiv", "präsens", "werden"],
+    "pattern": "{slot1} wird von {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "von"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot2": [["der_lehrer"], ["die_freundin"], ["der_vater"]],
+      "slot3": [["lesen"], ["schreiben"], ["empfehlen"]]
+    },
+    "grammar_note": "Vorgangspassiv 现在时：werden (按主语变位) + Partizip II。von + Dativ 引出施事者。被动语态强调受事而非施事。"
+  },
+  {
+    "id": "b1_005",
+    "level": "b1",
+    "tags": ["relativsatz", "nominativ", "nebensatz"],
+    "pattern": "Der Mann, der {slot1} {slot2}, ist mein {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "er", "tense": "present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["schreiben"], ["kaufen"], ["finden"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["das_auto"], ["der_tisch"]],
+      "slot3": [["der_freund"], ["der_bruder"], ["der_lehrer"], ["der_vater"]]
+    },
+    "grammar_note": "关系从句 Nominativ：关系代词 der (阳性单数第一格) 指代主句中的先行词。从句中变位动词置于句尾。"
+  },
+  {
+    "id": "b1_006",
+    "level": "b1",
+    "tags": ["relativsatz", "akkusativ", "nebensatz"],
+    "pattern": "Das Buch, das ich {slot1} habe, ist {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["kaufen"], ["finden"], ["bekommen"], ["empfehlen"]],
+      "slot2": [["interessant"], ["schwierig"], ["gut"], ["teuer"], ["wichtig"]]
+    },
+    "grammar_note": "关系从句 Akkusativ：关系代词 das (中性单数第四格) 在从句中作宾语。从句为完成时：haben + Partizip II，变位动词(hilfsverb)位于句尾。"
+  },
+  {
+    "id": "b1_007",
+    "level": "b1",
+    "tags": ["relativsatz", "dativ", "nebensatz"],
+    "pattern": "Die Frau, der ich {slot1} {slot2}, ist {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["geben"], ["empfehlen"], ["erklären"], ["zeigen"]],
+      "slot2": [["das_buch"], ["der_kaffee"], ["die_tasche"], ["der_apfel"]],
+      "slot3": [["groß"], ["klein"], ["schön"], ["alt"], ["jung"]]
+    },
+    "grammar_note": "关系从句 Dativ：关系代词 der (阴性单数第三格) 指代间接宾语。geben/empfehlen 等动词支配双宾语：人(Dat) + 物(Akk)。"
+  },
+  {
+    "id": "b1_008",
+    "level": "b1",
+    "tags": ["nebensatz", "weil", "kausal", "grund"],
+    "pattern": "Ich gehe nicht zur Arbeit, weil {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_wetter"], ["der_zug"], ["die_schule"], ["der_arzt"]],
+      "slot2": [["schön"], ["groß"], ["klein"], ["neu"], ["wichtig"]]
+    },
+    "grammar_note": "weil 原因从句：weil 引导的从句中变位动词位于句尾。主从句用逗号分隔。因果关系：主句为果，从句为因。"
+  },
+  {
+    "id": "b1_009",
+    "level": "b1",
+    "tags": ["nebensatz", "dass", "ergänzung", "meinung"],
+    "pattern": "Ich finde, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_stadt"], ["das_haus"], ["die_schule"], ["das_buch"], ["die_wohnung"]],
+      "slot2": [["schön"], ["groß"], ["interessant"], ["wichtig"], ["teuer"]]
+    },
+    "grammar_note": "dass 补足语从句：dass 引导的从句充当主句动词的宾语。从句中变位动词位于句尾。常用于表达观点(findet, denkt, meint, glaubt)。"
+  },
+  {
+    "id": "b1_010",
+    "level": "b1",
+    "tags": ["nebensatz", "obwohl", "konzessiv", "gegensatz"],
+    "pattern": "Ich gehe spazieren, obwohl {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_garten"], ["die_stadt"], ["das_wetter"], ["der_hund"]],
+      "slot2": [["klein"], ["alt"], ["schön"], ["groß"]]
+    },
+    "grammar_note": "obwohl 让步从句：表示'尽管…但是…'，从句表达一个与主句预期相反的情况。变位动词位于从句句尾。"
+  },
+  {
+    "id": "b1_011",
+    "level": "b1",
+    "tags": ["nebensatz", "damit", "final", "ziel"],
+    "pattern": "Ich lerne Deutsch, damit ich in {slot1} {slot2} kann.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"},
+      "slot2": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_stadt"], ["die_schule"], ["das_haus"]],
+      "slot2": [["arbeiten"], ["lernen"], ["wohnen"], ["sprechen"]]
+    },
+    "grammar_note": "damit 目的从句：表示主句行为的目的。从句中变位动词(können)位于句尾，两个不定式在其前。damit 从句有独立主语，可与 um...zu 对比。"
+  },
+  {
+    "id": "b1_012",
+    "level": "b1",
+    "tags": ["nebensatz", "während", "temporal", "gegensatz"],
+    "pattern": "Während ich {slot1}, {slot2} ich {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot2": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["arbeiten"], ["lernen"], ["essen"], ["lesen"]],
+      "slot2": [["lesen"], ["schreiben"], ["trinken"], ["sehen"]],
+      "slot3": [["das_buch"], ["die_zeitung"], ["der_kaffee"], ["der_tee"]]
+    },
+    "grammar_note": "während 从句：可表同时性('当…时')或对比('而…')。从句变位动词位于句尾。主句以变位动词开头(倒装)，因为从句占据第一位。"
+  },
+  {
+    "id": "b1_013",
+    "level": "b1",
+    "tags": ["nebensatz", "bevor", "temporal", "reihenfolge"],
+    "pattern": "Bevor ich {slot1}, muss ich {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["gehen"], ["fahren"], ["essen"], ["lesen"]],
+      "slot2": [["kaufen"], ["finden"], ["schreiben"], ["machen"]],
+      "slot3": [["das_buch"], ["der_koffer"], ["das_brot"], ["die_tasche"]]
+    },
+    "grammar_note": "bevor 时间先后从句：表示主句行为发生在从句之前。从句变位动词位于句尾。主句因从句占第一位而发生倒装。"
+  },
+  {
+    "id": "b1_014",
+    "level": "b1",
+    "tags": ["adjektivdeklination", "attributiv", "bestimmter_artikel", "nominativ"],
+    "pattern": "Der {slot1} {slot2} steht dort.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "attributive", "case": "nom", "gender_ref": "slot2"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["schön"], ["alt"], ["neu"]],
+      "slot2": [["der_tisch"], ["der_stuhl"], ["der_mann"], ["der_hund"]]
+    },
+    "grammar_note": "形容词变格：定冠词后(第一格)。阳性/中性/阴性第一格定冠词后形容词均加 -e。属于弱变化(Schwache Deklination)。"
+  },
+  {
+    "id": "b1_015",
+    "level": "b1",
+    "tags": ["adjektivdeklination", "attributiv", "unbestimmter_artikel", "akkusativ"],
+    "pattern": "Ich habe ein {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "attributive", "case": "akk", "gender_ref": "slot2"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["schön"], ["alt"], ["neu"], ["interessant"]],
+      "slot2": [["das_buch"], ["das_haus"], ["das_auto"], ["der_tisch"], ["die_tasche"]]
+    },
+    "grammar_note": "形容词变格：不定冠词后(第四格)。阳性Akk: ein + -en, 中性Akk: ein + -es, 阴性Akk: eine + -e。属于混合变化(Gemischte Deklination)。"
+  },
+  {
+    "id": "b1_016",
+    "level": "b1",
+    "tags": ["adjektivdeklination", "attributiv", "nullartikel", "akkusativ"],
+    "pattern": "Ich trinke {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "attributive", "case": "akk", "gender_ref": "slot2"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["schön"], ["alt"], ["neu"], ["gut"]],
+      "slot2": [["der_kaffee"], ["der_tee"], ["der_apfel"]]
+    },
+    "grammar_note": "形容词变格：零冠词后(第四格)。无冠词时形容词承担示格功能：阳性Akk + -en, 中性Akk + -es, 阴性Akk + -e。属于强变化(Starke Deklination)。"
+  },
+  {
+    "id": "b1_017",
+    "level": "b1",
+    "tags": ["genitiv", "attribut", "besitz"],
+    "pattern": "Das ist das Haus {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "sg"}
+    },
+    "replacement_pool": ["der_vater", "die_mutter", "der_freund", "die_freundin", "der_lehrer", "der_bruder", "die_schwester"],
+    "grammar_note": "Genitiv 属格作定语：表示所属关系。阳性/中性名词加 -(e)s (des Vaters), 阴性名词不变 (der Mutter)。置于被修饰名词之后。"
+  },
+  {
+    "id": "b1_018",
+    "level": "b1",
+    "tags": ["genitiv", "präposition", "wegen", "grund"],
+    "pattern": "Wegen {slot1} bleibe ich zu Hause.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "sg", "preposition": "wegen"}
+    },
+    "replacement_pool": ["die_schule", "der_arzt", "das_krankenhaus", "der_bahnhof", "der_flughafen"],
+    "grammar_note": "wegen + Genitiv 原因介词：表示'因为/由于…'。wegen 要求第二格。口语中可与 Dativ 连用，但书面标准为 Genitiv。"
+  },
+  {
+    "id": "b1_019",
+    "level": "b1",
+    "tags": ["genitiv", "präposition", "trotz", "konzessiv"],
+    "pattern": "Trotz {slot1} gehe ich zur Arbeit.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "sg", "preposition": "trotz"}
+    },
+    "replacement_pool": ["die_schule", "der_arzt", "das_krankenhaus"],
+    "grammar_note": "trotz + Genitiv 让步介词：表示'尽管/虽然…'。与 obwohl 从句语义相近但用名词结构，使表达更简洁正式。"
+  },
+  {
+    "id": "b1_020",
+    "level": "b1",
+    "tags": ["genitiv", "präposition", "während", "temporal"],
+    "pattern": "Während {slot1} war es sehr ruhig.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "sg", "preposition": "während"}
+    },
+    "replacement_pool": ["die_schule", "die_stadt", "der_garten"],
+    "grammar_note": "während + Genitiv 作介词：表示'在…期间'，与 während 作连词引导从句不同。介词用法接名词(第二格)，书面语风格。"
+  },
+  {
+    "id": "b1_021",
+    "level": "b1",
+    "tags": ["futur_i", "werden", "zukunft"],
+    "pattern": "Morgen werde ich {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["kaufen"], ["sehen"], ["finden"], ["schreiben"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["das_auto"], ["der_freund"]]
+    },
+    "grammar_note": "Futur I: werden (按主语变位) + Infinitiv 表达将来。不定式位于句尾。口语中常被现在时+时间状语替代。"
+  },
+  {
+    "id": "b1_022",
+    "level": "b1",
+    "tags": ["reflexiv", "sich_kümmern", "präposition", "um"],
+    "pattern": "Ich kümmere mich um {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "um"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_kind", "der_garten", "die_wohnung"],
+    "grammar_note": "反身动词 sich kümmern um + Akkusativ：表示'照顾/负责…'。sich 随主语变(Akk)，um 引出照顾的对象。"
+  },
+  {
+    "id": "b1_023",
+    "level": "b1",
+    "tags": ["reflexiv", "sich_beschweren", "präposition", "über"],
+    "pattern": "Ich beschwere mich über {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "über"}
+    },
+    "replacement_pool": ["der_lehrer", "das_buch", "die_schule", "die_wohnung"],
+    "grammar_note": "反身动词 sich beschweren über + Akkusativ：表示'抱怨/投诉…'。前置词 über 固定搭配，不可换成其他介词。"
+  },
+  {
+    "id": "b1_024",
+    "level": "b1",
+    "tags": ["verb_präposition", "warten_auf", "fest"],
+    "pattern": "Ich warte auf {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "auf"}
+    },
+    "replacement_pool": ["der_freund", "die_freundin", "der_zug", "der_bahnhof", "der_lehrer"],
+    "grammar_note": "动词固定搭配 warten auf + Akkusativ：表示'等待…'。auf 是 warten 的固定介词，与方位介词 auf (在…上)不同。"
+  },
+  {
+    "id": "b1_025",
+    "level": "b1",
+    "tags": ["verb_präposition", "denken_an", "fest"],
+    "pattern": "Ich denke an {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "an"}
+    },
+    "replacement_pool": ["der_freund", "die_freundin", "die_schule", "das_buch", "der_vater"],
+    "grammar_note": "动词固定搭配 denken an + Akkusativ：表示'想起/思念…'。an 在此不是方位介词(接Dativ)，而是固定搭配(接Akkusativ)。"
+  },
+  {
+    "id": "b1_026",
+    "level": "b1",
+    "tags": ["verb_präposition", "sich_freuen", "über_auf", "fest"],
+    "pattern": "Ich freue mich {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["über", "auf"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot2": [["der_bahnhof"], ["die_schule"], ["das_buch"], ["der_freund"]]
+    },
+    "grammar_note": "sich freuen über + Akk (对已发生的事高兴) vs. sich freuen auf + Akk (对未来的事期待)。介词选择区分时间指向。"
+  },
+  {
+    "id": "b1_027",
+    "level": "b1",
+    "tags": ["zweiteilige_konnektoren", "sowohl_als_auch", "aufzählung"],
+    "pattern": "Ich mag sowohl {slot1} als auch {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_kaffee"], ["der_tee"], ["das_buch"], ["der_apfel"]],
+      "slot2": [["der_tee"], ["der_kaffee"], ["die_zeitung"], ["das_brot"]]
+    },
+    "grammar_note": "zweiteilige Konnektoren: sowohl...als auch 表示'既…又…'，连接两个并列成分。两者地位平等，语气比 und 更强调。"
+  },
+  {
+    "id": "b1_028",
+    "level": "b1",
+    "tags": ["zweiteilige_konnektoren", "weder_noch", "verneinung"],
+    "pattern": "Ich habe weder {slot1} noch {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_kaffee"], ["der_tee"], ["das_buch"], ["der_apfel"]],
+      "slot2": [["der_tee"], ["der_kaffee"], ["die_zeitung"], ["das_brot"]]
+    },
+    "grammar_note": "zweiteilige Konnektoren: weder...noch 表示'既不…也不…'，双重否定。无冠词时直接用名词复数/不可数形式。"
+  },
+  {
+    "id": "b1_029",
+    "level": "b1",
+    "tags": ["zweiteilige_konnektoren", "nicht_nur_sondern_auch", "steigerung"],
+    "pattern": "Er ist nicht nur {slot1}, sondern auch {slot2}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["jung"], ["schön"], ["alt"]],
+      "slot2": [["klein"], ["alt"], ["gut"], ["neu"]]
+    },
+    "grammar_note": "zweiteilige Konnektoren: nicht nur...sondern auch 表示'不仅…而且…'，后项比前项更进一步。sondern 前有逗号。"
+  },
+  {
+    "id": "b1_030",
+    "level": "b1",
+    "tags": ["wo_kompositum", "fragepronomen", "präpositionaladverb"],
+    "pattern": "Weißt du, {slot1} er {slot2}?",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["womit", "worüber", "wofür", "wovon", "woran"]},
+      "slot2": {"type": "verb", "person": "er", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot2": [["sprechen"], ["schreiben"], ["denken"], ["arbeiten"]]
+    },
+    "grammar_note": "疑问代副词 wo-复合词：wo + 介词复合为疑问代副词，用于询问介词宾语。wo(r)- 替代事物的介词宾语(非人)，如 womit = mit was。"
+  },
+  {
+    "id": "b1_031",
+    "level": "b1",
+    "tags": ["da_kompositum", "präpositionaladverb", "verweis"],
+    "pattern": "Ich habe {slot1} gelesen. {slot2} freue ich mich sehr.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "fixed_phrase", "values": ["Darüber", "Dafür", "Daran", "Davon", "Damit"]}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["der_brief"]]
+    },
+    "grammar_note": "代副词 da-复合词：da + 介词复合为代副词，回指前文已提事物。da(r)- 替代介词+物的结构(非人)。如 darüber = über das。"
+  },
+  {
+    "id": "b1_032",
+    "level": "b1",
+    "tags": ["nebensatz", "sodass", "konsekutiv", "folge"],
+    "pattern": "{slot1} ist so {slot2}, sodass ich {slot3} muss.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_schule"], ["die_wohnung"]],
+      "slot2": [["interessant"], ["wichtig"], ["teuer"], ["schwierig"]],
+      "slot3": [["lernen"], ["lesen"], ["arbeiten"], ["verstehen"]]
+    },
+    "grammar_note": "sodass 结果从句：表示主句情况导致的后果。主句中常用 so 增强程度，sodass 从句变位动词位于句尾。"
+  },
+  {
+    "id": "b1_033",
+    "level": "b1",
+    "tags": ["nebensatz", "indem", "modal", "mittel"],
+    "pattern": "Man lernt Deutsch, indem man {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "er", "tense": "present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["schreiben"], ["sprechen"], ["finden"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["die_schule"]]
+    },
+    "grammar_note": "indem 方式从句：表示'通过…方式'，说明主句行为如何实现。从句变位动词位于句尾。主语通常与主句一致。"
+  },
+  {
+    "id": "b1_034",
+    "level": "b1",
+    "tags": ["nebensatz", "je_desto", "komparativ", "vergleich"],
+    "pattern": "Je mehr ich {slot1}, desto {slot2} bin ich.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["lernen"], ["lesen"], ["arbeiten"], ["schreiben"]],
+      "slot2": [["groß"], ["klein"], ["schön"], ["alt"], ["neu"]]
+    },
+    "grammar_note": "je...desto 比较从句：表示'越…越…'。je 从句变位动词位于句尾，desto 主句以变位动词开头(语序特殊)。je + Komparativ, desto + Komparativ。"
+  },
+  {
+    "id": "b1_035",
+    "level": "b1",
+    "tags": ["plusquamperfekt", "vorzeitigkeit", "vergangenheit"],
+    "pattern": "Bevor ich {slot1}, hatte ich schon {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "past"},
+      "slot2": {"type": "verb", "person": "partizip2"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["gehen"], ["fahren"], ["kommen"]],
+      "slot2": [["lesen"], ["essen"], ["finden"], ["schreiben"]],
+      "slot3": [["das_buch"], ["das_brot"], ["der_brief"], ["der_apfel"]]
+    },
+    "grammar_note": "Plusquamperfekt 过去完成时：hatte/war + Partizip II 表达'过去的过去'。bevor 从句用 Präteritum (后发生)，主句用 Plusquamperfekt (先发生)。"
+  },
+  {
+    "id": "b1_036",
+    "level": "b1",
+    "tags": ["modalverb", "subjektiv", "sollen", "behauptung"],
+    "pattern": "Er soll {slot1} {slot2} haben.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["kaufen"], ["finden"], ["lesen"], ["schreiben"]],
+      "slot2": [["das_auto"], ["das_buch"], ["die_zeitung"], ["das_haus"]]
+    },
+    "grammar_note": "情态动词主观用法：sollen 表'据说'(转述他人说法，不保证真实性)。soll + Partizip II + haben = 据说做了…。注意与客观'应该'区分。"
+  },
+  {
+    "id": "b1_037",
+    "level": "b1",
+    "tags": ["passiversatz", "sich_lassen", "modal", "möglichkeit"],
+    "pattern": "{slot1} lässt sich leicht {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["die_tür"], ["das_fenster"]],
+      "slot2": [["lesen"], ["finden"], ["verstehen"], ["erklären"]]
+    },
+    "grammar_note": "被动替代形式 sich lassen + Infinitiv：表'可以被…'(被动+可能)。sich lässt + Infinitiv ≈ kann + Partizip II + werden。比被动更简洁。"
+  },
+  {
+    "id": "b1_038",
+    "level": "b1",
+    "tags": ["um_zu", "infinitiv", "final", "ziel"],
+    "pattern": "Ich lerne Deutsch, um {slot1} zu {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot2": [["lesen"], ["schreiben"], ["verstehen"], ["finden"]]
+    },
+    "grammar_note": "扩展不定式 um...zu：表示目的。主语与主句相同，无需重复。与 damit 从句的区别：damit 可以有独立主语，um...zu 主语必同。"
+  },
+  {
+    "id": "b1_039",
+    "level": "b1",
+    "tags": ["adjektivdeklination", "attributiv", "bestimmter_artikel", "dativ"],
+    "pattern": "Ich sitze auf dem {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "attributive", "case": "dat", "gender_ref": "slot2"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "auf"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["schön"], ["alt"], ["neu"]],
+      "slot2": [["der_stuhl"], ["der_tisch"]]
+    },
+    "grammar_note": "形容词变格：定冠词后 Dativ。所有性别 Dativ 定冠词后形容词均加 -en。auf + Dativ 表静态位置(在…上)。"
+  },
+  {
+    "id": "b1_040",
+    "level": "b1",
+    "tags": ["relativsatz", "plural", "nominativ"],
+    "pattern": "Die Leute, die {slot1} {slot2}, sind {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "sie", "tense": "present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["kaufen"], ["finden"], ["sehen"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["das_haus"]],
+      "slot3": [["groß"], ["klein"], ["schön"], ["jung"], ["alt"]]
+    },
+    "grammar_note": "关系从句：复数 Nominativ 关系代词 die。不论性别，复数第一格关系代词始终为 die。从句变位动词位于句尾。"
+  },
+  {
+    "id": "b1_041",
+    "level": "b1",
+    "tags": ["bewerbung", "reflexiv", "um", "karriere", "job"],
+    "pattern": "Ich bewerbe mich um {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "um"}
+    },
+    "replacement_pool": ["die_Arbeit", "die_Ausbildung", "der_Studiengang"],
+    "grammar_note": "反身动词 sich bewerben um + Akkusativ：表示'申请…'。um 是 bewerben 的固定介词。B1考试求职场景高频句型，注意与 bewerben bei (公司/机构) 区分。"
+  },
+  {
+    "id": "b1_042",
+    "level": "b1",
+    "tags": ["erfahrung", "in", "karriere", "job"],
+    "pattern": "Ich habe Erfahrung in {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": ["die_Arbeit", "die_Ausbildung", "die_Praxis"],
+    "grammar_note": "Erfahrung in + Dativ：表示'在…方面有经验'。介词 in 接第三格，与 haben 构成固定搭配。求职面试自我介绍的核心表达。"
+  },
+  {
+    "id": "b1_043",
+    "level": "b1",
+    "tags": ["beschwerde", "unzufrieden", "mit", "brief"],
+    "pattern": "Ich bin mit {slot1} unzufrieden.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "mit"}
+    },
+    "replacement_pool": ["die_Arbeit", "die_Wohnung", "der_Vertrag", "die_Pruefung"],
+    "grammar_note": "形容词 zufrieden/unzufrieden mit + Dativ：表达'对…(不)满意'。与 sich beschweren über (行动导向的投诉)不同，此处侧重主观感受。unzufrieden 永远与 mit 连用。"
+  },
+  {
+    "id": "b1_044",
+    "level": "b1",
+    "tags": ["vorschlag", "dass", "nebensatz", "kommunikation"],
+    "pattern": "Ich schlage vor, dass wir {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "wir", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Besprechung"], ["das_Referat"], ["die_Arbeit"], ["die_Vorlesung"]],
+      "slot2": [["besuchen"], ["diskutieren"], ["organisieren"], ["verbessern"]]
+    },
+    "grammar_note": "vorschlagen, dass + 从句：表示'建议(做某事)'。dass 从句中变位动词位于句尾。vorschlagen 为不可分动词，前缀不分离。dass 从句替换直接用不定式的口语结构。"
+  },
+  {
+    "id": "b1_045",
+    "level": "b1",
+    "tags": ["meinung", "dass", "diskussion", "argumentation"],
+    "pattern": "Ich bin der Meinung, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Methode"], ["die_Ausbildung"], ["die_Arbeit"], ["die_Schule"]],
+      "slot2": [["wichtig"], ["notwendig"], ["sinnvoll"], ["nützlich"]]
+    },
+    "grammar_note": "Ich bin der Meinung, dass...：表达观点，语域比 ich finde 更正式。属 B1 写作/口试常用句型。否定形式：Ich bin nicht der Meinung, dass...。"
+  },
+  {
+    "id": "b1_046",
+    "level": "b1",
+    "tags": ["zustimmung", "dativ", "dass", "diskussion"],
+    "pattern": "Ich stimme {slot1} zu, dass {slot2} {slot3} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["der_Professor"], ["der_Kollege"], ["die_Kollegin"]],
+      "slot2": [["die_Methode"], ["die_Analyse"], ["das_Ergebnis"], ["die_These"]],
+      "slot3": [["wichtig"], ["interessant"], ["sinnvoll"], ["richtig"]]
+    },
+    "grammar_note": "zustimmen + Dativ：表示'同意(某人)'。zustimmen 为不及物动词，接第三格。dass 从句说明同意的具体内容。注意：Da stimme ich zu 中 da 为代副词，指代前文内容。"
+  },
+  {
+    "id": "b1_047",
+    "level": "b1",
+    "tags": ["grafik", "diagrammbeschreibung", "hervorgehen", "testdaf"],
+    "pattern": "Aus der Grafik geht hervor, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Pruefung"], ["das_Ergebnis"], ["die_Note"], ["die_Arbeit"]],
+      "slot2": [["wichtig"], ["schwierig"], ["interessant"], ["positiv"]]
+    },
+    "grammar_note": "aus der Grafik geht hervor, dass...：图表描述高级句型，比 Die Grafik zeigt 更正式。hervorgehen 为可分动词，'aus etw. hervorgehen' = '从…中显现/得出'。"
+  },
+  {
+    "id": "b1_048",
+    "level": "b1",
+    "tags": ["telefon", "nachricht", "ausrichten", "dattiv"],
+    "pattern": "Bitte richten Sie {slot1} aus, dass {slot2} {slot3} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_Kollege"], ["der_Professor"], ["der_lehrer"], ["die_Kollegin"]],
+      "slot2": [["die_Besprechung"], ["die_Vorlesung"], ["das_Seminar"], ["die_Pruefung"]],
+      "slot3": [["wichtig"], ["notwendig"], ["sinnvoll"], ["interessant"]]
+    },
+    "grammar_note": "jemandem (Dat) ausrichten, dass...：电话留言核心句型。ausrichten 为可分动词(richten...aus)，间接宾语用 Dativ。表示'转告某人…'。Richten Sie...aus 为祈使句尊称。"
+  },
+  {
+    "id": "b1_049",
+    "level": "b1",
+    "tags": ["indirekte_rede", "dass", "berichten", "vergangenheit"],
+    "pattern": "Er hat mir gesagt, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Pruefung"], ["die_Arbeit"], ["das_Seminar"], ["die_Vorlesung"]],
+      "slot2": [["schwierig"], ["interessant"], ["wichtig"], ["gut"]]
+    },
+    "grammar_note": "间接引语 mit dass：用 dass 从句转述他人话语(直陈式)。主句用完成时(hat gesagt)，从句用现在时。比 Konjunktiv I (habe gesagt)更口语化。B1 转述基础句型。"
+  },
+  {
+    "id": "b1_050",
+    "level": "b1",
+    "tags": ["vergleich", "im_vergleich_zu", "dativ", "komparativ"],
+    "pattern": "Im Vergleich zu {slot1} ist {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Stadt"], ["die_Schule"], ["die_Firma"], ["die_Wohnung"]],
+      "slot2": [["die_Universitaet"], ["die_Bibliothek"], ["das_Unternehmen"], ["das_Haus"]],
+      "slot3": [["groß"], ["klein"], ["neu"], ["alt"]]
+    },
+    "grammar_note": "Im Vergleich zu + Dativ：表示'与…相比'。介词 zu 要求第三格。整句结构为介词短语 + 主句(ist 第二位的判断句)。结构语义上 slot2 与 slot3 在比较维度上应对应(尺寸、新旧等)。"
+  },
+  {
+    "id": "b1_051",
+    "level": "b1",
+    "tags": ["kausal", "grund", "daran_liegen", "dass"],
+    "pattern": "Das liegt daran, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Pruefung"], ["die_Arbeit"], ["das_Seminar"], ["die_Ausbildung"]],
+      "slot2": [["wichtig"], ["schwierig"], ["notwendig"], ["interessant"]]
+    },
+    "grammar_note": "Das liegt daran, dass...：解释原因的常用句型，意为'这是因为…'。daran 为代副词(an + das)，代指前文提到的情况。比 weil 从句更适合做段落的起承转合。"
+  },
+  {
+    "id": "b1_052",
+    "level": "b1",
+    "tags": ["konzessiv", "dennoch", "gegensatz", "adverb"],
+    "pattern": "{slot1} ist {slot2}, dennoch gehe ich zu {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Pruefung"], ["die_Arbeit"], ["die_Schule"], ["die_Besprechung"]],
+      "slot2": [["schwierig"], ["wichtig"], ["groß"], ["teuer"]],
+      "slot3": [["die_Schule"], ["die_Arbeit"], ["die_Bibliothek"], ["die_Universitaet"]]
+    },
+    "grammar_note": "dennoch 让步副词：'尽管如此'。位于主句第一位(占位)，引起变位动词提前到第二位(倒装)。与 trotzdem 语义相近，dennoch 略偏书面。第一句与第二句为逗号连接。"
+  },
+  {
+    "id": "b1_053",
+    "level": "b1",
+    "tags": ["konditional", "vorausgesetzt", "dass", "bedingung"],
+    "pattern": "Vorausgesetzt, dass {slot1} {slot2} ist, {slot3} ich zu {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot4": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Vorlesung"], ["die_Besprechung"], ["das_Seminar"], ["die_Arbeit"]],
+      "slot2": [["wichtig"], ["notwendig"], ["interessant"], ["sinnvoll"]],
+      "slot3": [["gehen"], ["fahren"], ["kommen"]],
+      "slot4": [["die_Universitaet"], ["die_Schule"], ["die_Bibliothek"]]
+    },
+    "grammar_note": "Vorausgesetzt, dass...：表示'前提是/条件是…'，比 wenn 更正式的条件表达。dass 从句变位动词在句尾。主句因从句占第一位而倒装(变位动词移到主语之前)。"
+  },
+  {
+    "id": "b1_054",
+    "level": "b1",
+    "tags": ["konditional", "es_sei_denn", "einschränkung"],
+    "pattern": "Ich gehe zu {slot1}, es sei denn, {slot2} kommt.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Arbeit"], ["die_Schule"], ["die_Bibliothek"], ["die_Universitaet"]],
+      "slot2": [["der_Freund"], ["der_Kollege"], ["der_Professor"], ["die_Freundin"]]
+    },
+    "grammar_note": "es sei denn, ...：表示'除非…'，引导唯一的例外条件。es sei denn 后必须加逗号，其后的从句用正常语序(动词第二位)。此结构中 sei 为 sein 的 Konjunktiv I 残余用法。"
+  },
+  {
+    "id": "b1_055",
+    "level": "b1",
+    "tags": ["modalverb", "praeteritum", "musste", "durfte", "sollte", "wollte"],
+    "pattern": "Ich {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["musste", "durfte", "sollte", "wollte"]},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot2": [["lesen"], ["schreiben"], ["lernen"], ["arbeiten"], ["kaufen"]],
+      "slot3": [["das_Buch"], ["die_Zeitung"], ["die_Arbeit"], ["das_Auto"]]
+    },
+    "grammar_note": "情态动词过去式(Präteritum)：musste (müssen), durfte (dürfen), sollte (sollen), wollte (wollen) 的过去时形式。注意客观用法(客观必须/允许)与主观用法的区别。不定式动词位于句尾。"
+  },
+  {
+    "id": "b1_056",
+    "level": "b1",
+    "tags": ["konjunktiv_ii", "würde", "an_deiner_stelle", "rat"],
+    "pattern": "An deiner Stelle würde ich {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["kaufen"], ["besuchen"], ["schreiben"], ["lernen"]],
+      "slot2": [["das_Buch"], ["die_Zeitung"], ["die_Universitaet"], ["die_Arbeit"]]
+    },
+    "grammar_note": "An deiner Stelle würde ich...：'如果我是你，我会…'。an jds. Stelle (在…的位置上)为固定短语，würde + Infinitiv 为 Konjunktiv II 的替代形式。比直接说'du solltest...'更委婉礼貌。"
+  },
+  {
+    "id": "b1_057",
+    "level": "b1",
+    "tags": ["sich_lassen", "passiversatz", "beweisen", "akademisch"],
+    "pattern": "{slot1} lässt sich {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_These"], ["die_Analyse"], ["das_Ergebnis"], ["die_Theorie"]],
+      "slot2": [["beweisen"], ["erklären"], ["verstehen"], ["beschreiben"]]
+    },
+    "grammar_note": "sich lassen + Infinitiv 学术变体：使用学术名词做主语。lässt sich beweisen = 可以被证明。与 b1_037 的日常名词(leicht/Buch)不同，此处侧重学术语境中的可能性/可行性表达。"
+  },
+  {
+    "id": "b1_058",
+    "level": "b1",
+    "tags": ["passiv", "modalverb", "sollte", "werden"],
+    "pattern": "{slot1} sollte {slot2} werden.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Pruefung"], ["die_Arbeit"], ["das_Referat"], ["der_Vertrag"]],
+      "slot2": [["machen"], ["schreiben"], ["organisieren"], ["verbessern"]]
+    },
+    "grammar_note": "被动 + 情态动词 sollte：sollte (sollen 的 KII 形式) + Partizip II + werden，表示'应该被…'(委婉建议/义务)。werden 位于句尾(不定式形式)。比 muss + PII + werden(强行义务)语气更温和。"
+  },
+  {
+    "id": "b1_059",
+    "level": "b1",
+    "tags": ["relativsatz", "was", "satzanschluss", "indefinit"],
+    "pattern": "Alles, was ich {slot1} habe, ist {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["lesen"], ["schreiben"], ["lernen"], ["finden"], ["kaufen"]],
+      "slot2": [["interessant"], ["wichtig"], ["gut"], ["neu"]]
+    },
+    "grammar_note": "关系从句 was：当先行词为不定代词 alles/nichts/vieles/etwas 等无性数标记的词时，关系代词用 was(非 der/die/das)。此处 Alles, was... = '所有…的东西'。完成时 haben + PII，habe 位于从句句尾。"
+  },
+  {
+    "id": "b1_060",
+    "level": "b1",
+    "tags": ["nominalisierung", "adjektiv", "der_alte", "substantiviert"],
+    "pattern": "Der {slot1} geht zu {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Alte", "Kranke", "Junge"]},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": {
+      "slot2": [["der_Arzt"], ["die_Schule"], ["die_Bibliothek"], ["die_Arbeit"]]
+    },
+    "grammar_note": "名词化形容词：形容词大写作名词使用，保留形容词变格。der Alte (老人/die Alte 老妇人), der Kranke (病人), der Junge (年轻人)。注意：der Junge 也可作普通名词(小男孩)，但此处作名词化形容词。"
+  }
+]

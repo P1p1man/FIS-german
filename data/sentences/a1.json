@@ -1,0 +1,697 @@
+[
+  {
+    "id": "a1_001",
+    "level": "a1",
+    "tags": ["sein", "predicative", "adjective", "introduction"],
+    "pattern": "Ich bin {slot1}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["groß", "klein", "jung", "alt", "schön", "neu", "gut", "müde", "krank"],
+    "grammar_note": "系动词 sein 后接表语形容词，形容词不做词尾变化，保持原形"
+  },
+  {
+    "id": "a1_002",
+    "level": "a1",
+    "tags": ["haben", "akkusativ", "possess", "daily"],
+    "pattern": "Ich habe {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_buch", "das_auto", "die_tasche", "der_apfel", "das_brot", "der_koffer"],
+    "grammar_note": "haben 要求第四格宾语，阳性名词定冠词 der 在 Akkusativ 中变为 den"
+  },
+  {
+    "id": "a1_003",
+    "level": "a1",
+    "tags": ["sein", "nominativ", "objects", "identification"],
+    "pattern": "Das ist {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_tisch", "der_stuhl", "das_fenster", "die_tür", "das_haus", "die_schule", "das_zimmer", "der_bahnhof"],
+    "grammar_note": "sein 后的名词用第一格 Nominativ 作表语，定冠词保持 der/die/das 原形"
+  },
+  {
+    "id": "a1_004",
+    "level": "a1",
+    "tags": ["sein", "irregular", "question", "ja-nein-frage", "adjective"],
+    "pattern": "Bist du {slot1}?",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["groß", "klein", "alt", "jung", "müde", "krank", "schön", "neu"],
+    "grammar_note": "sein 第二人称 du 变位为 bist，Ja/Nein 疑问句将变位动词置于句首"
+  },
+  {
+    "id": "a1_005",
+    "level": "a1",
+    "tags": ["haben", "irregular", "family", "third-person"],
+    "pattern": "Er hat {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_auto", "die_tasche", "das_buch", "der_bruder", "die_schwester"],
+    "grammar_note": "haben 第三人称单数 er/sie/es 变位为 hat，是不规则变化"
+  },
+  {
+    "id": "a1_006",
+    "level": "a1",
+    "tags": ["werden", "irregular", "weather", "change"],
+    "pattern": "Es wird {slot1}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["groß", "klein", "alt", "kalt", "warm", "schön", "neu", "teuer"],
+    "grammar_note": "werden 表示‘变得’，第三人称 es 变位为 wird，后接表语形容词"
+  },
+  {
+    "id": "a1_007",
+    "level": "a1",
+    "tags": ["modal", "können", "ability", "hobby"],
+    "pattern": "Ich kann gut {slot1}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["sprechen", "lesen", "schreiben", "spielen", "lernen"],
+    "grammar_note": "情态动词 können 变位后主动词用原形置于句末，构成框形结构"
+  },
+  {
+    "id": "a1_008",
+    "level": "a1",
+    "tags": ["modal", "müssen", "obligation", "daily"],
+    "pattern": "Ich muss {slot1}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["arbeiten", "gehen", "kommen", "lernen", "essen"],
+    "grammar_note": "情态动词 müssen 表示必须做某事，主动词原形置于句末"
+  },
+  {
+    "id": "a1_009",
+    "level": "a1",
+    "tags": ["modal", "möchten", "desire", "shopping"],
+    "pattern": "Ich möchte {slot1} kaufen.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["das_buch", "die_zeitung", "die_tasche", "das_brot", "der_apfel", "der_koffer", "das_auto"],
+    "grammar_note": "möchten 是 mögen 的虚拟二式，比 wollen 更礼貌，主动词原形在句末"
+  },
+  {
+    "id": "a1_010",
+    "level": "a1",
+    "tags": ["possessiv", "mein", "family", "identification"],
+    "pattern": "Das ist mein {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_buch", "das_auto", "die_tasche", "der_bruder", "die_schwester", "das_zimmer"],
+    "grammar_note": "物主冠词 mein 按名词词性变格，第一格时阳性 mein、阴性 meine、中性 mein"
+  },
+  {
+    "id": "a1_011",
+    "level": "a1",
+    "tags": ["possessiv", "dein", "question", "ja-nein-frage"],
+    "pattern": "Ist das dein {slot1}?",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_buch", "das_auto", "die_tasche", "der_stuhl", "die_zeitung"],
+    "grammar_note": "物主冠词 dein 变格规则与 mein 完全相同，疑问句动词前置"
+  },
+  {
+    "id": "a1_012",
+    "level": "a1",
+    "tags": ["negation", "nicht", "daily", "verb"],
+    "pattern": "Ich {slot1} nicht.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"}
+    },
+    "replacement_pool": ["arbeiten", "essen", "trinken", "spielen", "lernen", "gehen"],
+    "grammar_note": "nicht 否定整个谓语动词时置于句末，区别于否定名词的 kein"
+  },
+  {
+    "id": "a1_013",
+    "level": "a1",
+    "tags": ["negation", "kein", "akkusativ", "possess"],
+    "pattern": "Ich habe kein {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_hund", "die_katze", "das_buch", "das_auto", "die_tasche", "der_koffer", "das_brot"],
+    "grammar_note": "kein 否定带不定冠词或无冠词的名词，变格与 ein 相同：阳性 keinen、阴性 keine、中性 kein"
+  },
+  {
+    "id": "a1_014",
+    "level": "a1",
+    "tags": ["w-frage", "question", "opinion", "social"],
+    "pattern": "Wie findest du {slot1}?",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["das_buch", "die_stadt", "das_auto", "die_wohnung", "der_kaffee", "die_schule", "der_garten"],
+    "grammar_note": "W-疑问词 wie 置于句首，变位动词在第二位，主语第三位，宾语在句末"
+  },
+  {
+    "id": "a1_015",
+    "level": "a1",
+    "tags": ["gern", "preference", "food", "hobby", "adverb"],
+    "pattern": "Ich {slot1} gern {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["essen"], ["trinken"], ["lesen"], ["spielen"], ["machen"]],
+      "slot2": [["der_apfel"], ["der_kaffee"], ["das_buch"], ["der_tee"], ["das_brot"]]
+    },
+    "grammar_note": "gern 是副词，放在变位动词后宾语前，表示‘喜欢做某事’"
+  },
+  {
+    "id": "a1_016",
+    "level": "a1",
+    "tags": ["zahlen", "age", "introduction", "number"],
+    "pattern": "Ich bin {slot1} Jahre alt.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["20", "25", "30", "35", "18", "22", "28", "40"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "德语表达年龄用 sein + 数字 + Jahre alt，Jahre 是 Jahr 的复数形式"
+  },
+  {
+    "id": "a1_017",
+    "level": "a1",
+    "tags": ["dativ", "mit", "travel", "transport", "praeposition"],
+    "pattern": "Ich fahre mit {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "mit"}
+    },
+    "replacement_pool": ["der_zug", "das_auto", "der_freund", "die_freundin"],
+    "grammar_note": "介词 mit 永远支配第三格 Dativ，阳中性定冠词变为 dem，阴性变 der"
+  },
+  {
+    "id": "a1_018",
+    "level": "a1",
+    "tags": ["dativ", "zu", "social", "movement", "praeposition"],
+    "pattern": "Ich gehe zu {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": ["der_freund", "die_freundin", "der_arzt", "der_lehrer", "die_lehrerin", "der_vater", "die_mutter"],
+    "grammar_note": "介词 zu 支配第三格 Dativ，表示‘去某人那里’，人作宾语"
+  },
+  {
+    "id": "a1_019",
+    "level": "a1",
+    "tags": ["dativ", "nach", "travel", "cities", "praeposition"],
+    "pattern": "Ich fahre nach {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Berlin", "München", "Hamburg", "Frankfurt", "Köln", "Dresden", "Leipzig"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "nach 用于无冠词的中性城市名和国家名，表示去往某地"
+  },
+  {
+    "id": "a1_020",
+    "level": "a1",
+    "tags": ["dativ", "aus", "introduction", "origin", "praeposition"],
+    "pattern": "Ich komme aus {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Deutschland", "Österreich", "der Schweiz", "England", "Frankreich", "Italien", "Spanien"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "aus 表示来自某个国家或城市，支配第三格 Dativ"
+  },
+  {
+    "id": "a1_021",
+    "level": "a1",
+    "tags": ["akkusativ", "für", "shopping", "gift", "praeposition"],
+    "pattern": "Das ist für {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "für"}
+    },
+    "replacement_pool": ["der_freund", "die_freundin", "die_mutter", "der_vater", "der_bruder", "die_schwester", "das_kind"],
+    "grammar_note": "介词 für 永远支配第四格 Akkusativ，阳性定冠词变为 den"
+  },
+  {
+    "id": "a1_022",
+    "level": "a1",
+    "tags": ["akkusativ", "ohne", "daily", "praeposition"],
+    "pattern": "Ohne {slot1} gehe ich nicht.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "ohne"}
+    },
+    "replacement_pool": ["der_koffer", "die_tasche", "das_buch", "der_kaffee", "das_auto", "der_hund"],
+    "grammar_note": "ohne 支配第四格，介词短语置于句首时变位动词在第二位"
+  },
+  {
+    "id": "a1_023",
+    "level": "a1",
+    "tags": ["wechselpräposition", "in", "akkusativ", "movement", "daily"],
+    "pattern": "Ich gehe in {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": ["die_schule", "die_stadt", "das_haus", "der_garten", "das_zimmer", "die_wohnung"],
+    "grammar_note": "Wechselpräposition in 表示运动方向（Wohin?）时支配第四格 Akkusativ"
+  },
+  {
+    "id": "a1_024",
+    "level": "a1",
+    "tags": ["wechselpräposition", "in", "dativ", "location"],
+    "pattern": "Ich bin in {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": ["die_schule", "die_stadt", "das_haus", "der_garten", "das_zimmer", "die_wohnung"],
+    "grammar_note": "同一介词 in 表示静态位置（Wo?）时支配第三格 Dativ，与运动方向的 Akkusativ 形成对比"
+  },
+  {
+    "id": "a1_025",
+    "level": "a1",
+    "tags": ["zeit", "wochentag", "daily", "dativ"],
+    "pattern": "Am {slot1} {slot2} ich.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]},
+      "slot2": {"type": "verb", "person": "ich", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot2": [["arbeiten"], ["lernen"], ["gehen"], ["kommen"], ["spielen"]]
+    },
+    "grammar_note": "星期前用 an + dem 缩写为 am，构成时间状语置于句首时动词在第二位"
+  },
+  {
+    "id": "a1_026",
+    "level": "a1",
+    "tags": ["imperativ", "command", "social", "daily"],
+    "pattern": "{slot1} {slot2}!",
+    "slots": {
+      "slot1": {"type": "verb", "person": "imp"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["essen"], ["trinken"], ["lesen"], ["nehmen"], ["kaufen"]],
+      "slot2": [["der_apfel"], ["der_kaffee"], ["das_buch"], ["der_stuhl"], ["das_brot"]]
+    },
+    "grammar_note": "命令式对 du：动词词干（部分加 -e），人称代词省略，句末用感叹号"
+  },
+  {
+    "id": "a1_027",
+    "level": "a1",
+    "tags": ["trennbar", "separable-verb", "shopping", "daily"],
+    "pattern": "Ich kaufe {slot1} ein.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["das_brot", "der_apfel", "die_zeitung", "das_buch", "die_tasche", "der_kaffee"],
+    "grammar_note": "可分动词 einkaufen：前缀 ein 在主动词变位后分离并置于句末，构成框形结构"
+  },
+  {
+    "id": "a1_028",
+    "level": "a1",
+    "tags": ["komparativ", "vergleich", "so-wie", "adjective", "equal-comparison"],
+    "pattern": "{slot1} ist so {slot2} wie {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_hund"], ["die_katze"], ["das_buch"], ["die_stadt"], ["das_auto"]],
+      "slot2": [["groß"], ["klein"], ["alt"], ["schön"], ["gut"], ["teuer"]],
+      "slot3": [["der_hund"], ["die_katze"], ["das_buch"], ["die_stadt"], ["das_auto"]]
+    },
+    "grammar_note": "so + 形容词原级 + wie 表示同级比较，形容词不做任何词尾变化"
+  },
+  {
+    "id": "a1_029",
+    "level": "a1",
+    "tags": ["es-gibt", "akkusativ", "location", "existence"],
+    "pattern": "Es gibt {slot1} hier.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_bahnhof", "die_schule", "das_krankenhaus", "der_garten", "das_buch", "der_flughafen"],
+    "grammar_note": "Es gibt 是固定表达，表示‘存在/有’，其后永远接第四格 Akkusativ"
+  },
+  {
+    "id": "a1_030",
+    "level": "a1",
+    "tags": ["adverb", "frequenz", "immer", "daily", "habit"],
+    "pattern": "Ich {slot1} immer {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "ich", "tense": "present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["essen"], ["trinken"], ["lesen"], ["kaufen"], ["nehmen"]],
+      "slot2": [["der_apfel"], ["der_kaffee"], ["das_buch"], ["das_brot"], ["der_tee"]]
+    },
+    "grammar_note": "频率副词 immer 放在变位动词后、宾语前。同类的还有 oft（经常）、manchmal（有时）、nie（从不）"
+  },
+  {
+    "id": "a1_031",
+    "level": "a1",
+    "tags": ["possessiv", "von", "dativ", "zuordnung", "praeposition"],
+    "pattern": "Das ist das Auto von {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "von"}
+    },
+    "replacement_pool": ["der_mann", "die_frau", "das_kind", "der_lehrer", "der_arzt", "der_vater", "die_mutter"],
+    "grammar_note": "von + Dativ 是口语中最常用的所属表达，替代书面语的 Genitiv"
+  },
+  {
+    "id": "a1_032",
+    "level": "a1",
+    "tags": ["w-frage", "question", "location", "travel", "sein", "wo"],
+    "pattern": "Wo ist {slot1}?",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["der_bahnhof", "die_schule", "das_krankenhaus", "die_apotheke", "der_supermarkt", "die_bank"],
+    "grammar_note": "W-疑问词 wo 询问地点，置于句首，变位动词 ist 在第二位。问路最基础句式"
+  },
+  {
+    "id": "a1_033",
+    "level": "a1",
+    "tags": ["w-frage", "question", "travel", "dativ", "zu", "direction"],
+    "pattern": "Wie komme ich zu {slot1}?",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": ["der_bahnhof", "das_krankenhaus", "die_schule", "der_flughafen", "die_apotheke"],
+    "grammar_note": "问路常用 Wie komme ich zu + Dativ? zu dem 缩写为 zum，zu der 缩写为 zur"
+  },
+  {
+    "id": "a1_034",
+    "level": "a1",
+    "tags": ["modal", "möchten", "food", "restaurant", "bestellen"],
+    "pattern": "Ich möchte {slot1} bestellen.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_kaffee", "der_tee", "das_brot", "der_apfel"],
+    "grammar_note": "möchten + Akk + bestellen，原形动词在句末构成框形结构。点餐/外卖常用表达"
+  },
+  {
+    "id": "a1_035",
+    "level": "a1",
+    "tags": ["nehmen", "akkusativ", "food", "restaurant", "daily"],
+    "pattern": "Ich nehme {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_kaffee", "der_tee", "das_brot", "der_apfel"],
+    "grammar_note": "nehmen 是点餐口语中最常用的动词之一，后接第四格宾语，比 bestellen 更日常"
+  },
+  {
+    "id": "a1_036",
+    "level": "a1",
+    "tags": ["haben", "akkusativ", "family", "third-person", "sie"],
+    "pattern": "Sie hat {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_bruder", "die_schwester", "das_kind", "der_hund", "die_katze"],
+    "grammar_note": "haben 第三人称阴性 sie 变位为 hat，宾语用 Akkusativ。家庭成员/宠物为常见宾语"
+  },
+  {
+    "id": "a1_037",
+    "level": "a1",
+    "tags": ["haben", "akkusativ", "family", "und", "aufzaehlung"],
+    "pattern": "Ich habe {slot1} und {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_bruder"], ["die_schwester"], ["das_kind"]],
+      "slot2": [["der_bruder"], ["die_schwester"], ["das_kind"]]
+    },
+    "grammar_note": "und 连接两个并列 Akkusativ 宾语，介绍家庭成员。haben 变位为 habe (ich)"
+  },
+  {
+    "id": "a1_038",
+    "level": "a1",
+    "tags": ["weather", "sein", "adjective", "es", "predicative"],
+    "pattern": "Es ist {slot1}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["kalt", "warm", "schön"],
+    "grammar_note": "天气表达常用无人称代词 es + ist + 表语形容词。形容词原形不做词尾变化"
+  },
+  {
+    "id": "a1_039",
+    "level": "a1",
+    "tags": ["weather", "verb", "es", "nature"],
+    "pattern": "Es {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["regnet", "schneit"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "天气动词用无人称 es + 第三人称单数变位。regnen → es regnet, schneien → es schneit"
+  },
+  {
+    "id": "a1_040",
+    "level": "a1",
+    "tags": ["w-frage", "time", "um", "uhr", "zeit", "daily"],
+    "pattern": "Um wie viel Uhr {slot1} du?",
+    "slots": {
+      "slot1": {"type": "verb", "person": "du", "tense": "present"}
+    },
+    "replacement_pool": ["kommen", "gehen", "arbeiten", "lernen"],
+    "grammar_note": "Um wie viel Uhr 询问具体钟点。um + 钟点表示在几点，与 um + Akk 用法一致"
+  },
+  {
+    "id": "a1_041",
+    "level": "a1",
+    "tags": ["time", "uhr", "sein", "number", "zeit"],
+    "pattern": "Es ist {slot1} Uhr.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["drei", "fünf", "acht", "zehn", "zwölf", "zwei"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "钟点表达：Es ist + 数字 + Uhr。德语用 24 小时制更常见，口语也用 12 小时制"
+  },
+  {
+    "id": "a1_042",
+    "level": "a1",
+    "tags": ["modal", "mögen", "negation", "nicht", "preference", "food"],
+    "pattern": "Ich mag {slot1} nicht.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_kaffee", "der_tee", "der_apfel", "die_schule"],
+    "grammar_note": "mögen 变位为 mag (ich)，nicht 否定整个谓语时放在句末"
+  },
+  {
+    "id": "a1_043",
+    "level": "a1",
+    "tags": ["modal", "mögen", "question", "ja-nein-frage", "preference"],
+    "pattern": "Magst du {slot1}?",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["der_kaffee", "der_tee", "der_hund", "die_katze", "das_brot"],
+    "grammar_note": "mögen 第二人称变位为 magst。Ja/Nein 疑问句将变位动词置于句首"
+  },
+  {
+    "id": "a1_044",
+    "level": "a1",
+    "tags": ["pronomen", "akkusativ", "personalpronomen", "sehen"],
+    "pattern": "Ich sehe {slot1}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["ihn", "sie", "es", "sie"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "人称代词第四格：er→ihn（他），sie→sie（她），es→es（它），sie(pl)→sie（他们）。sehen 变位为 sehe (ich)"
+  },
+  {
+    "id": "a1_045",
+    "level": "a1",
+    "tags": ["pronomen", "akkusativ", "personalpronomen", "kennen", "question"],
+    "pattern": "Kennst du {slot1}?",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["ihn", "sie", "es", "sie"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "kennen 变位为 kennst (du)。人称代词第四格在疑问句中同样置于句末位置"
+  },
+  {
+    "id": "a1_046",
+    "level": "a1",
+    "tags": ["modal", "wollen", "desire", "daily"],
+    "pattern": "Ich will {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["essen"], ["trinken"], ["lesen"], ["kaufen"]],
+      "slot2": [["der_apfel"], ["der_kaffee"], ["das_buch"], ["der_tee"]]
+    },
+    "grammar_note": "wollen 变位为 will (ich)，表达强烈意愿，比 möchte 更直接。主动词原形在句末"
+  },
+  {
+    "id": "a1_047",
+    "level": "a1",
+    "tags": ["modal", "wollen", "question", "desire", "ja-nein-frage"],
+    "pattern": "Willst du {slot1}?",
+    "slots": {
+      "slot1": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": ["gehen", "kommen", "lernen", "spielen", "fahren"],
+    "grammar_note": "wollen 第二人称变位为 willst。疑问句时变位动词前置，主动词原形在句末"
+  },
+  {
+    "id": "a1_048",
+    "level": "a1",
+    "tags": ["adverb", "frequenz", "manchmal", "shopping", "daily"],
+    "pattern": "Ich kaufe manchmal {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["das_buch", "die_zeitung", "der_apfel", "das_brot", "der_kaffee", "der_tee"],
+    "grammar_note": "频率副词 manchmal 放在变位动词后、宾语前。同类词：oft（经常）、selten（很少）、nie（从不）"
+  },
+  {
+    "id": "a1_049",
+    "level": "a1",
+    "tags": ["adverb", "frequenz", "nie", "wechselpräposition", "akkusativ", "daily"],
+    "pattern": "Er geht nie in {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "in"}
+    },
+    "replacement_pool": ["die_schule", "der_garten", "das_restaurant", "der_supermarkt"],
+    "grammar_note": "nie 表示从不，频率副词中最强否定。gehen in + Akk = 走进某处（运动方向）"
+  },
+  {
+    "id": "a1_050",
+    "level": "a1",
+    "tags": ["farben", "adjective", "predicative", "color", "sein"],
+    "pattern": "Das Auto ist {slot1}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["rot", "blau", "grün", "schön", "neu"],
+    "grammar_note": "颜色作表语形容词时不加词尾。三个基本颜色：rot（红）、blau（蓝）、grün（绿）"
+  },
+  {
+    "id": "a1_051",
+    "level": "a1",
+    "tags": ["farben", "adjective", "predicative", "color", "objects"],
+    "pattern": "Der {slot1} ist {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_apfel"], ["der_tisch"], ["die_tasche"], ["das_auto"], ["das_buch"]],
+      "slot2": [["rot"], ["blau"], ["grün"], ["schön"], ["neu"], ["groß"], ["klein"]]
+    },
+    "grammar_note": "主语名词用第一格，表语形容词不变格。颜色+对象结合的自然描述句"
+  },
+  {
+    "id": "a1_052",
+    "level": "a1",
+    "tags": ["wechselpräposition", "hinter", "dativ", "location", "animals"],
+    "pattern": "Der Hund ist hinter {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "hinter"}
+    },
+    "replacement_pool": ["das_haus", "der_tisch", "der_stuhl", "die_tür"],
+    "grammar_note": "hinter 表示静态位置（Wo?）时支配 Dativ：hinter dem Haus/Tisch/Stuhl, hinter der Tür"
+  },
+  {
+    "id": "a1_053",
+    "level": "a1",
+    "tags": ["wechselpräposition", "vor", "dativ", "location", "stehen"],
+    "pattern": "Der Tisch steht vor {slot1}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "vor"}
+    },
+    "replacement_pool": ["das_fenster", "die_tür", "das_haus", "der_stuhl"],
+    "grammar_note": "vor 表示静态位置时支配 Dativ：vor dem Fenster, vor der Tür。stehen = 立、摆放"
+  },
+  {
+    "id": "a1_054",
+    "level": "a1",
+    "tags": ["imperativ", "direction", "höflichkeitsform", "travel"],
+    "pattern": "Gehen Sie nach {slot1}!",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["links", "rechts"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "Sie 命令式：动词不定式 + Sie + 方向。nach links = 向左，nach rechts = 向右。比 du-命令式更正式礼貌"
+  },
+  {
+    "id": "a1_055",
+    "level": "a1",
+    "tags": ["imperativ", "höflichkeitsform", "bitte", "social"],
+    "pattern": "Bitte {slot1} Sie!",
+    "slots": {
+      "slot1": {"type": "verb", "person": "imp"}
+    },
+    "replacement_pool": ["kommen", "gehen", "lesen", "schreiben"],
+    "grammar_note": "Bitte + 命令式 = 礼貌请求。Sie 命令式动词用不定式形式。bitte 可放在句首或句末"
+  },
+  {
+    "id": "a1_056",
+    "level": "a1",
+    "tags": ["telefon", "social", "sein", "w-frage", "introduction"],
+    "pattern": "Hier ist {slot1}. Wer spricht da?",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Anna", "Max", "Lisa", "Tom", "Maria"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "电话用语：Hier ist + 人名 = 我是...。Wer spricht da? = 请问您是哪位？da 指电话那头"
+  },
+  {
+    "id": "a1_057",
+    "level": "a1",
+    "tags": ["w-frage", "shopping", "kosten", "price", "question"],
+    "pattern": "Was kostet {slot1}?",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": ["das_buch", "die_zeitung", "der_apfel", "das_brot", "die_tasche", "der_koffer"],
+    "grammar_note": "Was kostet + Nom? = ...多少钱？kosten 变位与主语一致，Was 作主语用单数变位"
+  },
+  {
+    "id": "a1_058",
+    "level": "a1",
+    "tags": ["shopping", "adjective", "preis", "zu", "predicative"],
+    "pattern": "Das ist zu {slot1}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": ["teuer", "billig", "groß", "klein"],
+    "grammar_note": "zu + 形容词 = 太...了。Das ist zu teuer = 这太贵了。购物讨价还价常用表达"
+  },
+  {
+    "id": "a1_059",
+    "level": "a1",
+    "tags": ["datum", "ordinalzahlen", "am", "geburtstag", "zeit"],
+    "pattern": "Am {slot1} {slot2} habe ich Geburtstag.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["ersten", "zweiten", "dritten", "fünften"]},
+      "slot2": {"type": "fixed_phrase", "values": ["Januar", "Februar", "März", "April", "Mai"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "日期表达：am + 序数词(n) + 月份。序数词以 -ten 结尾（am ersten Mai = 5月1日）"
+  },
+  {
+    "id": "a1_060",
+    "level": "a1",
+    "tags": ["datum", "heute", "ordinalzahlen", "nominativ", "zeit"],
+    "pattern": "Heute ist der {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["dritte", "fünfte", "zehnte", "zwanzigste"]},
+      "slot2": {"type": "fixed_phrase", "values": ["Juni", "Juli", "August"]}
+    },
+    "replacement_pool": [],
+    "grammar_note": "Heute ist der + 序数词 + 月份。第一格时序数词阳性加 -te（der dritte Juni = 6月3日）。与 am 日期表达形成对比"
+  }
+]

@@ -1,0 +1,987 @@
+[
+  {
+    "id": "b2_001",
+    "level": "b2",
+    "tags": ["passiv", "vorgangspassiv", "präteritum", "wurde"],
+    "pattern": "{slot1} wurde von {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "von"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["das_haus"], ["der_brief"]],
+      "slot2": [["der_lehrer"], ["der_vater"], ["die_freundin"], ["der_freund"]],
+      "slot3": [["lesen"], ["schreiben"], ["finden"], ["empfehlen"]]
+    },
+    "grammar_note": "Vorgangspassiv Präteritum：wurde (werden的过去式) + Partizip II。与现在时被动(wird + PII)的时间区别在于过程发生在过去。von + Dativ 引出施事者。"
+  },
+  {
+    "id": "b2_002",
+    "level": "b2",
+    "tags": ["passiv", "vorgangspassiv", "perfekt", "worden"],
+    "pattern": "{slot1} ist von {slot2} {slot3} worden.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "von"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["das_haus"]],
+      "slot2": [["der_lehrer"], ["die_mutter"], ["der_freund"]],
+      "slot3": [["lesen"], ["schreiben"], ["erklären"]]
+    },
+    "grammar_note": "Vorgangspassiv Perfekt：sein + Partizip II + worden。注意是 worden (非 geworden)，这是 werden 在被动完成时的特殊形式。ist gelesen worden = 已经被读完了。"
+  },
+  {
+    "id": "b2_003",
+    "level": "b2",
+    "tags": ["passiv", "zustandspassiv", "zustand", "ergebnis"],
+    "pattern": "{slot1} ist {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_tür"], ["das_fenster"], ["das_buch"]],
+      "slot2": [["schreiben"], ["finden"], ["erklären"]]
+    },
+    "grammar_note": "Zustandspassiv 状态被动：sein + Partizip II 描述动作完成后的静止状态(结果)。与 Vorgangspassiv(werden+PII, 强调过程)形成对比。Die Tür ist geöffnet = 门是开着的。"
+  },
+  {
+    "id": "b2_004",
+    "level": "b2",
+    "tags": ["relativsatz", "genitiv", "dessen", "deren", "besitz"],
+    "pattern": "Der Mann, {slot1} {slot2} ich kenne, ist {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["dessen", "deren"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot2": [["der_hund"], ["die_katze"], ["das_buch"], ["die_wohnung"]],
+      "slot3": [["groß"], ["klein"], ["schön"], ["alt"], ["neu"]]
+    },
+    "grammar_note": "关系从句 Genitiv：dessen (阳性/中性) 和 deren (阴性/复数) 表示所属关系。dessen/deren 本身不变化，不受其后名词影响。dessen Buch = 他的书。"
+  },
+  {
+    "id": "b2_005",
+    "level": "b2",
+    "tags": ["relativsatz", "präposition", "dativ", "akkusativ"],
+    "pattern": "Das ist das Buch, von {slot1} ich {slot2} habe.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["dem", "der"]},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot2": [["sprechen"], ["erklären"]]
+    },
+    "grammar_note": "关系从句 mit Präposition：介词置于关系代词之前。von dem (阳性/中性Dat) / von der (阴性Dat)。介词格要求决定关系代词形式。sprechen von+Dativ = 谈到…。"
+  },
+  {
+    "id": "b2_006",
+    "level": "b2",
+    "tags": ["konjunktiv_ii", "vergangenheit", "hätte", "wäre", "irreal"],
+    "pattern": "Wenn ich Zeit gehabt hätte, {slot1} ich {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["hätte", "wäre"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot3": [["lesen"], ["schreiben"], ["finden"]]
+    },
+    "grammar_note": "Konjunktiv II 过去(非现实过去)：hätte/wäre + Partizip II 表达过去未实现的情况。与现在KII(würde+Inf) 形成时间对比。Wenn从句用Doppelinfinitiv结构。"
+  },
+  {
+    "id": "b2_007",
+    "level": "b2",
+    "tags": ["konjunktiv_i", "indirekte_rede", "zitieren", "akademisch"],
+    "pattern": "Er sagt, er {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "er", "tense": "konjunktiv1_present"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["haben"], ["sein"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot3": [["lesen"], ["schreiben"], ["finden"]]
+    },
+    "grammar_note": "Konjunktiv I 间接引语：第三人称转述保持客观中立，不担保真实性。habe + PII 替代直陈式 hat + PII。学术写作和新闻报道高频句型。"
+  },
+  {
+    "id": "b2_008",
+    "level": "b2",
+    "tags": ["partizip_i", "attributiv", "adjektiv", "aktiv"],
+    "pattern": "Ich sehe {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "attributive", "case": "akk", "gender_ref": "slot2"},
+      "slot2": {"type": "verb", "person": "partizip1"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["schön"]],
+      "slot2": [["lachen"], ["spielen"], ["rennen"]],
+      "slot3": [["der_hund"], ["die_katze"], ["das_kind"]]
+    },
+    "grammar_note": "Partizip I 作形容词：动词不定式 + d 构成，表主动/同时进行。der lachende Mann = 正在笑的男人。有形容词变格词尾，位于名词前。"
+  },
+  {
+    "id": "b2_009",
+    "level": "b2",
+    "tags": ["partizip_ii", "attributiv", "adjektiv", "passiv"],
+    "pattern": "Ich lese {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "attributive", "case": "akk", "gender_ref": "slot2"},
+      "slot2": {"type": "verb", "person": "partizip2"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["groß"], ["klein"], ["interessant"]],
+      "slot2": [["schreiben"], ["empfehlen"], ["finden"]],
+      "slot3": [["das_buch"], ["der_brief"]]
+    },
+    "grammar_note": "Partizip II 作形容词：表被动(及物动词)或完成(不及物动词)。das geschriebene Buch = 被写好的书。Partizip II 位于名词前，有形容词变格词尾。"
+  },
+  {
+    "id": "b2_010",
+    "level": "b2",
+    "tags": ["partizipialattribut", "erweitert", "linksattribut", "akademisch"],
+    "pattern": "Der von {slot1} {slot2} {slot3} ist sehr {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "von"},
+      "slot2": {"type": "verb", "person": "partizip2"},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot4": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["die_freundin"], ["der_vater"]],
+      "slot2": [["schreiben"], ["empfehlen"], ["erklären"]],
+      "slot3": [["das_buch"], ["der_brief"]],
+      "slot4": [["interessant"], ["wichtig"], ["schwierig"], ["gut"]]
+    },
+    "grammar_note": "扩展分词定语：在 Partizip II 之前加入 von + 施事者等修饰成分，形成长定语。这是书面德语(尤其学术)的核心特征。der von mir geschriebene Brief = 我写的那封信。"
+  },
+  {
+    "id": "b2_011",
+    "level": "b2",
+    "tags": ["nomen_verb_verbindung", "fvg", "entscheidung_treffen", "akademisch"],
+    "pattern": "Wir müssen eine {slot1} {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Entscheidung", "Diskussion", "Vereinbarung"]},
+      "slot2": {"type": "fixed_phrase", "values": ["treffen", "führen", "treffen"]}
+    },
+    "replacement_pool": {},
+    "grammar_note": "Nomen-Verb-Verbindung (功能动词结构)：名词+功能动词构成固定搭配。eine Entscheidung treffen ≈ entscheiden，但更正式、书面化。B2/TestDaF 高频结构。"
+  },
+  {
+    "id": "b2_012",
+    "level": "b2",
+    "tags": ["nominalisierung", "substantivierung", "akademisch", "schriftlich"],
+    "pattern": "{slot1} führt zu {slot2}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Die Entscheidung", "Die Erklärung", "Die Beschreibung"]},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"}
+    },
+    "replacement_pool": {
+      "slot2": [["die_schule"], ["die_stadt"], ["das_haus"]]
+    },
+    "grammar_note": "Nominalisierung 名词化：用名词替代动词/从句使表达紧凑正式。Die Entscheidung → entscheiden; zu + Dativ 表结果指向。学术德语倾向名词化。"
+  },
+  {
+    "id": "b2_013",
+    "level": "b2",
+    "tags": ["konsekutivadverb", "deshalb", "daher", "darum", "grund", "folge"],
+    "pattern": "{slot1} ist {slot2}, {slot3} bleibe ich zu Hause.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["deshalb", "daher", "darum", "aus diesem Grund"]}
+    },
+    "replacement_pool": {
+      "slot1": [["die_schule"], ["der_garten"], ["die_stadt"]],
+      "slot2": [["klein"], ["alt"], ["schön"]]
+    },
+    "grammar_note": "Konsekutivadverbien 原因副词：连接因果两句，副词占位后主句变位动词居第二位(倒装)。deshalb/daher/darum 语域从日常到正式，aus diesem Grund 最正式。"
+  },
+  {
+    "id": "b2_014",
+    "level": "b2",
+    "tags": ["konzessivadverb", "trotzdem", "dennoch", "allerdings", "gegensatz"],
+    "pattern": "{slot1} ist {slot2}, {slot3} gehe ich zur Arbeit.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["trotzdem", "dennoch", "allerdings"]}
+    },
+    "replacement_pool": {
+      "slot1": [["der_zug"], ["der_bahnhof"], ["die_schule"]],
+      "slot2": [["groß"], ["alt"], ["klein"]]
+    },
+    "grammar_note": "Konzessivadverbien 让步副词：连接对立两句。trotzdem/dennoch 表'尽管如此'(强转折)；allerdings 表'不过'(弱转折，更书面)。副词后主句倒装。"
+  },
+  {
+    "id": "b2_015",
+    "level": "b2",
+    "tags": ["modalverb", "subjektiv", "sollen", "behauptung", "hörensagen"],
+    "pattern": "Der {slot1} soll {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "partizip2"},
+      "slot4": {"type": "fixed_phrase", "values": ["haben"]}
+    },
+    "replacement_pool": {
+      "slot1": [["der_mann"], ["der_lehrer"], ["der_freund"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["das_auto"]],
+      "slot3": [["lesen"], ["kaufen"], ["finden"]]
+    },
+    "grammar_note": "情态动词主观用法：sollen 表'据说'(转述传闻)。sollen + PII + haben = 据称做了…。说话者与所述内容保持距离，不承担真值责任。"
+  },
+  {
+    "id": "b2_016",
+    "level": "b2",
+    "tags": ["modalverb", "subjektiv", "wollen", "behauptung", "zweifel"],
+    "pattern": "Der {slot1} will {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "partizip2"},
+      "slot4": {"type": "fixed_phrase", "values": ["haben"]}
+    },
+    "replacement_pool": {
+      "slot1": [["der_mann"], ["der_schüler"], ["der_freund"]],
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot3": [["lesen"], ["finden"], ["schreiben"]]
+    },
+    "grammar_note": "情态动词主观用法：wollen 表'自称'(当事人声称，说话者持怀疑)。与 sollen 的区别：sollen 是第三方传闻，wollen 是当事人自己的声称。"
+  },
+  {
+    "id": "b2_017",
+    "level": "b2",
+    "tags": ["modalverb", "subjektiv", "müssen", "dürfen", "vermutung"],
+    "pattern": "Er {slot1} {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["muss", "dürfte"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "partizip2"},
+      "slot4": {"type": "fixed_phrase", "values": ["haben"]}
+    },
+    "replacement_pool": {
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot3": [["lesen"], ["finden"], ["schreiben"]]
+    },
+    "grammar_note": "情态动词主观用法：müssen 表高概率推测('一定')，dürfen (KII形式 dürfte) 表谨慎推测('大概/可能')。dürfte 是学术写作中表达谨慎推断的常用词。"
+  },
+  {
+    "id": "b2_018",
+    "level": "b2",
+    "tags": ["nebensatz", "falls", "sofern", "konditional", "akademisch"],
+    "pattern": "{slot1} {slot2} kommt, {slot3} ich zu Hause.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["Falls", "Sofern"]},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "fixed_phrase", "values": ["bleibe", "arbeite"]}
+    },
+    "replacement_pool": {
+      "slot2": [["der_freund"], ["der_lehrer"], ["die_freundin"]]
+    },
+    "grammar_note": "条件从句 falls / sofern：与 wenn 功能相近但更正式。falls 偏'如果/万一'(不确定性更强)，sofern 偏'只要/倘若'(书面学术风格)。从句动词在句尾。"
+  },
+  {
+    "id": "b2_019",
+    "level": "b2",
+    "tags": ["als_ob", "als_wenn", "irrealer_vergleich", "konjunktiv_ii"],
+    "pattern": "Er tut so, als {slot1} er {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["ob", "wenn"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot3": [["lesen"], ["verstehen"], ["finden"]]
+    },
+    "grammar_note": "非现实比较 als ob / als wenn：'好像…似的'(实际情况并非如此)。从句通常用 KII。als ob 后变位动词在句尾，als (无ob/wenn) 后动词紧跟 als。"
+  },
+  {
+    "id": "b2_020",
+    "level": "b2",
+    "tags": ["anstatt_zu", "ohne_zu", "infinitiv", "alternative", "akademisch"],
+    "pattern": "Er geht zur Arbeit, {slot1} {slot2} zu {slot3}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["anstatt", "ohne"]},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot2": [["das_buch"], ["die_zeitung"], ["der_kaffee"]],
+      "slot3": [["lesen"], ["finden"], ["trinken"]]
+    },
+    "grammar_note": "替代形式 anstatt zu / ohne zu：anstatt zu = '不…反而…'(替代)，ohne zu = '没有…就…'(缺失)。主语与主句一致，结构比从句简洁。"
+  },
+  {
+    "id": "b2_021",
+    "level": "b2",
+    "tags": ["konsekutiv", "infolgedessen", "demzufolge", "akademisch", "testdaf"],
+    "pattern": "{slot1} ist {slot2}. {slot3} {slot4} {slot5}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["Infolgedessen", "Demzufolge"]},
+      "slot4": {"type": "verb", "person": "er", "tense": "present"},
+      "slot5": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_schule"], ["das_buch"], ["die_wohnung"]],
+      "slot2": [["alt"], ["teuer"], ["klein"]],
+      "slot4": [["finden"], ["kaufen"], ["sehen"]],
+      "slot5": [["der_freund"], ["das_auto"], ["die_zeitung"]]
+    },
+    "grammar_note": "结果连接词 infolgedessen / demzufolge：表示'因此/由此'，用于推导结论。这是 TestDaF 学术写作的连接词，比 deshalb 更正式，适合论证结构。"
+  },
+  {
+    "id": "b2_022",
+    "level": "b2",
+    "tags": ["adversativ", "hingegen", "dagegen", "gegensatz", "testdaf"],
+    "pattern": "{slot1} ist {slot2}, {slot3} ist {slot4} {slot5}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["hingegen", "dagegen", "im Gegensatz dazu"]},
+      "slot4": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot5": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_auto"], ["das_haus"], ["der_kaffee"]],
+      "slot2": [["teuer"], ["groß"], ["gut"]],
+      "slot4": [["der_zug"], ["die_wohnung"], ["der_tee"]],
+      "slot5": [["billig"], ["klein"], ["schön"]]
+    },
+    "grammar_note": "对立连接词 hingegen / dagegen / im Gegensatz dazu：前两者简短，适合口语和一般书面；后者为正式短语。作副词使用时在句中占位，主句倒装。"
+  },
+  {
+    "id": "b2_023",
+    "level": "b2",
+    "tags": ["einschränkung", "insofern", "insoweit", "akademisch"],
+    "pattern": "{slot1} ist {slot2}, {slot3} ist das nicht richtig.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["insofern", "insoweit"]}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_schule"], ["die_wohnung"]],
+      "slot2": [["groß"], ["wichtig"], ["interessant"]]
+    },
+    "grammar_note": "限制副词 insofern / insoweit：表示'就此而言/在这个意义上'，对前面陈述的范围进行限制或精确化。学术写作中用于慎重的判断。"
+  },
+  {
+    "id": "b2_024",
+    "level": "b2",
+    "tags": ["einerseits_andererseits", "abwägung", "argumentation", "testdaf"],
+    "pattern": "Einerseits ist {slot1} {slot2}, andererseits {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"},
+      "slot4": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["das_auto"], ["die_stadt"]],
+      "slot2": [["interessant"], ["teuer"], ["groß"]],
+      "slot3": [["finden"], ["sehen"], ["kaufen"]],
+      "slot4": [["die_zeitung"], ["der_zug"], ["das_haus"]]
+    },
+    "grammar_note": "对比表达 einerseits...andererseits：'一方面…另一方面…'，用于学术论证中的权衡讨论。两个副词均占第一位，引起各自句子的倒装。TestDaF 写作必备。"
+  },
+  {
+    "id": "b2_025",
+    "level": "b2",
+    "tags": ["akademisch", "argumentation", "these", "argument", "beispiel", "testdaf"],
+    "pattern": "Die These lautet, dass {slot1} {slot2} ist. Ein Argument dafür ist, dass {slot3} {slot4}. Zum Beispiel {slot5} {slot6}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot4": {"type": "adjective", "form": "predicative"},
+      "slot5": {"type": "verb", "person": "er", "tense": "present"},
+      "slot6": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_schule"], ["die_stadt"]],
+      "slot2": [["wichtig"], ["interessant"], ["groß"]],
+      "slot3": [["der_lehrer"], ["der_freund"], ["die_zeitung"]],
+      "slot4": [["gut"], ["neu"], ["alt"]],
+      "slot5": [["lesen"], ["finden"], ["sehen"]],
+      "slot6": [["die_schule"], ["das_buch"], ["das_haus"]]
+    },
+    "grammar_note": "学术论证句型：Thesis(论点) + Argument(论据) + Beispiel(举例)。die These lautet, dass... 开篇提出论点，dafür 回指论证，zum Beispiel 引入例证。TestDaF 学术写作三段论结构。"
+  },
+  {
+    "id": "b2_026",
+    "level": "b2",
+    "tags": ["diagrammbeschreibung", "testdaf", "grafik", "statistik", "akademisch"],
+    "pattern": "Die Grafik zeigt, dass {slot1} im Vergleich zu {slot2} {slot3} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_stadt"], ["die_schule"], ["das_buch"]],
+      "slot2": [["die_wohnung"], ["der_garten"], ["die_zeitung"]],
+      "slot3": [["groß"], ["klein"], ["neu"], ["interessant"]]
+    },
+    "grammar_note": "图表描述基础句型：Die Grafik zeigt, dass... 引出图表核心信息。im Vergleich zu + Dativ 用于比较。TestDaF 口语和写作任务一必备表达。"
+  },
+  {
+    "id": "b2_027",
+    "level": "b2",
+    "tags": ["passiv", "modalverb", "müssen", "werden"],
+    "pattern": "{slot1} muss {slot2} werden.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot2": [["lesen"], ["schreiben"], ["finden"]]
+    },
+    "grammar_note": "被动 + 情态动词：muss + Partizip II + werden。werden 位于句尾(不定式)，情态动词 muss 按主语变位居第二位。被动不定式结构。"
+  },
+  {
+    "id": "b2_028",
+    "level": "b2",
+    "tags": ["passiv", "unpersönlich", "es", "akademisch"],
+    "pattern": "Es wird {slot1}, dass {slot2} {slot3} ist.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["erklären"], ["empfehlen"], ["finden"]],
+      "slot2": [["die_schule"], ["das_buch"], ["die_wohnung"]],
+      "slot3": [["wichtig"], ["interessant"], ["groß"]]
+    },
+    "grammar_note": "无人称被动：Es wird + PII, dass...。es 为语法占位主语(非真主语)，真正内容由 dass 从句提供。学术和正式语境高频句型：Es wird diskutiert, dass...。"
+  },
+  {
+    "id": "b2_029",
+    "level": "b2",
+    "tags": ["funktionsverbgefüge", "fvg", "verfügung_stehen", "anspruch_nehmen", "akademisch"],
+    "pattern": "{slot1} steht {slot2} zur Verfügung.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "noun", "case": "dat", "num": "sg", "preposition": "für"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["das_auto"]],
+      "slot2": [["der_lehrer"], ["die_schule"], ["der_freund"]]
+    },
+    "grammar_note": "功能动词结构 zur Verfügung stehen：stehen + zur Verfügung 表示'可供使用'。介词固定搭配不可替换。功能动词 stehen 失去原始'站立'含义，与名词构成语义整体。"
+  },
+  {
+    "id": "b2_030",
+    "level": "b2",
+    "tags": ["komplexe_satzstruktur", "mehrfach_nesting", "akademisch", "testdaf"],
+    "pattern": "Ich denke, dass {slot1}, {slot2} {slot3} ist, {slot4} {slot5}.",
+    "slots": {
+      "slot1": {"type": "fixed_phrase", "values": ["wenn", "weil", "obwohl"]},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"},
+      "slot4": {"type": "verb", "person": "er", "tense": "present"},
+      "slot5": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot2": [["der_lehrer"], ["die_schule"], ["das_buch"]],
+      "slot3": [["gut"], ["wichtig"], ["interessant"]],
+      "slot4": [["finden"], ["lesen"], ["sehen"]],
+      "slot5": [["der_freund"], ["die_zeitung"], ["das_haus"]]
+    },
+    "grammar_note": "复杂句结构：主句 + dass从句 + 嵌入第二从句(weil/obwohl/wenn)。德语多层嵌套时后置动词顺序：最后从句的变位动词在最后，其前是dass从句的动词。学术写作标志句式。"
+  },
+  {
+    "id": "b2_031",
+    "level": "b2",
+    "tags": ["werden", "vermutung", "zukunft", "passiv", "modal"],
+    "pattern": "{slot1} wird wohl {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["der_freund"], ["die_freundin"]],
+      "slot2": [["lesen"], ["finden"], ["kaufen"]],
+      "slot3": [["das_buch"], ["die_zeitung"], ["das_auto"]]
+    },
+    "grammar_note": "werden 扩展用法：wird + wohl + Infinitiv 表推测('大概会…')。wohl 加强推测语气。werden 的三重功能：将来(Futur I)、推测(mit wohl)、被动(wird+PII)。"
+  },
+  {
+    "id": "b2_032",
+    "level": "b2",
+    "tags": ["fvg", "anspruch_nehmen", "akademisch", "testdaf"],
+    "pattern": "Ich nehme {slot1} in Anspruch.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": [["die_schule"], ["die_wohnung"], ["das_buch"]],
+    "grammar_note": "功能动词结构 in Anspruch nehmen：'使用/占用/要求'。nehmen 失去具体'拿取'义，与 in Anspruch 构成语义单位。学术场景常见：Hilfe in Anspruch nehmen。"
+  },
+  {
+    "id": "b2_033",
+    "level": "b2",
+    "tags": ["konjunktiv_i", "indirekte_rede", "passiv", "akademisch"],
+    "pattern": "Es wird berichtet, dass {slot1} {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "partizip2"},
+      "slot3": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_schule"], ["die_stadt"]],
+      "slot2": [["finden"], ["erklären"]],
+      "slot3": [["sein"]]
+    },
+    "grammar_note": "间接引语 + 无人称被动：Es wird berichtet, dass... 表'据报道…'。被动无人称 + dass从句 = 学术写作最高频的客观引述句型。"
+  },
+  {
+    "id": "b2_034",
+    "level": "b2",
+    "tags": ["konjunktiv_ii", "vergangenheit", "modalverb", "hätte_können", "irreal"],
+    "pattern": "Ich hätte {slot1} {slot2} können.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_buch"], ["die_zeitung"], ["der_brief"]],
+      "slot2": [["lesen"], ["schreiben"], ["finden"]]
+    },
+    "grammar_note": "Konjunktiv II 过去 + 情态动词：hätte + Infinitiv + können = '本来可以…'(但没做)。Doppelinfinitiv 结构：两个不定式并列位于句尾，hätte 居第二位。"
+  },
+  {
+    "id": "b2_035",
+    "level": "b2",
+    "tags": ["relativsatz", "wo", "lokal", "temporal"],
+    "pattern": "Das ist {slot1}, wo ich {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "ich", "tense": "present"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_stadt"], ["die_schule"], ["das_haus"]],
+      "slot2": [["arbeiten"], ["lernen"], ["wohnen"]]
+    },
+    "grammar_note": "关系从句 mit wo：wo 作为关系副词替代 in der / in dem，用于地点和时间。wo 不可变格，更口语化。书面语倾向 in dem/der。"
+  },
+  {
+    "id": "b2_036",
+    "level": "b2",
+    "tags": ["akademisch", "sich_lassen", "feststellen", "argumentation", "testdaf"],
+    "pattern": "Es lässt sich feststellen, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_These"], ["die_Analyse"], ["das_Ergebnis"], ["die_Forschung"]],
+      "slot2": [["relevant"], ["wichtig"], ["interessant"], ["wissenschaftlich"]]
+    },
+    "grammar_note": "Es lässt sich feststellen, dass...：学术论证高频句型，'可以确定/发现…'。sich lassen + feststellen 为无人称被动替代形式，比 es kann festgestellt werden 更简洁。dass 从句变位动词在句尾。"
+  },
+  {
+    "id": "b2_037",
+    "level": "b2",
+    "tags": ["hypothese", "angenommen", "dass", "argumentation", "testdaf"],
+    "pattern": "Angenommen, dass {slot1} {slot2} ist, dann {slot3} wir {slot4} {slot5}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "fixed_phrase", "values": ["können", "müssen", "sollen"]},
+      "slot4": {"type": "verb", "person": "inf"},
+      "slot5": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_These"], ["die_Theorie"], ["das_Ergebnis"], ["die_Analyse"]],
+      "slot2": [["richtig"], ["wichtig"], ["relevant"], ["wissenschaftlich"]],
+      "slot4": [["diskutieren"], ["analysieren"], ["finden"], ["verstehen"]],
+      "slot5": [["die_Analyse"], ["die_These"], ["die_Theorie"], ["die_Methode"]]
+    },
+    "grammar_note": "Angenommen, dass...：假设表达，'假定…成立的话，那么我们就能…'。angenommen 为 Partizip II 独立结构(相当于 Konditionalsatz)。dann 引出结论主句，情态动词 + Infinitiv 表达可能性/必要性。TestDaF 论证结构核心句型。"
+  },
+  {
+    "id": "b2_038",
+    "level": "b2",
+    "tags": ["zitieren", "laut", "genitiv", "akademisch", "testdaf"],
+    "pattern": "Laut {slot1} ist {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "sg", "preposition": "laut"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_Professor"], ["die_Forschung"], ["die_Analyse"], ["das_Experiment"]],
+      "slot2": [["die_Theorie"], ["die_These"], ["die_Methode"], ["das_Ergebnis"]],
+      "slot3": [["richtig"], ["wichtig"], ["relevant"], ["wissenschaftlich"]]
+    },
+    "grammar_note": "Laut + Genitiv 引用表达：'根据…'。laut 为介词接第二格，用于引述来源或依据。书面学术德语中仅次于 nach 的第二高频引述介词。注意 laut 本身不变格，其后名词变第二格。"
+  },
+  {
+    "id": "b2_039",
+    "level": "b2",
+    "tags": ["daten", "statistik", "zahlen", "grafik", "testdaf"],
+    "pattern": "Die Zahl der {slot1} ist um {slot2} gestiegen.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "gen", "num": "pl"},
+      "slot2": {"type": "fixed_phrase", "values": ["10%", "20%", "5%", "15%", "30%"]}
+    },
+    "replacement_pool": ["die_Pruefung", "die_Bewerbung", "die_Universitaet", "die_Firma"],
+    "grammar_note": "数据描述句型：Die Zahl der + Genitiv Plural + ist um X% gestiegen/gesunken。Zahl 要求第二格复数来限定范围。um 引出变化的差额。gestiegen 为 steigen 的 PII。TestDaF 图表描述必备用语。"
+  },
+  {
+    "id": "b2_040",
+    "level": "b2",
+    "tags": ["vergleich", "im_unterschied_zu", "dativ", "argumentation", "testdaf"],
+    "pattern": "Im Unterschied zu {slot1} ist {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "zu"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Vorlesung"], ["die_Theorie"], ["der_Professor"], ["die_Methode"]],
+      "slot2": [["das_Seminar"], ["die_Praxis"], ["der_Student"], ["die_Analyse"]],
+      "slot3": [["interessant"], ["praktisch"], ["schwierig"], ["effektiv"]]
+    },
+    "grammar_note": "Im Unterschied zu + Dativ：'与…不同'，引入对比对象。比 während 从句更紧凑(介词短语替代从句)。zu 要求第三格。注意与 im Vergleich zu (中性比较)的细微差别：Im Unterschied zu 更强调差异而非相似性。"
+  },
+  {
+    "id": "b2_041",
+    "level": "b2",
+    "tags": ["zusammenfassung", "sich_lassen", "sagen", "akademisch", "testdaf"],
+    "pattern": "Zusammenfassend lässt sich sagen, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Methode"], ["das_Ergebnis"], ["die_Analyse"], ["die_Forschung"]],
+      "slot2": [["relevant"], ["wichtig"], ["effektiv"], ["sinnvoll"]]
+    },
+    "grammar_note": "Zusammenfassend lässt sich sagen, dass...：结论句型，'总结来说可以认为…'。zusammenfassend 为 Partizip I 作副词(总括地)。sich lassen + sagen 为无人称被动替代。TestDaF 写作结尾段必备。"
+  },
+  {
+    "id": "b2_042",
+    "level": "b2",
+    "tags": ["betonung", "hervorheben", "zu_infinitiv", "akademisch", "testdaf"],
+    "pattern": "Hervorzuheben ist, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_These"], ["das_Ergebnis"], ["die_Methode"], ["die_Analyse"]],
+      "slot2": [["relevant"], ["wichtig"], ["wissenschaftlich"], ["effektiv"]]
+    },
+    "grammar_note": "Hervorzuheben ist, dass...：'需要强调的是…'。hervorzuheben 为 zu-不定式结构(hervorheben 的 erweiterter Infinitiv mit zu)，在此作第一位的主题成分。语气比'wichtig ist'更正式有力，学术论证中用于着重指出。"
+  },
+  {
+    "id": "b2_043",
+    "level": "b2",
+    "tags": ["vermutung", "denkbar", "möglichkeit", "akademisch", "testdaf"],
+    "pattern": "Es ist denkbar, dass {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_These"], ["die_Theorie"], ["die_Methode"], ["die_Analyse"]],
+      "slot2": [["richtig"], ["effektiv"], ["relevant"], ["wissenschaftlich"]]
+    },
+    "grammar_note": "Es ist denkbar, dass...：'可以想象/可能…'，谨慎推测表达。denkbar 为 denken + -bar (形容词后缀='可…的')。此句型比 vielleicht 或 könnte 更书⾯化，用于学术写作中提出可能性而非断言。"
+  },
+  {
+    "id": "b2_044",
+    "level": "b2",
+    "tags": ["problematisierung", "frage_stellen", "ob", "akademisch", "testdaf"],
+    "pattern": "Es stellt sich die Frage, ob {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Methode"], ["die_Theorie"], ["die_These"], ["die_Analyse"]],
+      "slot2": [["richtig"], ["effektiv"], ["relevant"], ["notwendig"]]
+    },
+    "grammar_note": "Es stellt sich die Frage, ob...：学术问题化句型，'出现的问题是，是否…'。sich stellen 在此为'出现/呈现'义(非'放置')。ob 从句作 die Frage 的同位语。用于学术写作中引入待探讨的问题。"
+  },
+  {
+    "id": "b2_045",
+    "level": "b2",
+    "tags": ["fvg", "in_betracht_ziehen", "erwägen", "akademisch", "testdaf"],
+    "pattern": "Wir ziehen {slot1} in Betracht.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": ["die_Methode", "die_Analyse", "die_These", "die_Theorie", "die_Bewerbung"],
+    "grammar_note": "功能动词结构 in Betracht ziehen：'考虑/纳入考量'。ziehen 失去'拉/牵引'的具体意义，与 in Betracht 组成固定语义整体。近义词为 erwägen/berücksichtigen，但 in Betracht ziehen 更正式。"
+  },
+  {
+    "id": "b2_046",
+    "level": "b2",
+    "tags": ["passiv", "unpersönlich", "oft", "akademisch"],
+    "pattern": "Es wird oft {slot1}, dass {slot2} {slot3} ist.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "partizip2"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["diskutieren"], ["behaupten"], ["berichten"], ["erklären"]],
+      "slot2": [["die_These"], ["die_Methode"], ["das_Ergebnis"], ["die_Analyse"]],
+      "slot3": [["wichtig"], ["relevant"], ["interessant"], ["wissenschaftlich"]]
+    },
+    "grammar_note": "无人称被动 + 频度副词 oft：Es wird oft + PII, dass...。oft 位于 wird 与 PII 之间(副词优先置于被动结构中段位置)。此句型表达'人们常说/讨论…'的普遍看法，比 man sagt 更客观。"
+  },
+  {
+    "id": "b2_047",
+    "level": "b2",
+    "tags": ["partizipialattribut", "erweitert", "in", "akademisch", "testdaf"],
+    "pattern": "Die in {slot1} {slot2} {slot3} ist {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg", "preposition": "in"},
+      "slot2": {"type": "verb", "person": "partizip2"},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot4": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Forschung"], ["die_Analyse"], ["die_These"], ["die_Theorie"]],
+      "slot2": [["beschreiben"], ["erklären"], ["untersuchen"], ["diskutieren"]],
+      "slot3": [["die_Methode"], ["die_Theorie"], ["die_These"]],
+      "slot4": [["effektiv"], ["relevant"], ["wissenschaftlich"], ["wichtig"]]
+    },
+    "grammar_note": "扩展分词定语(mit in)：介词短语 in + Dativ 置于 Partizip II 前修饰核心名词。Die in der Forschung beschriebene Methode = 研究中描述的方法。与 von+Dativ 引入施事者不同，in 引入领域/范围。"
+  },
+  {
+    "id": "b2_048",
+    "level": "b2",
+    "tags": ["irrealer_vergleich", "als_ob", "klingt", "konjunktiv_ii"],
+    "pattern": "Es klingt, als ob {slot1} {slot2} wäre.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_These"], ["die_Analyse"], ["das_Ergebnis"], ["die_Theorie"]],
+      "slot2": [["richtig"], ["wichtig"], ["relevant"], ["wissenschaftlich"]]
+    },
+    "grammar_note": "als ob + Konjunktiv II 非现实比较：'听起来好像…(但事实并非如此)'。klingen (听起来) 替代 sehen (看起来)的感官动词变体。als ob 从句用 KII (wäre)，动词位于从句句尾。"
+  },
+  {
+    "id": "b2_049",
+    "level": "b2",
+    "tags": ["infinitiv", "statt_zu", "alternative", "akademisch"],
+    "pattern": "Statt {slot1} zu {slot2}, {slot3} er {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot2": {"type": "verb", "person": "inf"},
+      "slot3": {"type": "verb", "person": "er", "tense": "present"},
+      "slot4": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["das_Buch"], ["die_Zeitung"], ["der_Vertrag"], ["die_Analyse"]],
+      "slot2": [["lesen"], ["schreiben"], ["finden"], ["verstehen"]],
+      "slot3": [["diskutieren"], ["erklären"], ["analysieren"], ["präsentieren"]],
+      "slot4": [["die_Theorie"], ["die_Methode"], ["die_These"], ["das_Ergebnis"]]
+    },
+    "grammar_note": "Statt...zu + Infinitiv 替代结构：'不是…而是…'。statt 引导的不定式结构位于句首(占第一位)，主句以变位动词开头(倒装)。此结构比 anstatt dass 从句更简洁，属书面德语特征。"
+  },
+  {
+    "id": "b2_050",
+    "level": "b2",
+    "tags": ["konjunktiv_i", "indirekte_rede", "medien", "zeitung", "testdaf"],
+    "pattern": "Die Zeitung berichtet, {slot1} {slot2} {slot3} {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "verb", "person": "er", "tense": "konjunktiv1_present"},
+      "slot3": {"type": "noun", "case": "akk", "num": "sg"},
+      "slot4": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Forschung"], ["die_Universitaet"], ["das_Unternehmen"], ["die_Firma"]],
+      "slot2": [["haben"], ["sein"]],
+      "slot3": [["die_Methode"], ["die_Analyse"], ["das_Ergebnis"], ["die_These"]],
+      "slot4": [["entwickeln"], ["analysieren"], ["präsentieren"], ["untersuchen"]]
+    },
+    "grammar_note": "Konjunktiv I 间接引语(媒体报道场景)：Die Zeitung berichtet, + 无连词间接引语。K1 动词 (habe/sei) 置于主语后第二位，Partizip II 在句尾。与 dass 从句相比，无连词形式更简洁，常见于新闻报道。"
+  },
+  {
+    "id": "b2_051",
+    "level": "b2",
+    "tags": ["konzessiv", "so_auch", "mehrfach", "akademisch"],
+    "pattern": "So {slot1} {slot2} auch ist, ich bin {slot3}.",
+    "slots": {
+      "slot1": {"type": "adjective", "form": "predicative"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["wichtig"], ["schwierig"], ["interessant"], ["relevant"]],
+      "slot2": [["die_Pruefung"], ["die_Arbeit"], ["die_Analyse"], ["die_Forschung"]],
+      "slot3": [["zufrieden"], ["glücklich"], ["stolz"], ["überrascht"]]
+    },
+    "grammar_note": "So...auch 让步从句：'无论…多么…'。so + 形容词/副词 + 主语 + auch + 变位动词(句尾)。主句以主语开头(无倒装)。此结构为书面德语特有的高阶让步表达，语气比 obwohl 更强。"
+  },
+  {
+    "id": "b2_052",
+    "level": "b2",
+    "tags": ["proportional", "je_desto", "komparativ", "akademisch", "testdaf"],
+    "pattern": "Je mehr man {slot1}, desto {slot2} wird {slot3}.",
+    "slots": {
+      "slot1": {"type": "verb", "person": "er", "tense": "present"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["lernen"], ["arbeiten"], ["lesen"], ["diskutieren"]],
+      "slot2": [["wichtig"], ["relevant"], ["deutlich"], ["interessant"]],
+      "slot3": [["die_Pruefung"], ["die_Arbeit"], ["die_Forschung"], ["die_Analyse"]]
+    },
+    "grammar_note": "je...desto 比例扩展(mehr + 无人称)：je mehr man + Verb, desto + Komparativ + wird + Subjekt。man 为泛指人称主语，增加表达的客观性。wird 在此表变化(变得)。此变体比 ich 作主语的 je...desto 更学术化。"
+  },
+  {
+    "id": "b2_053",
+    "level": "b2",
+    "tags": ["es_kommt_an", "ob", "abhängigkeit", "akademisch"],
+    "pattern": "Es kommt darauf an, ob {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Methode"], ["die_Analyse"], ["das_Ergebnis"], ["die_These"]],
+      "slot2": [["richtig"], ["relevant"], ["wichtig"], ["wissenschaftlich"]]
+    },
+    "grammar_note": "Es kommt darauf an, ob...：'关键在于是否…'。es kommt auf etw. (Akk) an 为固定搭配，darauf 为代副词(指代 ob 从句的内容)。ob 引导的从句充当 darauf 的具体化。学术写作中用于提出决定性问题。"
+  },
+  {
+    "id": "b2_054",
+    "level": "b2",
+    "tags": ["präposition", "im_hinblick_auf", "komplex", "akademisch", "testdaf"],
+    "pattern": "Im Hinblick auf {slot1} ist {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "auf"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Pruefung"], ["die_Forschung"], ["die_Arbeit"], ["die_Analyse"]],
+      "slot2": [["die_Methode"], ["das_Ergebnis"], ["die_Theorie"], ["die_These"]],
+      "slot3": [["wichtig"], ["relevant"], ["notwendig"], ["sinnvoll"]]
+    },
+    "grammar_note": "Im Hinblick auf + Akkusativ：'就…而言/考虑到…'。Hinblick 源自 hinblicken(看向)，复合介词 im Hinblick auf 为书面德语高频介词短语。auf 在此不可替换为其他介词。比 bezüglich (Gen) 更正式。"
+  },
+  {
+    "id": "b2_055",
+    "level": "b2",
+    "tags": ["präposition", "in_bezug_auf", "komplex", "akademisch", "testdaf"],
+    "pattern": "In Bezug auf {slot1} ist {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "auf"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Forschung"], ["die_Analyse"], ["die_These"], ["das_Experiment"]],
+      "slot2": [["das_Ergebnis"], ["die_Theorie"], ["die_Methode"], ["die_Analyse"]],
+      "slot3": [["relevant"], ["wichtig"], ["interessant"], ["wissenschaftlich"]]
+    },
+    "grammar_note": "In Bezug auf + Akkusativ：'关于/就…而言'。与 im Hinblick auf 语义相近但侧重'涉及/关于'而非'考虑'。Bezug 源自 beziehen (关联)。两种结构在 TestDaF 写作中可互换以避免重复。"
+  },
+  {
+    "id": "b2_056",
+    "level": "b2",
+    "tags": ["fvg", "zur_verfügung_stellen", "dativ", "akkusativ", "akademisch"],
+    "pattern": "Ich stelle {slot1} {slot2} zur Verfügung.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "dat", "num": "sg"},
+      "slot2": {"type": "noun", "case": "akk", "num": "sg"}
+    },
+    "replacement_pool": {
+      "slot1": [["der_lehrer"], ["der_Professor"], ["der_Student"], ["der_Kollege"]],
+      "slot2": [["das_Buch"], ["das_Ergebnis"], ["die_Analyse"], ["die_Zeitung"]]
+    },
+    "grammar_note": "功能动词结构 zur Verfügung stellen：'提供/使…可用'。三格(Akk)的物 + 三格(Dat)的人 = '将某物提供给某人'。与 zur Verfügung stehen(状态)对比，stellen 表示主动提供的动作。学术场景中用于描述资源配置。"
+  },
+  {
+    "id": "b2_057",
+    "level": "b2",
+    "tags": ["konjunktiv_i", "indirekte_rede", "akademisch", "zitieren"],
+    "pattern": "Man sagt, {slot1} sei {slot2}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_These"], ["die_Analyse"], ["die_Methode"], ["die_Forschung"]],
+      "slot2": [["wichtig"], ["relevant"], ["wissenschaftlich"], ["effektiv"]]
+    },
+    "grammar_note": "Man sagt, + Konjunktiv I：'人们说/据说…'。man 为泛指人称，sagt 为直陈式(引述框架)，间接引语用 K1(sei)。注意 sagen 在主句中保持直陈式，仅转述内容用 K1。与 sollen 主观用法的区别：此结构更正式。"
+  },
+  {
+    "id": "b2_058",
+    "level": "b2",
+    "tags": ["gegensatz", "während", "hingegen", "argumentation", "testdaf"],
+    "pattern": "Während {slot1} {slot2} ist, ist {slot3} hingegen {slot4}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"},
+      "slot3": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot4": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Theorie"], ["die_Methode"], ["die_Vorlesung"], ["die_Wissenschaft"]],
+      "slot2": [["abstrakt"], ["theoretisch"], ["schwierig"], ["wissenschaftlich"]],
+      "slot3": [["die_Praxis"], ["das_Experiment"], ["das_Seminar"], ["die_Arbeit"]],
+      "slot4": [["praktisch"], ["konkret"], ["einfach"], ["interessant"]]
+    },
+    "grammar_note": "während...hingegen 双重对比：während 从句(位于句首) + 主句用 hingegen 加强对比。从句变位动词在句尾(ist)，主句因从句占第一位而倒装(主句 ist 放在主语前)。hingegen 为对比副词，可省略但不省略时语气更强。"
+  },
+  {
+    "id": "b2_059",
+    "level": "b2",
+    "tags": ["problematisierung", "fraglich", "ob", "akademisch", "testdaf"],
+    "pattern": "Fraglich ist, ob {slot1} {slot2} ist.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot2": {"type": "adjective", "form": "predicative"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Methode"], ["die_These"], ["die_Analyse"], ["das_Ergebnis"]],
+      "slot2": [["richtig"], ["effektiv"], ["relevant"], ["notwendig"]]
+    },
+    "grammar_note": "Fraglich ist, ob...：'有问题/值得怀疑的是，是否…'。fraglich 前置于第一位强调质疑性。ob 从句作主语补足语(dass 从句在此不合适，因为 fraglich 倾向 ob 的不确定性)。学术写作中用于提出保留意见。"
+  },
+  {
+    "id": "b2_060",
+    "level": "b2",
+    "tags": ["präposition", "mit_rücksicht_auf", "komplex", "passiv", "akademisch"],
+    "pattern": "Mit Rücksicht auf {slot1} wurde {slot2} {slot3}.",
+    "slots": {
+      "slot1": {"type": "noun", "case": "akk", "num": "sg", "preposition": "auf"},
+      "slot2": {"type": "noun", "case": "nom", "num": "sg"},
+      "slot3": {"type": "verb", "person": "partizip2"}
+    },
+    "replacement_pool": {
+      "slot1": [["die_Pruefung"], ["die_Forschung"], ["die_Analyse"], ["das_Ergebnis"]],
+      "slot2": [["die_Methode"], ["die_These"], ["der_Vertrag"], ["die_Theorie"]],
+      "slot3": [["entwickeln"], ["analysieren"], ["verändern"], ["diskutieren"]]
+    },
+    "grammar_note": "Mit Rücksicht auf + Akkusativ：'考虑到/顾及…'。Rücksicht 源自 Rücksicht nehmen (顾及)，复合介词引出考虑因素。wurde + Partizip II 为过去时被动，表示已完成的动作。结构整体属书面正式语域。"
+  }
+]
