@@ -201,6 +201,11 @@ body {
   background: linear-gradient(160deg, #f5f5f9 0%, #e8ecf4 100%);
   padding: 20px 24px 40px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+#view-tags.has-selection {
+  justify-content: center;
 }
 
 .tags-header {
@@ -1578,6 +1583,7 @@ function selectTag(tag, chipEl) {
     // Deselect: show all tags again
     state.activeTag = null;
     tagsGrid.classList.remove('selecting');
+    viewTags.classList.remove('has-selection');
     tagsGrid.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('active'));
     sentenceList.style.opacity = '0';
     setTimeout(() => { sentenceList.innerHTML = ''; }, 300);
@@ -1592,6 +1598,7 @@ function selectTag(tag, chipEl) {
 
   // Trigger collapse animation
   tagsGrid.classList.add('selecting');
+  viewTags.classList.add('has-selection');
 
   // Filter and show sentences with delay for animation
   const filtered = state.allSentences.filter(s =>
