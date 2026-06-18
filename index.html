@@ -250,6 +250,21 @@ body {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tags-grid.selecting .tag-chip:not(.active) {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  max-width: 0;
+  padding: 10px 0;
+  margin: 0;
+  border-width: 0;
+  overflow: hidden;
+}
+.tags-grid.selecting {
+  gap: 0;
+  justify-content: flex-start;
 }
 
 .tag-chip {
@@ -284,6 +299,7 @@ body {
   flex-direction: column;
   gap: 10px;
   max-width: 700px;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sentence-item {
@@ -740,6 +756,20 @@ const ARTICLE_MAP = {
   gen: { m: 'des', f: 'der', n: 'des', pl: 'der' },
 };
 
+const INDEF_ARTICLE_MAP = {
+  nom: { m: 'ein', f: 'eine', n: 'ein', pl: null },
+  akk: { m: 'einen', f: 'eine', n: 'ein', pl: null },
+  dat: { m: 'einem', f: 'einer', n: 'einem', pl: null },
+  gen: { m: 'eines', f: 'einer', n: 'eines', pl: null },
+};
+
+const KEIN_MAP = {
+  nom: { m: 'kein', f: 'keine', n: 'kein', pl: 'keine' },
+  akk: { m: 'keinen', f: 'keine', n: 'kein', pl: 'keine' },
+  dat: { m: 'keinem', f: 'keiner', n: 'keinem', pl: 'keinen' },
+  gen: { m: 'keines', f: 'keiner', n: 'keines', pl: 'keiner' },
+};
+
 class GrammarEngine {
   constructor(wordIndex) {
     this.wordIndex = wordIndex;
@@ -779,11 +809,16 @@ class GrammarEngine {
       case 'noun': {
         const kase = slotSpec.case || 'nom';
         const num = slotSpec.num || 'sg';
+        const artMode = slotSpec.article || (kase === 'nom' && slotSpec.preposition === undefined ? 'definite' : 'indefinite');
+        let form = null;
         if (entry.forms && entry.forms[kase] && entry.forms[kase][num]) {
-          return entry.forms[kase][num];
+          form = entry.forms[kase][num];
         }
-        // Fallback: build it manually
-        return this._buildNounForm(entry, kase, num);
+        if (!form) {
+          form = this._buildNounForm(entry, kase, num);
+        }
+        // Replace article based on mode
+        return this._applyArticle(form, entry.gender, kase, num, artMode);
       }
 
       case 'verb': {
@@ -872,6 +907,30 @@ class GrammarEngine {
     }
 
     return result;
+  }
+
+  /**
+   * Replace article in a noun form based on mode.
+   * E.g. "den Hund" + indefinite → "einen Hund"
+   */
+  _applyArticle(form, gender, kase, num, mode) {
+    if (mode === 'definite') return form;
+    if (!form) return form;
+
+    const artMap = mode === 'kein' ? KEIN_MAP : INDEF_ARTICLE_MAP;
+    const article = (num === 'pl') ? (artMap[kase]?.pl || '') : (artMap[kase]?.[gender] || '');
+
+    // Strip existing article
+    const words = form.split(/\s+/);
+    const defArticles = ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'eines'];
+    if (words.length > 1 && defArticles.includes(words[0].toLowerCase())) {
+      words.shift();
+    }
+
+    if (article) {
+      words.unshift(article);
+    }
+    return words.join(' ');
   }
 
   /**
@@ -1514,20 +1573,37 @@ function renderTags() {
 
 function selectTag(tag, chipEl) {
   if (state.activeTag === tag.name) {
+    // Deselect: show all tags again
     state.activeTag = null;
+    tagsGrid.classList.remove('selecting');
     tagsGrid.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('active'));
-    sentenceList.innerHTML = '';
+    sentenceList.style.opacity = '0';
+    setTimeout(() => { sentenceList.innerHTML = ''; }, 300);
     return;
   }
 
   state.activeTag = tag.name;
+
+  // Mark selected chip
   tagsGrid.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('active'));
   chipEl.classList.add('active');
 
+  // Trigger collapse animation
+  tagsGrid.classList.add('selecting');
+
+  // Filter and show sentences with delay for animation
   const filtered = state.allSentences.filter(s =>
     s.tags && Array.isArray(s.tags) && s.tags.includes(tag.name)
   );
-  renderSentences(filtered);
+
+  sentenceList.style.opacity = '0';
+  sentenceList.style.transform = 'translateY(20px)';
+  setTimeout(() => {
+    renderSentences(filtered);
+    sentenceList.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+    sentenceList.style.opacity = '1';
+    sentenceList.style.transform = 'translateY(0)';
+  }, 200);
 }
 
 function renderSentences(sentences) {
