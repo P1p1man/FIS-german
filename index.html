@@ -1358,20 +1358,6 @@ function loadVoiceOptions() {
     sel.value = _selectedVoiceURI;
     console.log('[Voice] ' + germanVoices.length + ' German voices loaded');
   }
-  
-  // Divider + all other voices
-  if (germanVoices.length > 0 && voices.length > germanVoices.length) {
-    const div = document.createElement('option');
-    div.disabled = true;
-    div.textContent = '── andere ──';
-    sel.appendChild(div);
-    voices.filter(v => !v.lang.startsWith('de')).forEach(v => {
-      const opt = document.createElement('option');
-      opt.value = v.voiceURI;
-      opt.textContent = v.name + ' (' + v.lang + ')';
-      sel.appendChild(opt);
-    });
-  }
 }
 window.speechSynthesis?.addEventListener('voiceschanged', loadVoiceOptions);
 setTimeout(loadVoiceOptions, 300);
