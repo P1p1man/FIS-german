@@ -251,6 +251,18 @@ body {
 }
 .tags-back-btn:hover { background: #283593; transform: scale(1.03); }
 
+.voice-selector {
+  margin-left: auto;
+  margin-right: 12px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+  max-width: 160px;
+}
+
 .tags-grid {
   display: flex;
   flex-wrap: wrap;
@@ -642,6 +654,9 @@ body {
   <div class="tags-header">
     <div id="tags-level-badge" class="tags-level-badge">A1</div>
     <span class="tags-title">Themen & Grammatik</span>
+    <select id="voice-selector" class="voice-selector" title="Stimme auswählen">
+      <option value="">🎤 Standard</option>
+    </select>
     <button id="tags-back-btn" class="tags-back-btn">← Zurück</button>
   </div>
   <div id="tags-grid" class="tags-grid"></div>
@@ -1322,6 +1337,50 @@ class PracticeEngine {
    4. TTS ENGINE (Web Speech API)
    ================================================================ */
 
+let _selectedVoiceURI = '';
+
+// Load German voices into the selector dropdown
+function loadVoiceOptions() {
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length === 0) return;
+  const sel = document.getElementById('voice-selector');
+  if (!sel || sel.options.length > 1) return;
+
+  const germanVoices = voices.filter(v => v.lang.startsWith('de'));
+  germanVoices.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v.voiceURI;
+    opt.textContent = v.name + (v.localService ? '' : ' (Netzwerk)');
+    sel.appendChild(opt);
+  });
+  if (germanVoices.length > 0) {
+    _selectedVoiceURI = germanVoices[0].voiceURI;
+    sel.value = _selectedVoiceURI;
+    console.log('[Voice] ' + germanVoices.length + ' German voices loaded');
+  }
+  
+  // Divider + all other voices
+  if (germanVoices.length > 0 && voices.length > germanVoices.length) {
+    const div = document.createElement('option');
+    div.disabled = true;
+    div.textContent = '── andere ──';
+    sel.appendChild(div);
+    voices.filter(v => !v.lang.startsWith('de')).forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v.voiceURI;
+      opt.textContent = v.name + ' (' + v.lang + ')';
+      sel.appendChild(opt);
+    });
+  }
+}
+window.speechSynthesis?.addEventListener('voiceschanged', loadVoiceOptions);
+setTimeout(loadVoiceOptions, 300);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sel = document.getElementById('voice-selector');
+  if (sel) sel.addEventListener('change', function() { _selectedVoiceURI = this.value; });
+});
+
 function speakTTS(text) {
   return new Promise((resolve) => {
     if (!window.speechSynthesis) {
@@ -1360,7 +1419,13 @@ function _doSpeak(text, resolve) {
   utterance.volume = 1.0;
 
   const voices = window.speechSynthesis.getVoices();
-  const germanVoice = voices.find(v => v.lang.startsWith('de'));
+  let germanVoice = null;
+  if (_selectedVoiceURI) {
+    germanVoice = voices.find(v => v.voiceURI === _selectedVoiceURI);
+  }
+  if (!germanVoice) {
+    germanVoice = voices.find(v => v.lang.startsWith('de'));
+  }
   if (germanVoice) {
     console.log('[TTS] Using voice:', germanVoice.name);
     utterance.voice = germanVoice;
