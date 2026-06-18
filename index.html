@@ -1255,26 +1255,6 @@ class PracticeEngine {
    4. TTS ENGINE (Web Speech API)
    ================================================================ */
 
-// Preload voices on first interaction
-let _voicesLoaded = false;
-let _germanVoice = null;
-
-function _initVoices() {
-  if (_voicesLoaded) return;
-  const voices = window.speechSynthesis.getVoices();
-  if (voices.length > 0) {
-    _germanVoice = voices.find(v => v.lang.startsWith('de')) || null;
-    _voicesLoaded = true;
-  }
-}
-window.speechSynthesis?.addEventListener?.('voiceschanged', () => {
-  const voices = window.speechSynthesis.getVoices();
-  _germanVoice = voices.find(v => v.lang.startsWith('de')) || null;
-  _voicesLoaded = true;
-});
-// Chrome sometimes loads voices before the event fires
-setTimeout(_initVoices, 200);
-
 function speakTTS(text) {
   return new Promise((resolve) => {
     if (!window.speechSynthesis) {
@@ -1284,38 +1264,68 @@ function speakTTS(text) {
     }
 
     window.speechSynthesis.cancel();
-    _initVoices();
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'de-DE';
-    utterance.rate = 0.9;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-
-    if (_germanVoice) utterance.voice = _germanVoice;
-
-    utterance.onend = () => resolve();
-    utterance.onerror = (e) => {
-      console.warn('TTS error:', e);
-      resolve();
-    };
-
-    // Chrome bug workaround: pause/resume to prevent cut-off
-    window.speechSynthesis.pause();
-    window.speechSynthesis.resume();
-
-    window.speechSynthesis.speak(utterance);
-
-    // Timeout fallback: Chrome sometimes never fires onend
-    const timeout = setTimeout(() => {
-      console.warn('TTS timeout, continuing...');
-      window.speechSynthesis.cancel();
-      resolve();
-    }, Math.max(5000, text.length * 80)); // ~80ms per char
-
-    utterance.onend = () => { clearTimeout(timeout); resolve(); };
-    utterance.onerror = () => { clearTimeout(timeout); resolve(); };
+    // Allow voices to load (async in Chrome)
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length === 0) {
+      // Voices not ready yet, wait for them
+      const onVoices = () => {
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoices);
+        _doSpeak(text, resolve);
+      };
+      window.speechSynthesis.addEventListener('voiceschanged', onVoices);
+      // Fallback if voices never load
+      setTimeout(() => {
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoices);
+        console.warn('Voices never loaded, speaking without voice preference');
+        _doSpeak(text, resolve);
+      }, 2000);
+    } else {
+      _doSpeak(text, resolve);
+    }
   });
+}
+
+function _doSpeak(text, resolve) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'de-DE';
+  utterance.rate = 0.9;
+  utterance.volume = 1.0;
+
+  const voices = window.speechSynthesis.getVoices();
+  const germanVoice = voices.find(v => v.lang.startsWith('de'));
+  if (germanVoice) {
+    console.log('[TTS] Using voice:', germanVoice.name);
+    utterance.voice = germanVoice;
+  } else {
+    console.warn('[TTS] No German voice found');
+  }
+
+  console.log('[TTS] Speaking:', text.substring(0, 50));
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    clearTimeout(timeout);
+    console.log('[TTS] Resolved');
+    resolve();
+  };
+
+  const timeout = setTimeout(() => {
+    console.warn('[TTS] Timeout');
+    window.speechSynthesis.cancel();
+    finish();
+  }, Math.max(5000, text.length * 80));
+
+  utterance.onend = () => { console.log('[TTS] onend'); finish(); };
+  utterance.onerror = (e) => {
+    console.warn('[TTS] onerror:', e.error);
+    finish();
+  };
+
+  window.speechSynthesis.speak(utterance);
+  console.log('[TTS] speak() called, speaking:', window.speechSynthesis.speaking);
 }
 
 /* ================================================================
