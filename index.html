@@ -1305,6 +1305,16 @@ function speakTTS(text) {
     window.speechSynthesis.resume();
 
     window.speechSynthesis.speak(utterance);
+
+    // Timeout fallback: Chrome sometimes never fires onend
+    const timeout = setTimeout(() => {
+      console.warn('TTS timeout, continuing...');
+      window.speechSynthesis.cancel();
+      resolve();
+    }, Math.max(5000, text.length * 80)); // ~80ms per char
+
+    utterance.onend = () => { clearTimeout(timeout); resolve(); };
+    utterance.onerror = () => { clearTimeout(timeout); resolve(); };
   });
 }
 
