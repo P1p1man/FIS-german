@@ -1255,6 +1255,26 @@ class PracticeEngine {
    4. TTS ENGINE (Web Speech API)
    ================================================================ */
 
+// Preload voices on first interaction
+let _voicesLoaded = false;
+let _germanVoice = null;
+
+function _initVoices() {
+  if (_voicesLoaded) return;
+  const voices = window.speechSynthesis.getVoices();
+  if (voices.length > 0) {
+    _germanVoice = voices.find(v => v.lang.startsWith('de')) || null;
+    _voicesLoaded = true;
+  }
+}
+window.speechSynthesis?.addEventListener?.('voiceschanged', () => {
+  const voices = window.speechSynthesis.getVoices();
+  _germanVoice = voices.find(v => v.lang.startsWith('de')) || null;
+  _voicesLoaded = true;
+});
+// Chrome sometimes loads voices before the event fires
+setTimeout(_initVoices, 200);
+
 function speakTTS(text) {
   return new Promise((resolve) => {
     if (!window.speechSynthesis) {
@@ -1263,8 +1283,8 @@ function speakTTS(text) {
       return;
     }
 
-    // Cancel any ongoing speech
     window.speechSynthesis.cancel();
+    _initVoices();
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'de-DE';
@@ -1272,10 +1292,7 @@ function speakTTS(text) {
     utterance.pitch = 1.0;
     utterance.volume = 1.0;
 
-    // Try to find a German voice
-    const voices = window.speechSynthesis.getVoices();
-    const germanVoice = voices.find(v => v.lang.startsWith('de')) || null;
-    if (germanVoice) utterance.voice = germanVoice;
+    if (_germanVoice) utterance.voice = _germanVoice;
 
     utterance.onend = () => resolve();
     utterance.onerror = (e) => {
@@ -1283,14 +1300,9 @@ function speakTTS(text) {
       resolve();
     };
 
-    // Timeout fallback
-    const timeout = setTimeout(() => {
-      console.warn('TTS timeout');
-      resolve();
-    }, 15000);
-
-    utterance.onend = () => { clearTimeout(timeout); resolve(); };
-    utterance.onerror = () => { clearTimeout(timeout); resolve(); };
+    // Chrome bug workaround: pause/resume to prevent cut-off
+    window.speechSynthesis.pause();
+    window.speechSynthesis.resume();
 
     window.speechSynthesis.speak(utterance);
   });
