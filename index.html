@@ -1358,11 +1358,6 @@ function loadVoiceOptions() {
     sel.value = _selectedVoiceURI;
     console.log('[Voice] ' + germanVoices.length + ' German voices loaded');
   }
-  // Add Google TTS as fallback option (natural neural voice)
-  const gtOpt = document.createElement('option');
-  gtOpt.value = 'google';
-  gtOpt.textContent = '🔊 Google (natürlich)';
-  sel.appendChild(gtOpt);
 }
 window.speechSynthesis?.addEventListener('voiceschanged', loadVoiceOptions);
 setTimeout(loadVoiceOptions, 300);
@@ -1374,15 +1369,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function speakTTS(text) {
   return new Promise((resolve) => {
-    // If Google TTS selected, use it directly
-    if (_selectedVoiceURI === 'google') {
-      speakGoogleTTS(text, resolve);
-      return;
-    }
-
     if (!window.speechSynthesis) {
-      console.warn('SpeechSynthesis not supported, trying Google TTS');
-      speakGoogleTTS(text, resolve);
+      console.warn('SpeechSynthesis not supported');
+      resolve();
       return;
     }
 
@@ -1457,42 +1446,6 @@ function _doSpeak(text, resolve) {
   window.speechSynthesis.resume();
   window.speechSynthesis.speak(utterance);
   console.log('[TTS] speak() called, speaking:', window.speechSynthesis.speaking);
-}
-
-function speakGoogleTTS(text, resolve) {
-  // Google Translate TTS via Audio element (bypasses CORS)
-  const url = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=de&client=tw-ob&q=' + encodeURIComponent(text);
-  console.log('[TTS-Google] Loading:', text.substring(0, 50));
-  
-  const audio = new Audio();
-  audio.preload = 'auto';
-  let finished = false;
-  const finish = () => {
-    if (finished) return;
-    finished = true;
-    clearTimeout(timeout);
-    audio.pause();
-    audio.remove();
-    resolve();
-  };
-  
-  const timeout = setTimeout(() => {
-    console.warn('[TTS-Google] Timeout');
-    finish();
-  }, 12000);
-  
-  audio.oncanplaythrough = () => {
-    console.log('[TTS-Google] Playing...');
-    audio.play().catch(() => finish());
-  };
-  audio.onended = () => { console.log('[TTS-Google] Done'); finish(); };
-  audio.onerror = (e) => {
-    console.warn('[TTS-Google] Error:', audio.error ? audio.error.code : e);
-    finish();
-  };
-  
-  audio.src = url;
-  audio.load();
 }
 
 /* ================================================================
