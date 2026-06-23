@@ -1707,14 +1707,23 @@ function renderSentences(sentences) {
 }
 
 function startPracticeFromSentence(sentence) {
-  // Warm up TTS engine (Chrome requires user gesture for speak())
+  // For core 300: practice ALL sentences in the current theme
+  let ids = [sentence.id];
+  if (state.activeTag && state.activeTag !== 'all') {
+    const themed = state.allSentences.filter(s =>
+      s.tags && Array.isArray(s.tags) && s.tags.includes(state.activeTag)
+    );
+    if (themed.length > 1) ids = themed.map(s => s.id);
+  }
+  
+  // Warm up TTS engine
   if (window.speechSynthesis) {
     window.speechSynthesis.resume();
     const warmup = new SpeechSynthesisUtterance('');
     warmup.volume = 0;
     window.speechSynthesis.speak(warmup);
   }
-  startPractice([sentence.id]);
+  startPractice(ids);
 }
 
 /* ================================================================
