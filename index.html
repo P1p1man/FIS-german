@@ -162,6 +162,7 @@ body {
 .level-b1::before { background: linear-gradient(180deg, #fb8c00, #ffa726); }
 .level-b2::before { background: linear-gradient(180deg, #e53935, #ef5350); }
 .level-c1::before { background: linear-gradient(180deg, #8e24aa, #ab47bc); }
+.level-core::before { background: linear-gradient(180deg, #ef6c00, #ffcc80); }
 
 .level-icon {
   font-size: 2.8rem;
@@ -175,6 +176,7 @@ body {
 .level-b1 .level-icon { color: #fb8c00; }
 .level-b2 .level-icon { color: #e53935; }
 .level-c1 .level-icon { color: #8e24aa; }
+.level-core .level-icon { color: #ef6c00; }
 
 .level-info { flex: 1; }
 .level-name { font-size: 1.15rem; font-weight: 700; color: #1a1a2e; margin-bottom: 2px; }
@@ -231,6 +233,7 @@ body {
 .badge-b1 { background: linear-gradient(135deg, #fb8c00, #ffa726); }
 .badge-b2 { background: linear-gradient(135deg, #e53935, #ef5350); }
 .badge-c1 { background: linear-gradient(135deg, #8e24aa, #ab47bc); }
+.badge-core { background: linear-gradient(135deg, #ef6c00, #ff9800); }
 
 .tags-title {
   font-size: 1.3rem;
@@ -760,6 +763,7 @@ const DATA = {
   wordIndex: {},       // wordId → { category, entry }
   sentencesByLevel: {}, // level → [sentenceData, ...]
   levels: [
+    { id: 'core', name: 'Kern 300', desc: '300 essentielle Alltagssätze – reines Nachsprechen', count: 0 },
     { id: 'a1', name: 'Anfänger', desc: 'Grundlegende Sätze, Präsens, einfache Artikel', count: 0 },
     { id: 'a2', name: 'Grundkenntnisse', desc: 'Perfekt, Präteritum, Dativ, Modalverben', count: 0 },
     { id: 'b1', name: 'Mittelstufe', desc: 'Konjunktiv II, Nebensätze, Relativsätze', count: 0 },
