@@ -477,6 +477,13 @@ body {
   font-weight: 800;
 }
 
+.sentence-translation {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  margin: 8px 0 4px;
+  font-style: italic;
+}
+
 .grammar-note {
   margin-top: 16px;
   font-size: 0.85rem;
@@ -685,6 +692,7 @@ body {
   <div class="practice-main">
     <div class="practice-left">
       <div id="sentence-template" class="sentence-template"></div>
+      <div id="sentence-translation" class="sentence-translation"></div>
       <div id="grammar-note" class="grammar-note"></div>
     </div>
     <div class="practice-right">
@@ -1259,6 +1267,9 @@ class PracticeEngine {
    * Initialize a practice session.
    */
   startPractice(level, sentenceDataList, roundsPerSentence = 10) {
+    // Core 300: no slots, just 1 round per sentence
+    const hasNoSlots = sentenceDataList.length > 0 && (!sentenceDataList[0].slots || Object.keys(sentenceDataList[0].slots).length === 0);
+    if (hasNoSlots) roundsPerSentence = 1;
     this.session = {
       level,
       sentenceQueue: sentenceDataList.slice(),
@@ -1318,6 +1329,7 @@ class PracticeEngine {
       sentenceData: s.sentenceData,
       currentRound: round,
       patternTemplate: s.sentenceData.pattern,
+      translation: s.sentenceData.translation || '',
       grammar_note: s.sentenceData.grammar_note || '',
       progress: {
         sentence_current: s.currentSentenceIdx + 1,
@@ -1783,6 +1795,10 @@ function renderCurrentRound(data) {
 
   // Grammar note
   grammarNote.textContent = data.grammar_note || '';
+
+  // Chinese translation
+  const translation = $('#sentence-translation');
+  translation.textContent = data.translation || '';
 
   // Replacement words
   const round = data.currentRound;
